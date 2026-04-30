@@ -111,7 +111,6 @@
   }
   .project-card:hover { border-color: rgba(0,212,255,0.45); transform: translateY(-3px); }
   .project-card:hover::before { height: 100%; }
-  .project-card.featured { border-color: rgba(0,212,255,0.3); }
   .project-card.featured::before { height: 100%; }
 
   .card-img {
@@ -341,79 +340,8 @@
   <h2>Featured projects</h2>
   <div class="projects-grid">
 
-    <a href="project-rover.html" class="project-card featured fade-in">
-      <div class="card-img-placeholder">
-        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="20" y="20" width="60" height="20" stroke="#00d4ff" stroke-width="1.5"/>
-          <circle cx="15" cy="45" r="10" stroke="#00d4ff" stroke-width="1.5"/>
-          <circle cx="50" cy="48" r="8" stroke="#00d4ff" stroke-width="1.5"/>
-          <circle cx="85" cy="45" r="10" stroke="#00d4ff" stroke-width="1.5"/>
-          <line x1="15" y1="35" x2="20" y2="20" stroke="#00d4ff" stroke-width="1"/>
-          <line x1="85" y1="35" x2="80" y2="20" stroke="#00d4ff" stroke-width="1"/>
-          <line x1="50" y1="40" x2="50" y2="30" stroke="#00d4ff" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-num">01 — Capstone Project</div>
-        <div class="card-title">Rocker-Bogie Rover</div>
-        <p class="card-desc">Six-wheeled passive suspension system designed for planetary terrain traversal. All six wheels maintain ground contact on obstacles up to 45°.</p>
-        <div class="card-tags">
-          <span class="tag accent">Capstone</span>
-          <span class="tag">SolidWorks</span>
-          <span class="tag">FEA</span>
-          <span class="tag">Kinematics</span>
-        </div>
-        <div class="card-cta">View full project</div>
-      </div>
-    </a>
-
-    <a href="project-cad.html" class="project-card project-card--orange fade-in">
-      <div class="card-img-placeholder card-img-placeholder--orange">
-        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="80" height="40" stroke="#ff6b35" stroke-width="1.5"/>
-          <rect x="25" y="20" width="50" height="20" stroke="#ff6b35" stroke-width="1"/>
-          <line x1="10" y1="10" x2="25" y2="20" stroke="#ff6b35" stroke-width="0.8"/>
-          <line x1="90" y1="10" x2="75" y2="20" stroke="#ff6b35" stroke-width="0.8"/>
-          <line x1="10" y1="50" x2="25" y2="40" stroke="#ff6b35" stroke-width="0.8"/>
-          <line x1="90" y1="50" x2="75" y2="40" stroke="#ff6b35" stroke-width="0.8"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-num card-num--orange">02 — CAD Design</div>
-        <div class="card-title">SolidWorks Assembly</div>
-        <p class="card-desc">Full parametric 3D assembly with tolerance stack-up analysis, interference checking, and complete technical drawing package with GD&T.</p>
-        <div class="card-tags">
-          <span class="tag tag--orange">SolidWorks</span>
-          <span class="tag">GD&T</span>
-          <span class="tag">Tolerancing</span>
-        </div>
-        <div class="card-cta card-cta--orange">View full project</div>
-      </div>
-    </a>
-
-    <a href="project-mechanical.html" class="project-card project-card--lime fade-in">
-      <div class="card-img-placeholder card-img-placeholder--lime">
-        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="30" cy="30" r="18" stroke="#a8ff78" stroke-width="1.5"/>
-          <circle cx="70" cy="30" r="18" stroke="#a8ff78" stroke-width="1.5"/>
-          <circle cx="30" cy="30" r="6" stroke="#a8ff78" stroke-width="1"/>
-          <circle cx="70" cy="30" r="6" stroke="#a8ff78" stroke-width="1"/>
-          <line x1="48" y1="30" x2="52" y2="30" stroke="#a8ff78" stroke-width="2"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-num card-num--lime">03 — Mechanical Design</div>
-        <div class="card-title">Your Project Title</div>
-        <p class="card-desc">Add your project description here. Explain the engineering problem, your approach, and the outcome. Replace with your real project details.</p>
-        <div class="card-tags">
-          <span class="tag tag--lime">Add Tags</span>
-          <span class="tag">Here</span>
-        </div>
-        <div class="card-cta card-cta--lime">View full project</div>
-      </div>
-    </a>
-
-    <a href="project-robot.html" class="project-card project-card--amber fade-in">
+    <!-- 01 — Most recent / ongoing -->
+    <a href="project-robot.html" class="project-card project-card--amber featured fade-in">
       <div class="card-img-placeholder card-img-placeholder--amber">
         <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="27" r="20" stroke="#f59e0b" stroke-width="1.5"/>
@@ -434,7 +362,7 @@
         </svg>
       </div>
       <div class="card-body">
-        <div class="card-num card-num--amber">05 — Industry Project</div>
+        <div class="card-num card-num--amber">01 — Industry · 2023–Present</div>
         <div class="card-title">Autonomous Cleaning Robot</div>
         <p class="card-desc">End-to-end mechanical design of a commercial autonomous indoor cleaning robot at Agora Robotics — chassis, drive systems, cleaning head, and all housings — from concept through production-ready documentation.</p>
         <div class="card-tags">
@@ -448,6 +376,34 @@
       </div>
     </a>
 
+    <!-- 02 — 2024 -->
+    <a href="project-rover.html" class="project-card fade-in">
+      <div class="card-img-placeholder">
+        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="60" height="20" stroke="#00d4ff" stroke-width="1.5"/>
+          <circle cx="15" cy="45" r="10" stroke="#00d4ff" stroke-width="1.5"/>
+          <circle cx="50" cy="48" r="8" stroke="#00d4ff" stroke-width="1.5"/>
+          <circle cx="85" cy="45" r="10" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="15" y1="35" x2="20" y2="20" stroke="#00d4ff" stroke-width="1"/>
+          <line x1="85" y1="35" x2="80" y2="20" stroke="#00d4ff" stroke-width="1"/>
+          <line x1="50" y1="40" x2="50" y2="30" stroke="#00d4ff" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-num">02 — Capstone · 2024</div>
+        <div class="card-title">Rocker-Bogie Rover</div>
+        <p class="card-desc">Six-wheeled passive suspension system designed for planetary terrain traversal. All six wheels maintain ground contact on obstacles up to 45°.</p>
+        <div class="card-tags">
+          <span class="tag accent">Capstone</span>
+          <span class="tag">SolidWorks</span>
+          <span class="tag">FEA</span>
+          <span class="tag">Kinematics</span>
+        </div>
+        <div class="card-cta">View full project</div>
+      </div>
+    </a>
+
+    <!-- 03 — 2022–2024 -->
     <a href="project-microscope.html" class="project-card project-card--purple fade-in">
       <div class="card-img-placeholder card-img-placeholder--purple">
         <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -470,7 +426,7 @@
         </svg>
       </div>
       <div class="card-body">
-        <div class="card-num card-num--purple">04 — MSc Thesis</div>
+        <div class="card-num card-num--purple">03 — MSc Thesis · 2022–2024</div>
         <div class="card-title">Microscope Inspection Table</div>
         <p class="card-desc">3-axis CNC motorised stand for digital microscopy of 3D-printed surfaces. Designed, fabricated and assembled from scratch — steel chassis, stepper-driven XYZ motion, Arduino/GRBL control, 1600× digital microscope.</p>
         <div class="card-tags">
@@ -482,6 +438,54 @@
           <span class="tag">GRBL</span>
         </div>
         <div class="card-cta card-cta--purple">View full project</div>
+      </div>
+    </a>
+
+    <!-- 04 — 2023 -->
+    <a href="project-cad.html" class="project-card project-card--orange fade-in">
+      <div class="card-img-placeholder card-img-placeholder--orange">
+        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="80" height="40" stroke="#ff6b35" stroke-width="1.5"/>
+          <rect x="25" y="20" width="50" height="20" stroke="#ff6b35" stroke-width="1"/>
+          <line x1="10" y1="10" x2="25" y2="20" stroke="#ff6b35" stroke-width="0.8"/>
+          <line x1="90" y1="10" x2="75" y2="20" stroke="#ff6b35" stroke-width="0.8"/>
+          <line x1="10" y1="50" x2="25" y2="40" stroke="#ff6b35" stroke-width="0.8"/>
+          <line x1="90" y1="50" x2="75" y2="40" stroke="#ff6b35" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-num card-num--orange">04 — CAD Design · 2023</div>
+        <div class="card-title">SolidWorks Assembly</div>
+        <p class="card-desc">Full parametric 3D assembly with tolerance stack-up analysis, interference checking, and complete technical drawing package with GD&T.</p>
+        <div class="card-tags">
+          <span class="tag tag--orange">SolidWorks</span>
+          <span class="tag">GD&T</span>
+          <span class="tag">Tolerancing</span>
+        </div>
+        <div class="card-cta card-cta--orange">View full project</div>
+      </div>
+    </a>
+
+    <!-- 05 — Hobby (last) -->
+    <a href="project-mechanical.html" class="project-card project-card--lime fade-in">
+      <div class="card-img-placeholder card-img-placeholder--lime">
+        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="18" stroke="#a8ff78" stroke-width="1.5"/>
+          <circle cx="70" cy="30" r="18" stroke="#a8ff78" stroke-width="1.5"/>
+          <circle cx="30" cy="30" r="6" stroke="#a8ff78" stroke-width="1"/>
+          <circle cx="70" cy="30" r="6" stroke="#a8ff78" stroke-width="1"/>
+          <line x1="48" y1="30" x2="52" y2="30" stroke="#a8ff78" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-num card-num--lime">05 — Hobby</div>
+        <div class="card-title">Your Project Title</div>
+        <p class="card-desc">Add your project description here. Explain the engineering problem, your approach, and the outcome. Replace with your real project details.</p>
+        <div class="card-tags">
+          <span class="tag tag--lime">Hobby</span>
+          <span class="tag">Add Tags</span>
+        </div>
+        <div class="card-cta card-cta--lime">View full project</div>
       </div>
     </a>
 
