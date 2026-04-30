@@ -154,6 +154,16 @@
   .tag--purple { border-color: rgba(167,112,255,0.4); color: #a770ff; background: rgba(167,112,255,0.05); }
   .card-cta--purple { color: #a770ff; }
 
+  /* amber card variant — Agora Robotics */
+  .project-card--amber { border-color: rgba(245,158,11,0.2); }
+  .project-card--amber::before { background: #f59e0b; }
+  .project-card--amber:hover { border-color: rgba(245,158,11,0.55); }
+  .card-img-placeholder--amber { background: linear-gradient(135deg, #141008 0%, #1e1604 100%); border-bottom-color: rgba(245,158,11,0.2); }
+  .card-img-placeholder--amber::after { color: rgba(245,158,11,0.4); }
+  .card-num--amber { color: #f59e0b; }
+  .tag--amber { border-color: rgba(245,158,11,0.4); color: #f59e0b; background: rgba(245,158,11,0.05); }
+  .card-cta--amber { color: #f59e0b; }
+
   /* ── SKILLS ── */
   #skills { background: var(--bg); }
   .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
@@ -380,6 +390,41 @@
           <span class="tag">Here</span>
         </div>
         <div class="card-cta">View full project</div>
+      </div>
+    </a>
+
+    <a href="project-robot.html" class="project-card project-card--amber fade-in">
+      <div class="card-img-placeholder card-img-placeholder--amber">
+        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="27" r="20" stroke="#f59e0b" stroke-width="1.5"/>
+          <path d="M 33 38 A 20 20 0 0 0 67 38" stroke="#f59e0b" stroke-width="2" fill="none"/>
+          <circle cx="50" cy="27" r="5" stroke="#f59e0b" stroke-width="1"/>
+          <circle cx="50" cy="27" r="2" fill="#f59e0b" opacity="0.6"/>
+          <line x1="50" y1="22" x2="50" y2="11" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+          <line x1="46" y1="15" x2="50" y2="11" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+          <line x1="54" y1="15" x2="50" y2="11" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+          <rect x="27" y="23" width="3" height="8" rx="1" stroke="#f59e0b" stroke-width="1"/>
+          <rect x="70" y="23" width="3" height="8" rx="1" stroke="#f59e0b" stroke-width="1"/>
+          <line x1="35" y1="52" x2="65" y2="52" stroke="#f59e0b" stroke-width="2.5"/>
+          <line x1="38" y1="49" x2="38" y2="55" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/>
+          <line x1="44" y1="49" x2="44" y2="55" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/>
+          <line x1="50" y1="49" x2="50" y2="55" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/>
+          <line x1="56" y1="49" x2="56" y2="55" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/>
+          <line x1="62" y1="49" x2="62" y2="55" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-num card-num--amber">05 — Industry Project</div>
+        <div class="card-title">Autonomous Cleaning Robot</div>
+        <p class="card-desc">End-to-end mechanical design of a commercial autonomous indoor cleaning robot at Agora Robotics — chassis, drive systems, cleaning head, and all housings — from concept through production-ready documentation.</p>
+        <div class="card-tags">
+          <span class="tag tag--amber">Agora Robotics</span>
+          <span class="tag">Fusion 360</span>
+          <span class="tag">FDM / SLA</span>
+          <span class="tag">Silicone Casting</span>
+          <span class="tag">Vacuum Forming</span>
+        </div>
+        <div class="card-cta card-cta--amber">View full project</div>
       </div>
     </a>
 
