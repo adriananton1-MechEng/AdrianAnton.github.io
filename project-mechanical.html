@@ -55,7 +55,8 @@
   .img-hero::after { content: 'ADD YOUR MAIN PROJECT IMAGE HERE'; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.15em; position: absolute; bottom: 20px; right: 24px; }
   .img-hero svg { opacity: 0.15; }
 
-  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 5rem; }
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
   .img-slot { background: var(--bg3); border: 1px solid var(--border); height: 280px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
   .img-slot::after { content: attr(data-label); font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; position: absolute; bottom: 12px; right: 14px; }
   .img-slot svg { opacity: 0.12; }
@@ -149,6 +150,11 @@
     <p class="prose">Add a second paragraph here going deeper into your <strong>design decisions</strong>, trade-offs, and any constraints you had to work within — budget, weight, material, manufacturing method, etc.</p>
   </div>
 
+  <div class="img-slot fade-in" style="height:360px; margin-bottom:4rem;" data-label="OVERVIEW / CONTEXT PHOTO">
+    <!-- <img src="images/mech-overview.jpg" alt="Project overview" style="width:100%;height:100%;object-fit:cover;"> -->
+    <svg width="160" height="90" viewBox="0 0 160 90" fill="none"><rect x="10" y="15" width="140" height="60" stroke="#a8ff78" stroke-width="1" opacity="0.4"/><polyline points="10,65 40,35 70,50 100,25 130,40 150,30" stroke="#a8ff78" stroke-width="1.5" fill="none"/><circle cx="40" cy="35" r="3" fill="#a8ff78" opacity="0.5"/><circle cx="70" cy="50" r="3" fill="#a8ff78" opacity="0.5"/><circle cx="100" cy="25" r="3" fill="#a8ff78" opacity="0.5"/><circle cx="130" cy="40" r="3" fill="#a8ff78" opacity="0.5"/></svg>
+  </div>
+
   <div class="content-section fade-in">
     <div class="section-label">Specifications</div>
     <div class="section-title">Key numbers</div>
@@ -188,6 +194,21 @@
         <div class="step-title">Your phase title</div>
         <p class="step-desc">Describe what happened in this phase. What was the final outcome and how did you validate it?</p>
       </div>
+    </div>
+  </div>
+
+  <div class="img-grid-3 fade-in">
+    <div class="img-slot" data-label="PHASE 01 PHOTO">
+      <!-- <img src="images/mech-ph1.jpg" alt="Phase 1" style="width:100%;height:100%;object-fit:cover;"> -->
+      <svg width="55" height="55" viewBox="0 0 55 55" fill="none"><rect x="8" y="8" width="38" height="38" stroke="#a8ff78" stroke-width="1"/><line x1="8" y1="27" x2="46" y2="27" stroke="#a8ff78" stroke-width="0.5"/><line x1="27" y1="8" x2="27" y2="46" stroke="#a8ff78" stroke-width="0.5"/></svg>
+    </div>
+    <div class="img-slot" data-label="PHASE 02 PHOTO">
+      <!-- <img src="images/mech-ph2.jpg" alt="Phase 2" style="width:100%;height:100%;object-fit:cover;"> -->
+      <svg width="55" height="55" viewBox="0 0 55 55" fill="none"><circle cx="27" cy="27" r="20" stroke="#a8ff78" stroke-width="1"/><circle cx="27" cy="27" r="10" stroke="#a8ff78" stroke-width="1"/><circle cx="27" cy="27" r="3" fill="#a8ff78" opacity="0.5"/></svg>
+    </div>
+    <div class="img-slot" data-label="FINAL RESULT">
+      <!-- <img src="images/mech-final.jpg" alt="Final result" style="width:100%;height:100%;object-fit:cover;"> -->
+      <svg width="55" height="55" viewBox="0 0 55 55" fill="none"><polyline points="8,40 20,20 32,30 44,12" stroke="#a8ff78" stroke-width="1.5" fill="none"/><circle cx="44" cy="12" r="4" stroke="#a8ff78" stroke-width="1"/></svg>
     </div>
   </div>
 
