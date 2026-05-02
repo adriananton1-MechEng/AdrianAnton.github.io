@@ -350,12 +350,20 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    #hero { padding: 6rem 1.5rem 3rem; }
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 11px; letter-spacing: 0.06em; }
+    #hero { padding: 6rem 1.2rem 3rem; }
     .hero-diagram { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .skills-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    section { padding: 3rem 1.2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+    h2 { margin-bottom: 2rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  @media (max-width: 430px) {
+    .nav-links { gap: 0.6rem; }
+    .nav-links a { font-size: 10px; }
   }
 </style>
 </head>
