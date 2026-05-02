@@ -80,9 +80,50 @@
   }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .hero-diagram {
+  .hero-portrait {
     position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
-    opacity: 0.18; pointer-events: none;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem;
+    z-index: 1;
+  }
+  .portrait-frame {
+    width: 260px; height: 320px;
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    background: var(--bg3);
+    transition: border-color 0.3s;
+  }
+  .portrait-frame:hover { border-color: rgba(0,212,255,0.5); }
+  .portrait-frame::before {
+    content: ''; position: absolute; top: 10px; left: 10px;
+    width: 20px; height: 20px;
+    border-top: 1.5px solid var(--accent); border-left: 1.5px solid var(--accent);
+    z-index: 2; pointer-events: none;
+  }
+  .portrait-frame::after {
+    content: ''; position: absolute; bottom: 10px; right: 10px;
+    width: 20px; height: 20px;
+    border-bottom: 1.5px solid var(--accent); border-right: 1.5px solid var(--accent);
+    z-index: 2; pointer-events: none;
+  }
+  .portrait-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+  }
+  .portrait-add-label {
+    position: absolute; bottom: 14px; left: 16px;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.15em;
+    text-transform: uppercase; opacity: 0.5; pointer-events: none;
+  }
+  .portrait-meta { padding: 0 2px; }
+  .portrait-name {
+    display: block; font-family: var(--mono); font-size: 11px;
+    color: var(--text); letter-spacing: 0.06em; margin-bottom: 4px;
+  }
+  .portrait-role {
+    display: block; font-family: var(--mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
   }
 
   section { position: relative; z-index: 1; padding: 6rem 4rem; }
@@ -354,7 +395,7 @@
     .nav-links { gap: 1.2rem; }
     .nav-links a { font-size: 11px; letter-spacing: 0.06em; }
     #hero { padding: 6rem 1.2rem 3rem; }
-    .hero-diagram { display: none; }
+    .hero-portrait { display: none; }
     section { padding: 3rem 1.2rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .skills-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -392,17 +433,21 @@
       <a href="#contact" class="btn-ghost">Get in touch</a>
     </div>
   </div>
-  <div class="hero-diagram">
-    <svg width="340" height="340" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="170" cy="170" r="168" stroke="#00d4ff" stroke-width="0.5"/>
-      <circle cx="170" cy="170" r="120" stroke="#00d4ff" stroke-width="0.5"/>
-      <circle cx="170" cy="170" r="60" stroke="#00d4ff" stroke-width="0.5"/>
-      <line x1="2" y1="170" x2="338" y2="170" stroke="#00d4ff" stroke-width="0.5"/>
-      <line x1="170" y1="2" x2="170" y2="338" stroke="#00d4ff" stroke-width="0.5"/>
-      <line x1="50" y1="50" x2="290" y2="290" stroke="#00d4ff" stroke-width="0.5"/>
-      <line x1="290" y1="50" x2="50" y2="290" stroke="#00d4ff" stroke-width="0.5"/>
-      <circle cx="170" cy="170" r="5" fill="#00d4ff"/>
-    </svg>
+  <div class="hero-portrait">
+    <div class="portrait-frame">
+      <!-- Replace src with your photo: <img src="images/portrait.jpg" alt="Adrian Anton" style="width:100%;height:100%;object-fit:cover;object-position:top;"> -->
+      <div class="portrait-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <span class="portrait-add-label">ADD PHOTO</span>
+    </div>
+    <div class="portrait-meta">
+      <span class="portrait-name">Adrian Florin Anton</span>
+      <span class="portrait-role">Mech. Engineer · PhD Candidate</span>
+    </div>
   </div>
 </section>
 
