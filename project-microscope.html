@@ -193,6 +193,14 @@
     background-position: bottom, bottom; background-size: 100% 100%, 100% 55%; background-repeat: repeat-x;
   }
 
+  /* Project navigation between pages */
+  .project-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 5rem; border-top: 1px solid var(--border-o); padding-top: 3rem; }
+  .proj-nav-card { background: var(--bg3); border: 1px solid var(--border-o); padding: 1.75rem; text-decoration: none; color: var(--text); transition: border-color 0.3s; display: block; }
+  .proj-nav-card:hover { border-color: var(--purple); }
+  .proj-nav-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .proj-nav-title { font-size: 1rem; font-weight: 700; }
+  .proj-nav-card.next { text-align: right; }
+
   /* Project process / timeline ruler */
   .process-ruler { margin-top: 2.5rem; position: relative; }
   .ruler-ticks {
@@ -254,6 +262,7 @@
     .img-slot { height: 200px; }
     .img-wide { height: 220px; }
     .spec-table td { font-size: 0.78rem; padding: 0.6rem 0.75rem; }
+    .project-nav { grid-template-columns: 1fr; }
     .process-ruler { display: none; }
     .process-phases { flex-direction: column; }
     .phase { border-right: none; border-bottom: 1px solid var(--border-o); min-height: auto; }
@@ -572,6 +581,18 @@
       <span class="tag">MGN15C</span>
       <span class="tag">Steel Fabrication</span>
     </div>
+  </div>
+
+  <!-- PROJECT NAVIGATION -->
+  <div class="project-nav fade-in">
+    <a href="project-robot.html" class="proj-nav-card">
+      <div class="proj-nav-label">← Previous</div>
+      <div class="proj-nav-title">Autonomous Cleaning Robot</div>
+    </a>
+    <a href="project-cad.html" class="proj-nav-card next">
+      <div class="proj-nav-label">Next project →</div>
+      <div class="proj-nav-title">SolidWorks Assembly</div>
+    </a>
   </div>
 
 </main>
