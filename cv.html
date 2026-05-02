@@ -100,8 +100,10 @@
   .cv-tag.hi { border-color: rgba(200,169,110,0.35); color: var(--accent); }
 
   /* EDUCATION */
-  .cv-edu-item { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 1.5rem; border: 1px solid var(--border); background: var(--bg3); margin-bottom: 1px; transition: border-color 0.25s; }
-  .cv-edu-item:hover { border-color: rgba(200,169,110,0.35); }
+  .cv-edu-item { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 1.5rem; border: 1px solid var(--border); background: var(--bg3); margin-bottom: 1px; position: relative; overflow: hidden; transition: border-color 0.25s; }
+  .cv-edu-item::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--accent); transition: height 0.35s ease; }
+  .cv-edu-item:hover { border-color: rgba(200,169,110,0.4); }
+  .cv-edu-item:hover::before { height: 100%; }
   .cv-edu-year { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.05em; line-height: 1.6; padding-top: 2px; }
   .cv-edu-degree { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
   .cv-edu-inst { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 0.2rem; }
@@ -109,7 +111,10 @@
 
   /* SKILLS GRID */
   .cv-skills-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
-  .cv-skill-group { padding: 1.25rem 1.5rem; background: var(--bg3); border: 1px solid var(--border); }
+  .cv-skill-group { padding: 1.25rem 1.5rem; background: var(--bg3); border: 1px solid var(--border); position: relative; overflow: hidden; transition: border-color 0.25s; }
+  .cv-skill-group::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--accent); transition: height 0.35s ease; }
+  .cv-skill-group:hover { border-color: rgba(200,169,110,0.4); }
+  .cv-skill-group:hover::before { height: 100%; }
   .cv-skill-group-title { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   .cv-skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
   .cv-skill-list li { font-size: 0.925rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
@@ -123,8 +128,10 @@
   .cv-award-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
 
   /* CERT */
-  .cv-cert-item { padding: 1.2rem 1.5rem; border: 1px solid rgba(126,184,201,0.2); background: var(--bg3); margin-bottom: 1px; display: grid; grid-template-columns: 80px 1fr; gap: 1.25rem; transition: border-color 0.2s; }
-  .cv-cert-item:hover { border-color: rgba(126,184,201,0.4); }
+  .cv-cert-item { padding: 1.2rem 1.5rem; border: 1px solid rgba(126,184,201,0.2); background: var(--bg3); margin-bottom: 1px; display: grid; grid-template-columns: 80px 1fr; gap: 1.25rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
+  .cv-cert-item::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--accent2); transition: height 0.35s ease; }
+  .cv-cert-item:hover { border-color: rgba(126,184,201,0.5); }
+  .cv-cert-item:hover::before { height: 100%; }
   .cv-cert-badge { font-family: var(--mono); font-size: 12px; color: var(--accent2); border: 1px solid rgba(126,184,201,0.3); padding: 3px 7px; white-space: nowrap; letter-spacing: 0.06em; height: fit-content; }
 
   footer { position: relative; z-index: 1; padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
