@@ -186,6 +186,57 @@
   html[data-theme="light"] nav { background: rgba(237,241,247,0.92); }
   html[data-theme="light"] p { color: #3a4e5e; }
 
+  /* Project process / timeline ruler */
+  .process-ruler { margin-top: 2.5rem; position: relative; }
+  .ruler-ticks {
+    height: 22px;
+    background-image:
+      repeating-linear-gradient(to right, rgba(167,112,255,0.85) 0, rgba(167,112,255,0.85) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(to right, rgba(167,112,255,0.45) 0, rgba(167,112,255,0.45) 1px, transparent 1px, transparent 8px);
+    background-position: bottom, bottom;
+    background-size: 100% 100%, 100% 55%;
+    background-repeat: repeat-x;
+    border-bottom: 1px solid var(--border-o);
+  }
+  .ruler-labels {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    letter-spacing: 0.08em; padding: 8px 0 0;
+  }
+  .process-phases {
+    display: flex; margin-top: 1.5rem;
+    border: 1px solid var(--border-o);
+    background: var(--bg2);
+  }
+  .phase {
+    flex: 1; position: relative;
+    border-right: 1px solid var(--border-o);
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 220px;
+    transition: background 0.3s;
+  }
+  .phase:last-child { border-right: none; }
+  .phase:hover { background: var(--bg3); }
+  .phase-top { padding: 1.25rem 1.25rem 0; }
+  .phase-num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--purple); opacity: 0.85;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .phase-bottom {
+    border-top: 1px solid var(--border-o);
+    padding: 0.85rem 1.25rem;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--text); letter-spacing: 0.06em;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .phase--active .phase-bottom {
+    background: var(--purple); color: #0a0c0f;
+    border-top-color: var(--purple); font-weight: 700;
+  }
+  .phase--active .phase-num { opacity: 1; }
+  html[data-theme="light"] .phase--active .phase-bottom { color: #fff; }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
@@ -196,6 +247,12 @@
     .img-slot { height: 200px; }
     .img-wide { height: 220px; }
     .spec-table td { font-size: 0.78rem; padding: 0.6rem 0.75rem; }
+    .process-ruler { display: none; }
+    .process-phases { flex-direction: column; }
+    .phase { border-right: none; border-bottom: 1px solid var(--border-o); min-height: auto; }
+    .phase:last-child { border-bottom: none; }
+    .phase-top { padding: 0.9rem 1rem 0.4rem; }
+    .phase-bottom { padding: 0.7rem 1rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -251,6 +308,41 @@
     <div class="img-slot" data-label="FINAL MACHINE — SIDE VIEW">
       <!-- <img src="images/scope-side.jpg" alt="Side view" style="width:100%;height:100%;object-fit:cover;"> -->
       <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><rect x="20" y="10" width="30" height="50" stroke="#a770ff" stroke-width="1"/><line x1="20" y1="30" x2="50" y2="30" stroke="#a770ff" stroke-width="0.5"/><circle cx="35" cy="20" r="6" stroke="#a770ff" stroke-width="1"/><line x1="35" y1="60" x2="20" y2="65" stroke="#a770ff" stroke-width="1"/><line x1="35" y1="60" x2="50" y2="65" stroke="#a770ff" stroke-width="1"/></svg>
+    </div>
+  </div>
+
+  <!-- WORK PROCESS TIMELINE -->
+  <div class="content-block fade-in">
+    <div class="section-label">Work Process</div>
+    <h2>From Brief to Validated Machine</h2>
+    <p>An MSc thesis follows a deliberate engineering progression — every phase delivering a tangible artefact: requirements, concept, parametric CAD, the physical build, then characterisation against the original spec.</p>
+    <div class="process-ruler">
+      <div class="ruler-ticks"></div>
+      <div class="ruler-labels">
+        <span>00</span><span>40</span><span>80</span><span>120</span><span>160</span><span>200</span><span>240</span>
+      </div>
+    </div>
+    <div class="process-phases">
+      <div class="phase" style="flex:1.2;">
+        <div class="phase-top"><div class="phase-num">Phase 01</div></div>
+        <div class="phase-bottom">Specification</div>
+      </div>
+      <div class="phase" style="flex:1.4;">
+        <div class="phase-top"><div class="phase-num">Phase 02</div></div>
+        <div class="phase-bottom">Concept</div>
+      </div>
+      <div class="phase phase--active" style="flex:2.2;">
+        <div class="phase-top"><div class="phase-num">Phase 03</div></div>
+        <div class="phase-bottom">Detail Design</div>
+      </div>
+      <div class="phase" style="flex:1.8;">
+        <div class="phase-top"><div class="phase-num">Phase 04</div></div>
+        <div class="phase-bottom">Fabrication</div>
+      </div>
+      <div class="phase" style="flex:1;">
+        <div class="phase-top"><div class="phase-num">Phase 05</div></div>
+        <div class="phase-bottom">Validation</div>
+      </div>
     </div>
   </div>
 
