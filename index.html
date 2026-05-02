@@ -394,8 +394,22 @@
   }
   html[data-theme="light"] nav { background: rgba(237,241,247,0.92); }
   html[data-theme="light"] .card-img-placeholder { background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%); }
-  html[data-theme="light"] .card-img-placeholder--purple { background: linear-gradient(135deg, #ebe6f5 0%, #dfd8ee 100%); }
-  html[data-theme="light"] .card-img-placeholder--orange { background: linear-gradient(135deg, #f5ede6 0%, #eeddd3 100%); }
+  html[data-theme="light"] .card-img-placeholder--purple { background: linear-gradient(135deg, #ebe6f5 0%, #dfd8ee 100%); border-bottom-color: rgba(109,40,217,0.3); }
+  html[data-theme="light"] .card-img-placeholder--purple::after { color: rgba(109,40,217,0.6); }
+  html[data-theme="light"] .project-card--purple { border-color: rgba(109,40,217,0.3); }
+  html[data-theme="light"] .project-card--purple::before { background: #6d28d9; }
+  html[data-theme="light"] .project-card--purple:hover { border-color: rgba(109,40,217,0.65); }
+  html[data-theme="light"] .card-num--purple { color: #6d28d9; }
+  html[data-theme="light"] .tag--purple { border-color: rgba(109,40,217,0.5); color: #6d28d9; background: rgba(109,40,217,0.07); }
+  html[data-theme="light"] .card-cta--purple { color: #6d28d9; }
+  html[data-theme="light"] .card-img-placeholder--orange { background: linear-gradient(135deg, #f5ede6 0%, #eeddd3 100%); border-bottom-color: rgba(196,66,28,0.3); }
+  html[data-theme="light"] .card-img-placeholder--orange::after { color: rgba(196,66,28,0.6); }
+  html[data-theme="light"] .project-card--orange { border-color: rgba(196,66,28,0.3); }
+  html[data-theme="light"] .project-card--orange::before { background: #c4421c; }
+  html[data-theme="light"] .project-card--orange:hover { border-color: rgba(196,66,28,0.65); }
+  html[data-theme="light"] .card-num--orange { color: #c4421c; }
+  html[data-theme="light"] .tag--orange { border-color: rgba(196,66,28,0.5); color: #c4421c; background: rgba(196,66,28,0.07); }
+  html[data-theme="light"] .card-cta--orange { color: #c4421c; }
   html[data-theme="light"] .card-img-placeholder--lime { background: linear-gradient(135deg, #d8efd0 0%, #bfe2b3 100%); border-bottom-color: rgba(21,128,61,0.35); }
   html[data-theme="light"] .card-img-placeholder--lime::after { color: rgba(21,128,61,0.7); }
   html[data-theme="light"] .project-card--lime { border-color: rgba(21,128,61,0.35); }
@@ -404,7 +418,14 @@
   html[data-theme="light"] .card-num--lime { color: #15803d; }
   html[data-theme="light"] .tag--lime { border-color: rgba(21,128,61,0.55); color: #15803d; background: rgba(21,128,61,0.08); }
   html[data-theme="light"] .card-cta--lime { color: #15803d; }
-  html[data-theme="light"] .card-img-placeholder--amber { background: linear-gradient(135deg, #f5f0e0 0%, #eee8d0 100%); }
+  html[data-theme="light"] .card-img-placeholder--amber { background: linear-gradient(135deg, #f5ecd5 0%, #eddec0 100%); border-bottom-color: rgba(180,83,9,0.3); }
+  html[data-theme="light"] .card-img-placeholder--amber::after { color: rgba(180,83,9,0.6); }
+  html[data-theme="light"] .project-card--amber { border-color: rgba(180,83,9,0.3); }
+  html[data-theme="light"] .project-card--amber::before { background: #b45309; }
+  html[data-theme="light"] .project-card--amber:hover { border-color: rgba(180,83,9,0.65); }
+  html[data-theme="light"] .card-num--amber { color: #b45309; }
+  html[data-theme="light"] .tag--amber { border-color: rgba(180,83,9,0.5); color: #b45309; background: rgba(180,83,9,0.07); }
+  html[data-theme="light"] .card-cta--amber { color: #b45309; }
   html[data-theme="light"] .hobby-card:hover { background: #c8d4e0; }
 
   @media (max-width: 900px) {

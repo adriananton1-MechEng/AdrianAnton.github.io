@@ -175,16 +175,23 @@
   html[data-theme="light"] {
     --bg: #edf1f7; --bg2: #e2e8f2; --bg3: #d5dde9;
     --accent: #0085a8; --accent2: #d4501a;
+    --amber: #b45309;
     --text: #0b1826; --muted: #475d6e;
-    --border: rgba(0,90,140,0.2);
-    --border-o: rgba(180,120,0,0.25);
+    --border: rgba(180,83,9,0.3);
+    --border-o: rgba(180,83,9,0.3);
   }
   html[data-theme="light"] body::before {
-    background-image: linear-gradient(rgba(0,90,140,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,90,140,0.07) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(180,83,9,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180,83,9,0.06) 1px, transparent 1px);
   }
   html[data-theme="light"] nav { background: rgba(237,241,247,0.92); }
   html[data-theme="light"] p { color: #3a4e5e; }
+  html[data-theme="light"] .ruler-ticks {
+    background-image:
+      repeating-linear-gradient(to right, rgba(180,83,9,0.85) 0, rgba(180,83,9,0.85) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(to right, rgba(180,83,9,0.45) 0, rgba(180,83,9,0.45) 1px, transparent 1px, transparent 8px);
+    background-position: bottom, bottom; background-size: 100% 100%, 100% 55%; background-repeat: repeat-x;
+  }
 
   /* Project process / timeline ruler */
   .process-ruler { margin-top: 2.5rem; position: relative; }

@@ -112,18 +112,24 @@
   /* ── LIGHT THEME ── */
   html[data-theme="light"] {
     --bg: #edf1f7; --bg2: #e2e8f2; --bg3: #d5dde9;
-    --accent: #0085a8; --accent2: #d4501a;
+    --accent: #c4421c; --accent2: #0085a8;
     --text: #0b1826; --muted: #475d6e;
-    --border: rgba(0,90,140,0.2);
+    --border: rgba(196,66,28,0.3);
   }
   html[data-theme="light"] body::before {
-    background-image: linear-gradient(rgba(0,90,140,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,90,140,0.07) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(196,66,28,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,66,28,0.06) 1px, transparent 1px);
   }
   html[data-theme="light"] nav { background: rgba(237,241,247,0.92); }
   html[data-theme="light"] .prose,
   html[data-theme="light"] .result-list li,
   html[data-theme="light"] .checklist li { color: #3a4e5e; }
+  html[data-theme="light"] .ruler-ticks {
+    background-image:
+      repeating-linear-gradient(to right, rgba(196,66,28,0.85) 0, rgba(196,66,28,0.85) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(to right, rgba(196,66,28,0.45) 0, rgba(196,66,28,0.45) 1px, transparent 1px, transparent 8px);
+    background-position: bottom, bottom; background-size: 100% 100%, 100% 55%; background-repeat: repeat-x;
+  }
 
   /* Project process / timeline ruler */
   .process-ruler { margin-top: 2.5rem; position: relative; }

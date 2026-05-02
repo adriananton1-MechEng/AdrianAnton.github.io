@@ -169,6 +169,12 @@
   html[data-theme="light"] .prose,
   html[data-theme="light"] .result-list li,
   html[data-theme="light"] .checklist li { color: #3a4e5e; }
+  html[data-theme="light"] .ruler-ticks {
+    background-image:
+      repeating-linear-gradient(to right, rgba(0,90,140,0.85) 0, rgba(0,90,140,0.85) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(to right, rgba(0,90,140,0.45) 0, rgba(0,90,140,0.45) 1px, transparent 1px, transparent 8px);
+    background-position: bottom, bottom; background-size: 100% 100%, 100% 55%; background-repeat: repeat-x;
+  }
 
   /* Project process / timeline ruler */
   .process-ruler { margin-top: 2.5rem; position: relative; }
