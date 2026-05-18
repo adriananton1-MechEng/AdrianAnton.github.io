@@ -43,7 +43,9 @@
   .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
   .btn-warn { background: var(--warn); color: #000; }
+  .btn-danger { background: var(--err); color: #000; }
   .btn-sm { padding: 7px 13px; font-size: 10px; }
+  .btn-xs { padding: 4px 8px; font-size: 9px; letter-spacing: 0.06em; }
 
   #login-screen {
     flex: 1; display: flex; align-items: center; justify-content: center;
@@ -72,9 +74,9 @@
     letter-spacing: 0.03em;
   }
 
-  #workspace { flex: 1; display: grid; grid-template-columns: 240px 1fr; min-height: 0; }
+  #workspace { flex: 1; display: grid; grid-template-columns: 220px 1fr 290px; min-height: 0; }
   .sidebar { border-right: 1px solid var(--border); padding: 1.1rem; overflow-y: auto; background: var(--bg2); }
-  .sidebar h3 {
+  .sidebar h3, .control-panel h3 {
     font-family: var(--mono); font-size: 10px;
     color: var(--muted); letter-spacing: 0.15em;
     text-transform: uppercase; margin-bottom: 0.75rem;
@@ -140,6 +142,120 @@
     background: var(--warn); color: #000; letter-spacing: 0.1em;
   }
 
+  /* ===== CONTROL PANEL ===== */
+  .control-panel {
+    border-left: 1px solid var(--border);
+    background: var(--bg2);
+    overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+  .control-empty {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 2rem 1.5rem; text-align: center;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    letter-spacing: 0.05em; line-height: 1.7;
+  }
+  .control-content { padding: 1rem; }
+  .control-section {
+    margin-bottom: 1.25rem; padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .control-section:last-child { border-bottom: none; margin-bottom: 0; }
+  .control-section-title {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.65rem;
+  }
+  .el-info {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--text); margin-bottom: 0.5rem;
+    padding: 8px 10px; background: var(--bg3);
+    border-left: 2px solid var(--accent);
+    word-break: break-all;
+  }
+  .el-info .tag { color: var(--accent); }
+  .el-info .cls { color: var(--muted); }
+
+  .control-row {
+    display: flex; flex-direction: column; gap: 4px;
+    margin-bottom: 0.65rem;
+  }
+  .control-row.inline { flex-direction: row; align-items: center; gap: 8px; }
+  .control-row.inline .control-label { margin-bottom: 0; min-width: 70px; }
+  .control-label {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--muted); letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .control-row input[type=text],
+  .control-row input[type=number],
+  .control-row input:not([type]),
+  .control-row select {
+    width: 100%; padding: 7px 9px;
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); font-family: var(--mono); font-size: 11px;
+  }
+  .control-row input:focus, .control-row select:focus { outline: none; border-color: var(--accent); }
+  .control-row input[type=color] {
+    width: 36px; height: 28px; padding: 0; cursor: pointer;
+    background: transparent; border: 1px solid var(--border);
+  }
+
+  .btn-row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .btn-row button {
+    flex: 1; min-width: 60px;
+    background: var(--bg3); color: var(--muted);
+    border: 1px solid var(--border); cursor: pointer;
+    padding: 7px 8px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.15s;
+  }
+  .btn-row button:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-row button.on { background: var(--accent); color: #000; border-color: var(--accent); }
+
+  .toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 10px; background: var(--bg3); border: 1px solid var(--border);
+    cursor: pointer; transition: all 0.15s;
+    margin-bottom: 6px;
+    font-family: var(--mono); font-size: 11px;
+  }
+  .toggle-row:hover { border-color: var(--accent); }
+  .toggle-row.on { background: rgba(0,212,255,0.08); border-color: var(--accent); color: var(--accent); }
+  .toggle-row .toggle-state {
+    font-size: 9px; letter-spacing: 0.1em; padding: 2px 7px;
+    border: 1px solid var(--border); color: var(--muted);
+  }
+  .toggle-row.on .toggle-state { background: var(--accent); color: #000; border-color: var(--accent); }
+
+  .radio-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+  }
+  .radio-row button {
+    padding: 8px 6px; font-family: var(--mono); font-size: 10px;
+    background: var(--bg3); color: var(--muted); border: 1px solid var(--border);
+    cursor: pointer; transition: all 0.15s;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .radio-row button:hover { border-color: var(--accent); color: var(--accent); }
+  .radio-row button.on { background: rgba(0,212,255,0.12); border-color: var(--accent); color: var(--accent); }
+  .radio-row .swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .action-row.full { grid-template-columns: 1fr; }
+  .action-row button {
+    padding: 7px; font-family: var(--mono); font-size: 10px;
+    background: var(--bg3); color: var(--text); border: 1px solid var(--border);
+    cursor: pointer; transition: all 0.15s;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .action-row button:hover { border-color: var(--accent); color: var(--accent); }
+  .action-row button.danger:hover { border-color: var(--err); color: var(--err); }
+  .action-row .move-up::before { content: '↑ '; }
+  .action-row .move-down::before { content: '↓ '; }
+
+  /* ===== MODAL ===== */
   .modal {
     position: fixed; inset: 0; background: rgba(5,7,10,0.92);
     backdrop-filter: blur(4px);
@@ -191,9 +307,13 @@
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(-8px); }
   .toast.err { border-color: var(--err); color: var(--err); }
 
-  @media (max-width: 900px) {
-    #workspace { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-    .sidebar { border-right: none; border-bottom: 1px solid var(--border); max-height: 200px; }
+  @media (max-width: 1200px) {
+    #workspace { grid-template-columns: 200px 1fr 270px; }
+  }
+  @media (max-width: 1000px) {
+    #workspace { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; }
+    .sidebar, .control-panel { border-right: none; border-bottom: 1px solid var(--border); max-height: 220px; }
+    .control-panel { border-left: none; border-top: 1px solid var(--border); }
     .toolbar { flex-direction: column; gap: 0.5rem; align-items: stretch; }
     .toolbar-actions { justify-content: flex-end; }
   }
@@ -213,7 +333,7 @@
 <div id="login-screen">
   <div class="login-card">
     <h1>Portfolio admin</h1>
-    <p class="sub">Edit any text on any page. Saved changes commit to GitHub and auto-deploy via Pages in ~30 seconds.</p>
+    <p class="sub">Edit any text, toggle highlights, change fonts and colors, reorder cards — all changes commit to GitHub and auto-deploy via Pages in ~30 seconds.</p>
 
     <p><strong>First-time setup — generate a token (one-off):</strong></p>
     <p>1. Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com/settings/personal-access-tokens/new</a></p>
@@ -239,11 +359,10 @@
 
     <h3>How to edit</h3>
     <div class="help-block">
-      Click any <strong>text</strong> in the preview to edit it inline.<br><br>
-      Press <kbd>Esc</kbd> or click elsewhere to finish editing.<br><br>
-      Switch to <strong>Preview</strong> to see the page as visitors will, without dashed outlines.<br><br>
-      Skill <strong>percentages</strong> auto-update the corresponding bar width.<br><br>
-      <strong>Save & Publish</strong> commits all modified pages and triggers a Pages redeploy.
+      Click any text to <strong>edit inline</strong>.<br><br>
+      The right panel shows controls for the clicked element — toggle <strong>highlight</strong>, change <strong>font</strong>, <strong>size</strong>, <strong>color</strong>, or <strong>duplicate / delete / reorder</strong> cards and tags.<br><br>
+      Press <kbd>Esc</kbd> to finish text editing.<br><br>
+      <strong>Save & Publish</strong> commits all modified pages.
     </div>
   </aside>
 
@@ -266,6 +385,105 @@
       </div>
     </div>
   </div>
+
+  <!-- ===== RIGHT CONTROL PANEL ===== -->
+  <aside class="control-panel">
+    <div class="control-empty" id="control-empty">
+      Click any text on the page to start editing.<br><br>
+      The controls for that element will appear here.
+    </div>
+    <div class="control-content" id="control-content" style="display:none;">
+
+      <div class="control-section">
+        <div class="control-section-title">Selected element</div>
+        <div class="el-info" id="el-info">—</div>
+        <button class="btn btn-ghost btn-xs" id="select-parent-btn" style="margin-top:6px;">↑ Select parent</button>
+      </div>
+
+      <div id="pattern-controls"></div>
+
+      <div class="control-section">
+        <div class="control-section-title">Typography</div>
+
+        <div class="control-row">
+          <label class="control-label">Font family</label>
+          <select id="font-family-select">
+            <option value="">— default —</option>
+            <option value="var(--display)">Display (page font)</option>
+            <option value="var(--mono)">Mono (page font)</option>
+            <option value="serif">Serif (generic)</option>
+            <option value="sans-serif">Sans-serif (generic)</option>
+            <option value="monospace">Monospace (generic)</option>
+            <option value="custom">Custom...</option>
+          </select>
+          <input type="text" id="font-family-custom" placeholder='e.g. "Inter", sans-serif' style="display:none;margin-top:4px;">
+        </div>
+
+        <div class="control-row">
+          <label class="control-label">Font size</label>
+          <input type="text" id="font-size" placeholder="e.g. 1.2rem or 16px">
+        </div>
+
+        <div class="control-row">
+          <label class="control-label">Weight</label>
+          <select id="font-weight">
+            <option value="">— default —</option>
+            <option value="300">300 — Light</option>
+            <option value="400">400 — Regular</option>
+            <option value="500">500 — Medium</option>
+            <option value="600">600 — Semibold</option>
+            <option value="700">700 — Bold</option>
+            <option value="800">800 — Extrabold</option>
+          </select>
+        </div>
+
+        <div class="control-row">
+          <label class="control-label">Style</label>
+          <div class="btn-row">
+            <button id="style-italic">Italic</button>
+            <button id="style-underline">Underline</button>
+            <button id="style-uppercase">Caps</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label class="control-label">Letter spacing</label>
+          <input type="text" id="letter-spacing" placeholder="e.g. 0.1em">
+        </div>
+      </div>
+
+      <div class="control-section">
+        <div class="control-section-title">Colors</div>
+        <div class="control-row inline">
+          <label class="control-label">Text</label>
+          <input type="color" id="text-color" />
+          <button class="btn btn-ghost btn-xs" id="reset-text-color">Clear</button>
+        </div>
+        <div class="control-row inline">
+          <label class="control-label">Background</label>
+          <input type="color" id="bg-color" />
+          <button class="btn btn-ghost btn-xs" id="reset-bg-color">Clear</button>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <div class="control-section-title">Spacing</div>
+        <div class="control-row">
+          <label class="control-label">Padding</label>
+          <input type="text" id="padding" placeholder="e.g. 1rem or 8px 16px">
+        </div>
+        <div class="control-row">
+          <label class="control-label">Margin</label>
+          <input type="text" id="margin" placeholder="e.g. 1rem 0">
+        </div>
+      </div>
+
+      <div class="control-section">
+        <button class="btn btn-ghost btn-sm" id="reset-all-styles" style="width:100%;">Reset all inline styles</button>
+      </div>
+
+    </div>
+  </aside>
 </div>
 
 <!-- COMMIT MODAL -->
@@ -308,6 +526,139 @@ const PAGES = [
   { path: 'project-mechanical.html', label: 'project-mechanical.html'  },
 ];
 
+// Pattern matching for structural controls.
+// Each pattern lists controls that show up when an ancestor matches.
+const ELEMENT_PATTERNS = [
+  {
+    test: (cls, tag) => cls.includes('tool-pill'),
+    label: 'Pill',
+    controls: [
+      { type: 'toggle-class', cls: 'hi', label: 'Highlight (accent style)' },
+      { type: 'reorder' },
+      { type: 'duplicate', label: 'Duplicate pill' },
+      { type: 'delete',    label: 'Delete pill' },
+    ]
+  },
+  {
+    test: (cls, tag) => cls.includes('tag') && !cls.includes('tag-row') && !cls.includes('cv-tag'),
+    label: 'Tag',
+    controls: [
+      { type: 'toggle-class', cls: 'hi',     label: 'Highlight' },
+      { type: 'toggle-class', cls: 'accent', label: 'Accent (cyan)' },
+      { type: 'reorder' },
+      { type: 'duplicate', label: 'Duplicate tag' },
+      { type: 'delete',    label: 'Delete tag' },
+    ]
+  },
+  {
+    test: (cls, tag) => cls.includes('cv-tag'),
+    label: 'CV tag',
+    controls: [
+      { type: 'toggle-class', cls: 'hi', label: 'Highlight' },
+      { type: 'reorder' },
+      { type: 'duplicate' },
+      { type: 'delete' },
+    ]
+  },
+  {
+    test: (cls, tag) => cls.includes('project-card'),
+    label: 'Project card',
+    controls: [
+      { type: 'toggle-class', cls: 'featured', label: 'Featured (vertical accent bar)' },
+      { type: 'class-radio',  label: 'Color variant', options: [
+        { cls: '',                       label: 'Cyan',   swatch: '#00d4ff' },
+        { cls: 'project-card--purple',   label: 'Purple', swatch: '#a770ff' },
+        { cls: 'project-card--orange',   label: 'Orange', swatch: '#ff6b35' },
+        { cls: 'project-card--lime',     label: 'Lime',   swatch: '#a8ff78' },
+        { cls: 'project-card--amber',    label: 'Amber',  swatch: '#f59e0b' },
+      ]},
+      { type: 'reorder' },
+      { type: 'duplicate', label: 'Duplicate card' },
+      { type: 'delete',    label: 'Delete card' },
+    ]
+  },
+  {
+    test: (cls, tag) => cls.includes('hobby-card'),
+    label: 'Hobby card',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('skill-row'),
+    label: 'Skill row',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('phase'),
+    label: 'Timeline phase',
+    controls: [
+      { type: 'toggle-class', cls: 'phase--active', label: 'Active phase (highlighted)' },
+      { type: 'reorder' },
+      { type: 'duplicate' },
+      { type: 'delete' },
+    ]
+  },
+  {
+    test: (cls, tag) => cls.includes('cv-exp-item'),
+    label: 'Experience entry',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('cv-edu-item'),
+    label: 'Education entry',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('cv-cert-item'),
+    label: 'Certification',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('cv-award-item'),
+    label: 'Award',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('cv-skill-group'),
+    label: 'CV skill group',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('comp-item'),
+    label: 'Component',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('process-step'),
+    label: 'Process step',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('axis-card'),
+    label: 'Axis card',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('system-card'),
+    label: 'System card',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('result-item'),
+    label: 'Result tile',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag) => cls.includes('meta-item'),
+    label: 'Meta item',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+  {
+    test: (cls, tag, parentCls) => tag === 'li' && parentCls && parentCls.includes('cv-bullets'),
+    label: 'CV bullet',
+    controls: [{ type: 'reorder' }, { type: 'duplicate' }, { type: 'delete' }]
+  },
+];
+
 // =========================================================
 //  STATE
 // =========================================================
@@ -319,12 +670,13 @@ const state = {
   currentSha: null,
   currentOriginalHtml: null,
   currentEditedHtml: null,
-  modifiedPages: new Map(),   // path -> { sha, original, edited }
+  modifiedPages: new Map(),
   mode: 'edit',
+  selection: null, // { chain, computed, inlineStyle }
 };
 
 // =========================================================
-//  IFRAME EDITOR (runs inside iframe — stringified and injected)
+//  IFRAME EDITOR (runs inside iframe; toString'd and injected)
 // =========================================================
 
 function iframeEditorFn() {
@@ -340,10 +692,32 @@ function iframeEditorFn() {
     'spec-table','comp-grid','axis-grid','result-grid','img-grid-2','img-grid-3','img-wide','img-slot',
     'diagram-box','tools-grid','tool-pills','skill-stack','tag-row','cv-tag-row',
     'cv-bullets','cv-skill-list','hobbies-grid','cv-skills-2col','project-nav',
-    'meta-strip','cv-skills-2col','cv-edu-item','cv-cert-item','cv-exp-item','cv-edu-item','cv-award-item'
+    'meta-strip'
   ]);
   const INLINE_OK = new Set(['SPAN','STRONG','EM','B','I','BR','A','SUP','SUB','CODE','SMALL']);
 
+  // ---- path utilities (stable element addressing) ----
+  function pathOf(el) {
+    const p = [];
+    let n = el;
+    while (n && n.parentElement) {
+      const parent = n.parentElement;
+      const idx = Array.prototype.indexOf.call(parent.children, n);
+      p.unshift(idx);
+      n = parent;
+    }
+    return p;
+  }
+  function elFromPath(p) {
+    let n = document.documentElement;
+    for (let i = 0; i < p.length; i++) {
+      if (!n || !n.children[p[i]]) return null;
+      n = n.children[p[i]];
+    }
+    return n;
+  }
+
+  // ---- editable detection ----
   function isEditable(el) {
     if (!TEXT_TAGS.includes(el.tagName)) return false;
     if (el.closest('script,style,noscript')) return false;
@@ -356,8 +730,9 @@ function iframeEditorFn() {
     const onlyInline = Array.from(el.children).every(c => INLINE_OK.has(c.tagName));
     return onlyInline;
   }
-
   function markEditables() {
+    document.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('data-editable'));
+    document.querySelectorAll('[data-editable-img]').forEach(el => el.removeAttribute('data-editable-img'));
     document.querySelectorAll(TEXT_TAGS.join(',')).forEach(el => {
       if (isEditable(el)) el.setAttribute('data-editable', '1');
     });
@@ -375,10 +750,12 @@ function iframeEditorFn() {
       '  outline-offset: 2px; background: rgba(0,212,255,0.06);',
       '  cursor: text;',
       '}',
+      '[data-admin-selected] { outline: 2px solid rgba(245,158,11,0.85) !important; outline-offset: 4px; }',
       '[data-editable-img]:hover { outline: 2px dashed rgba(245,158,11,0.7) !important; outline-offset: 2px; cursor: pointer; }',
       'body.preview-mode [data-editable]:hover { outline: none !important; cursor: auto; }',
       'body.preview-mode [data-editable-img]:hover { outline: none !important; cursor: auto; }',
-      'body.preview-mode [data-editable][contenteditable="true"] { outline: none !important; background: transparent; }'
+      'body.preview-mode [data-editable][contenteditable="true"] { outline: none !important; background: transparent; }',
+      'body.preview-mode [data-admin-selected] { outline: none !important; }'
     ].join('\n');
     document.head.appendChild(style);
   }
@@ -387,6 +764,7 @@ function iframeEditorFn() {
     const clone = document.documentElement.cloneNode(true);
     clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('data-editable'));
     clone.querySelectorAll('[data-editable-img]').forEach(el => el.removeAttribute('data-editable-img'));
+    clone.querySelectorAll('[data-admin-selected]').forEach(el => el.removeAttribute('data-admin-selected'));
     clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
     clone.querySelectorAll('[data-admin-injected]').forEach(el => el.remove());
     return '<!DOCTYPE html>\n' + clone.outerHTML;
@@ -394,6 +772,51 @@ function iframeEditorFn() {
 
   function postChange() {
     window.parent.postMessage({ type: 'admin:edit', html: serialize() }, '*');
+  }
+
+  function clearAllSelected() {
+    document.querySelectorAll('[data-admin-selected]').forEach(el => el.removeAttribute('data-admin-selected'));
+  }
+
+  function broadcastSelection(el) {
+    clearAllSelected();
+    el.setAttribute('data-admin-selected', '1');
+    const chain = [];
+    let n = el;
+    while (n && n.tagName !== 'BODY' && n.tagName !== 'HTML' && n.parentElement) {
+      chain.push({
+        path: pathOf(n),
+        tag: n.tagName.toLowerCase(),
+        classes: Array.from(n.classList || []),
+        inlineStyle: n.getAttribute('style') || '',
+        parentClasses: n.parentElement ? Array.from(n.parentElement.classList || []) : []
+      });
+      n = n.parentElement;
+    }
+    const computed = getComputedStyle(el);
+    window.parent.postMessage({
+      type: 'admin:select',
+      chain: chain,
+      computed: {
+        fontFamily: computed.fontFamily,
+        fontSize: computed.fontSize,
+        fontWeight: computed.fontWeight,
+        fontStyle: computed.fontStyle,
+        textDecoration: computed.textDecorationLine,
+        textTransform: computed.textTransform,
+        color: rgbToHex(computed.color),
+        backgroundColor: rgbToHex(computed.backgroundColor),
+        letterSpacing: computed.letterSpacing
+      }
+    }, '*');
+  }
+
+  function rgbToHex(rgb) {
+    if (!rgb || rgb === 'rgba(0, 0, 0, 0)' || rgb === 'transparent') return '';
+    const m = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (!m) return '';
+    const toHex = n => ('0' + parseInt(n).toString(16)).slice(-2);
+    return '#' + toHex(m[1]) + toHex(m[2]) + toHex(m[3]);
   }
 
   function applySideEffects(el) {
@@ -410,7 +833,10 @@ function iframeEditorFn() {
     }
   }
 
+  // ---- edit mode (text editing) ----
   let active = null;
+  let pendingBlurTimer = null;
+
   function startEdit(el) {
     if (active && active !== el) finishEdit(active);
     active = el;
@@ -425,14 +851,82 @@ function iframeEditorFn() {
         sel.addRange(range);
       } catch(_) {}
     }, 0);
+    broadcastSelection(el);
   }
   function finishEdit(el) {
+    if (pendingBlurTimer) { clearTimeout(pendingBlurTimer); pendingBlurTimer = null; }
     el.removeAttribute('contenteditable');
     applySideEffects(el);
     postChange();
     if (active === el) active = null;
   }
+  function scheduleFinish(el) {
+    if (pendingBlurTimer) clearTimeout(pendingBlurTimer);
+    pendingBlurTimer = setTimeout(() => {
+      finishEdit(el);
+    }, 250);
+  }
+  function cancelScheduledFinish() {
+    if (pendingBlurTimer) { clearTimeout(pendingBlurTimer); pendingBlurTimer = null; }
+    if (active) active.focus();
+  }
 
+  // ---- apply commands from admin ----
+  function applyAction(el, msg) {
+    switch (msg.action) {
+      case 'toggle-class':
+        el.classList.toggle(msg.cls);
+        break;
+      case 'set-class-option':
+        (msg.removeClasses || []).forEach(c => el.classList.remove(c));
+        if (msg.addClass) el.classList.add(msg.addClass);
+        break;
+      case 'set-style':
+        if (msg.value !== '' && msg.value != null) el.style.setProperty(msg.prop, msg.value);
+        else el.style.removeProperty(msg.prop);
+        if (!el.getAttribute('style')) el.removeAttribute('style');
+        break;
+      case 'reset-style':
+        el.removeAttribute('style');
+        break;
+      case 'duplicate':
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('[data-editable],[data-editable-img],[data-admin-selected]').forEach(c => {
+          c.removeAttribute('data-editable');
+          c.removeAttribute('data-editable-img');
+          c.removeAttribute('data-admin-selected');
+        });
+        clone.removeAttribute('data-editable');
+        clone.removeAttribute('data-editable-img');
+        clone.removeAttribute('data-admin-selected');
+        if (el.parentNode) el.parentNode.insertBefore(clone, el.nextSibling);
+        markEditables();
+        postChange();
+        broadcastSelection(clone);
+        return; // skip default re-select below
+      case 'delete':
+        if (el.parentNode) el.parentNode.removeChild(el);
+        active = null;
+        postChange();
+        window.parent.postMessage({ type: 'admin:deselect' }, '*');
+        clearAllSelected();
+        return;
+      case 'move-up':
+        if (el.previousElementSibling) el.parentNode.insertBefore(el, el.previousElementSibling);
+        break;
+      case 'move-down':
+        if (el.nextElementSibling) el.parentNode.insertBefore(el.nextElementSibling, el);
+        break;
+      case 'select':
+        broadcastSelection(el);
+        return;
+    }
+    markEditables();
+    postChange();
+    broadcastSelection(el);
+  }
+
+  // ---- event wiring ----
   function bind() {
     document.body.addEventListener('click', e => {
       if (document.body.classList.contains('preview-mode')) return;
@@ -461,7 +955,7 @@ function iframeEditorFn() {
     document.body.addEventListener('blur', e => {
       const el = e.target;
       if (el.getAttribute && el.getAttribute('contenteditable') === 'true' && el === active) {
-        finishEdit(el);
+        scheduleFinish(el);
       }
     }, true);
 
@@ -493,6 +987,29 @@ function iframeEditorFn() {
           }
         });
         postChange();
+      }
+      if (e.data.type === 'admin:apply') {
+        const target = elFromPath(e.data.path);
+        if (target) applyAction(target, e.data);
+      }
+      if (e.data.type === 'admin:select-by-path') {
+        const target = elFromPath(e.data.path);
+        if (target) broadcastSelection(target);
+      }
+      if (e.data.type === 'admin:panel-interact') {
+        cancelScheduledFinish();
+      }
+      if (e.data.type === 'admin:deselect') {
+        clearAllSelected();
+      }
+    });
+
+    // click on empty area → deselect
+    document.body.addEventListener('mousedown', e => {
+      if (document.body.classList.contains('preview-mode')) return;
+      if (!e.target.closest('[data-editable], [data-editable-img], [contenteditable=true]')) {
+        clearAllSelected();
+        window.parent.postMessage({ type: 'admin:deselect' }, '*');
       }
     });
   }
@@ -622,6 +1139,8 @@ function attemptLoadPage(path) {
       edited: state.currentEditedHtml
     });
   }
+  state.selection = null;
+  renderControlPanel();
   loadPage(path);
 }
 
@@ -683,7 +1202,6 @@ function renderIframe(html) {
       script.setAttribute('data-admin-injected', '1');
       script.textContent = iframeEditorSource;
       doc.body.appendChild(script);
-      // sync mode
       iframe.contentWindow.postMessage({ type: 'admin:set-mode', mode: state.mode }, '*');
     } catch (e) {
       setStatus('Inject failed: ' + e.message, 'err');
@@ -761,9 +1279,186 @@ function openCommitModal() {
   $('commit-modal').classList.add('open');
   setTimeout(() => $('commit-message').focus(), 100);
 }
+function closeCommitModal() { $('commit-modal').classList.remove('open'); }
 
-function closeCommitModal() {
-  $('commit-modal').classList.remove('open');
+// =========================================================
+//  CONTROL PANEL — selection rendering & apply
+// =========================================================
+
+function handleSelection(data) {
+  state.selection = data;
+  renderControlPanel();
+}
+function clearSelection() {
+  state.selection = null;
+  renderControlPanel();
+}
+
+function renderControlPanel() {
+  const sel = state.selection;
+  if (!sel || !sel.chain || !sel.chain.length) {
+    $('control-empty').style.display = '';
+    $('control-content').style.display = 'none';
+    return;
+  }
+  $('control-empty').style.display = 'none';
+  $('control-content').style.display = '';
+
+  const target = sel.chain[0];
+  $('el-info').innerHTML =
+    '<span class="tag">' + target.tag + '</span>' +
+    (target.classes.length ? '<span class="cls"> .' + target.classes.join('.') + '</span>' : '');
+
+  // Pattern sections (one for each matched ancestor)
+  const patternEl = $('pattern-controls');
+  patternEl.innerHTML = '';
+  sel.chain.forEach(node => {
+    const pattern = ELEMENT_PATTERNS.find(p => p.test(node.classes, node.tag, node.parentClasses));
+    if (pattern) {
+      patternEl.appendChild(renderPatternSection(pattern, node));
+    }
+  });
+
+  // Typography controls (target = most specific)
+  setupTypographyControls(target, sel.computed);
+}
+
+function renderPatternSection(pattern, node) {
+  const section = document.createElement('div');
+  section.className = 'control-section';
+  const title = document.createElement('div');
+  title.className = 'control-section-title';
+  title.textContent = pattern.label;
+  section.appendChild(title);
+
+  pattern.controls.forEach(ctl => {
+    if (ctl.type === 'toggle-class') {
+      const row = document.createElement('div');
+      row.className = 'toggle-row' + (node.classes.includes(ctl.cls) ? ' on' : '');
+      row.innerHTML = '<span>' + (ctl.label || ctl.cls) + '</span><span class="toggle-state">' + (node.classes.includes(ctl.cls) ? 'ON' : 'OFF') + '</span>';
+      row.onclick = () => sendApply(node.path, { action: 'toggle-class', cls: ctl.cls });
+      section.appendChild(row);
+    }
+    else if (ctl.type === 'class-radio') {
+      const label = document.createElement('div');
+      label.className = 'control-label';
+      label.style.marginTop = '0.5rem';
+      label.style.marginBottom = '6px';
+      label.textContent = ctl.label || '';
+      section.appendChild(label);
+
+      const grid = document.createElement('div');
+      grid.className = 'radio-row';
+      const allClasses = ctl.options.map(o => o.cls).filter(Boolean);
+      const activeOpt = ctl.options.find(o => o.cls && node.classes.includes(o.cls)) || ctl.options.find(o => o.cls === '');
+      ctl.options.forEach(opt => {
+        const btn = document.createElement('button');
+        if (opt === activeOpt) btn.classList.add('on');
+        let inner = '';
+        if (opt.swatch) inner += '<span class="swatch" style="background:' + opt.swatch + '"></span>';
+        inner += opt.label;
+        btn.innerHTML = inner;
+        btn.onclick = () => sendApply(node.path, {
+          action: 'set-class-option',
+          removeClasses: allClasses,
+          addClass: opt.cls || null
+        });
+        grid.appendChild(btn);
+      });
+      section.appendChild(grid);
+    }
+    else if (ctl.type === 'reorder') {
+      const row = document.createElement('div');
+      row.className = 'action-row';
+      row.style.marginTop = '6px';
+      const up = document.createElement('button');
+      up.className = 'move-up'; up.textContent = 'Move up';
+      up.onclick = () => sendApply(node.path, { action: 'move-up' });
+      const down = document.createElement('button');
+      down.className = 'move-down'; down.textContent = 'Move down';
+      down.onclick = () => sendApply(node.path, { action: 'move-down' });
+      row.appendChild(up); row.appendChild(down);
+      section.appendChild(row);
+    }
+    else if (ctl.type === 'duplicate') {
+      const row = document.createElement('div');
+      row.className = 'action-row full';
+      row.style.marginTop = '6px';
+      const btn = document.createElement('button');
+      btn.textContent = ctl.label || 'Duplicate';
+      btn.onclick = () => sendApply(node.path, { action: 'duplicate' });
+      row.appendChild(btn);
+      section.appendChild(row);
+    }
+    else if (ctl.type === 'delete') {
+      const row = document.createElement('div');
+      row.className = 'action-row full';
+      row.style.marginTop = '6px';
+      const btn = document.createElement('button');
+      btn.className = 'danger';
+      btn.textContent = ctl.label || 'Delete';
+      btn.onclick = () => {
+        if (confirm('Delete this ' + pattern.label.toLowerCase() + '?')) {
+          sendApply(node.path, { action: 'delete' });
+        }
+      };
+      row.appendChild(btn);
+      section.appendChild(row);
+    }
+  });
+  return section;
+}
+
+function inlineStyleGet(inlineStyle, prop) {
+  const re = new RegExp('(?:^|;)\\s*' + prop + '\\s*:\\s*([^;]+)', 'i');
+  const m = inlineStyle.match(re);
+  return m ? m[1].trim() : '';
+}
+
+function setupTypographyControls(target, computed) {
+  const inline = target.inlineStyle || '';
+  const fontFamilyInline = inlineStyleGet(inline, 'font-family');
+  const sel = $('font-family-select');
+  const custom = $('font-family-custom');
+  custom.style.display = 'none';
+  if (!fontFamilyInline) sel.value = '';
+  else if (fontFamilyInline === 'var(--display)') sel.value = 'var(--display)';
+  else if (fontFamilyInline === 'var(--mono)') sel.value = 'var(--mono)';
+  else if (['serif','sans-serif','monospace'].includes(fontFamilyInline)) sel.value = fontFamilyInline;
+  else { sel.value = 'custom'; custom.value = fontFamilyInline; custom.style.display = ''; }
+
+  $('font-size').value = inlineStyleGet(inline, 'font-size');
+  $('font-weight').value = inlineStyleGet(inline, 'font-weight');
+  $('letter-spacing').value = inlineStyleGet(inline, 'letter-spacing');
+
+  const italic = inlineStyleGet(inline, 'font-style') === 'italic' || computed.fontStyle === 'italic';
+  $('style-italic').classList.toggle('on', !!inlineStyleGet(inline, 'font-style') && inlineStyleGet(inline, 'font-style') === 'italic');
+
+  const underline = inlineStyleGet(inline, 'text-decoration').includes('underline');
+  $('style-underline').classList.toggle('on', underline);
+
+  const upper = inlineStyleGet(inline, 'text-transform') === 'uppercase';
+  $('style-uppercase').classList.toggle('on', upper);
+
+  const tc = inlineStyleGet(inline, 'color');
+  $('text-color').value = tc && tc.startsWith('#') ? tc : (computed.color || '#000000');
+  const bc = inlineStyleGet(inline, 'background-color') || inlineStyleGet(inline, 'background');
+  $('bg-color').value = bc && bc.startsWith('#') ? bc : (computed.backgroundColor || '#000000');
+
+  $('padding').value = inlineStyleGet(inline, 'padding');
+  $('margin').value  = inlineStyleGet(inline, 'margin');
+}
+
+function sendApply(path, payload) {
+  $('preview-frame').contentWindow.postMessage(Object.assign({ type: 'admin:apply', path: path }, payload), '*');
+  // tell iframe we're still interacting (so it doesn't blur)
+  $('preview-frame').contentWindow.postMessage({ type: 'admin:panel-interact' }, '*');
+}
+
+function sendStyle(prop, value) {
+  if (!state.selection) return;
+  const path = state.selection.chain[0].path;
+  sendApply(path, { action: 'set-style', prop: prop, value: value });
 }
 
 // =========================================================
@@ -793,6 +1488,7 @@ $('logout-btn').onclick = () => {
   state.token = null;
   state.modifiedPages.clear();
   state.currentEditedHtml = state.currentOriginalHtml;
+  state.selection = null;
   localStorage.removeItem('admin_gh_token');
   showLogin();
 };
@@ -823,17 +1519,85 @@ $('discard-btn').onclick = () => {
   if (!confirm('Discard unsaved changes on this page?')) return;
   state.currentEditedHtml = state.currentOriginalHtml;
   state.modifiedPages.delete(state.currentPage);
+  state.selection = null;
   renderIframe(state.currentOriginalHtml);
   updateToolbar();
   renderPageList();
+  renderControlPanel();
 };
 
 $('reload-btn').onclick = () => {
   if ((hasUnsavedChanges() || state.modifiedPages.has(state.currentPage)) &&
       !confirm('Discard local changes and reload from GitHub?')) return;
   state.modifiedPages.delete(state.currentPage);
+  state.selection = null;
+  renderControlPanel();
   loadPage(state.currentPage);
 };
+
+// ----- control panel events -----
+
+$('select-parent-btn').onclick = () => {
+  if (state.selection && state.selection.chain.length > 1) {
+    const parentPath = state.selection.chain[1].path;
+    $('preview-frame').contentWindow.postMessage({ type: 'admin:select-by-path', path: parentPath }, '*');
+  }
+};
+
+// Font family
+$('font-family-select').onchange = (e) => {
+  const v = e.target.value;
+  const custom = $('font-family-custom');
+  if (v === 'custom') {
+    custom.style.display = '';
+    custom.focus();
+  } else {
+    custom.style.display = 'none';
+    sendStyle('font-family', v);
+  }
+};
+$('font-family-custom').addEventListener('change', (e) => {
+  sendStyle('font-family', e.target.value);
+});
+
+// Font size, weight, letter-spacing
+['font-size','font-weight','letter-spacing','padding','margin'].forEach(id => {
+  const map = { 'font-size':'font-size','font-weight':'font-weight','letter-spacing':'letter-spacing','padding':'padding','margin':'margin' };
+  $(id).addEventListener('change', e => sendStyle(map[id], e.target.value));
+});
+
+// Italic / underline / uppercase toggles
+$('style-italic').onclick = () => {
+  const btn = $('style-italic');
+  const on = !btn.classList.contains('on');
+  sendStyle('font-style', on ? 'italic' : '');
+};
+$('style-underline').onclick = () => {
+  const btn = $('style-underline');
+  const on = !btn.classList.contains('on');
+  sendStyle('text-decoration', on ? 'underline' : '');
+};
+$('style-uppercase').onclick = () => {
+  const btn = $('style-uppercase');
+  const on = !btn.classList.contains('on');
+  sendStyle('text-transform', on ? 'uppercase' : '');
+};
+
+// Colors
+$('text-color').addEventListener('change', e => sendStyle('color', e.target.value));
+$('bg-color').addEventListener('change', e => sendStyle('background-color', e.target.value));
+$('reset-text-color').onclick = () => sendStyle('color', '');
+$('reset-bg-color').onclick   = () => sendStyle('background-color', '');
+
+$('reset-all-styles').onclick = () => {
+  if (!state.selection) return;
+  if (!confirm('Clear all inline styles on this element?')) return;
+  sendApply(state.selection.chain[0].path, { action: 'reset-style' });
+};
+
+// =========================================================
+//  MESSAGE HANDLERS (from iframe)
+// =========================================================
 
 window.addEventListener('message', e => {
   if (!e.data || !e.data.type) return;
@@ -841,6 +1605,10 @@ window.addEventListener('message', e => {
     state.currentEditedHtml = e.data.html;
     updateToolbar();
     renderPageList();
+  } else if (e.data.type === 'admin:select') {
+    handleSelection(e.data);
+  } else if (e.data.type === 'admin:deselect') {
+    clearSelection();
   } else if (e.data.type === 'admin:image-click') {
     const newSrc = prompt('Image src (relative or absolute URL):', e.data.src);
     if (newSrc != null && newSrc !== e.data.src) {
@@ -859,6 +1627,12 @@ window.addEventListener('beforeunload', e => {
     e.preventDefault();
     e.returnValue = '';
   }
+});
+
+// Prevent iframe text edits from getting blurred when the user clicks
+// any control in the right panel.
+document.querySelector('.control-panel').addEventListener('mousedown', () => {
+  try { $('preview-frame').contentWindow.postMessage({ type: 'admin:panel-interact' }, '*'); } catch(_) {}
 });
 
 // =========================================================
