@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin — Adrian Anton Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root {
+    --bg: #0a0c0f; --bg2: #10141a; --bg3: #161c25;
+    --accent: #00d4ff; --warn: #f59e0b; --ok: #00e676; --err: #ff6b6b;
+    --text: #e8edf2; --muted: #5a6a7a;
+    --border: rgba(0,212,255,0.18);
+    --mono: 'Share Tech Mono', ui-monospace, monospace;
+    --display: system-ui, -apple-system, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--display);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  header {
+    padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,12,15,0.95); z-index: 10; flex-shrink: 0;
+  }
+  .logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.12em; text-decoration: none; }
+  .logo span { color: var(--muted); }
+  .header-right { display: flex; gap: 1rem; align-items: center; }
+  .header-right a { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; }
+  .header-right a:hover { color: var(--accent); }
+
+  .btn {
+    font-family: var(--mono); font-size: 11px; padding: 9px 18px;
+    background: var(--accent); color: #000; border: none; cursor: pointer;
+    letter-spacing: 0.1em; transition: opacity 0.2s; text-transform: uppercase;
+  }
+  .btn:hover:not(:disabled) { opacity: 0.85; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .btn-warn { background: var(--warn); color: #000; }
+  .btn-sm { padding: 7px 13px; font-size: 10px; }
+
+  #login-screen {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 2rem; overflow-y: auto;
+  }
+  .login-card {
+    max-width: 600px; width: 100%; padding: 2.5rem;
+    border: 1px solid var(--border); background: var(--bg3);
+  }
+  .login-card h1 { font-size: 1.6rem; margin-bottom: 0.4rem; font-weight: 700; letter-spacing: -0.01em; }
+  .login-card .sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.75rem; }
+  .login-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.8rem; }
+  .login-card p strong { color: var(--text); }
+  .login-card code, .login-card a { font-family: var(--mono); color: var(--accent); background: rgba(0,212,255,0.07); padding: 1px 6px; font-size: 0.85em; text-decoration: none; }
+  .login-card a:hover { background: rgba(0,212,255,0.15); }
+  .login-card input {
+    width: 100%; padding: 12px; background: var(--bg2);
+    border: 1px solid var(--border); color: var(--text);
+    font-family: var(--mono); font-size: 12px; margin: 1.5rem 0 1rem;
+  }
+  .login-card input:focus { outline: none; border-color: var(--accent); }
+  .login-foot {
+    margin-top: 1.5rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono); font-size: 10px; color: var(--muted); line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  #workspace { flex: 1; display: grid; grid-template-columns: 240px 1fr; min-height: 0; }
+  .sidebar { border-right: 1px solid var(--border); padding: 1.1rem; overflow-y: auto; background: var(--bg2); }
+  .sidebar h3 {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .page-list { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 2rem; }
+  .page-list button {
+    width: 100%; text-align: left; padding: 9px 12px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text); font-family: var(--mono); font-size: 11.5px;
+    cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .page-list button:hover { border-color: var(--accent); }
+  .page-list button.active {
+    background: rgba(0,212,255,0.08); border-color: var(--accent); color: var(--accent);
+  }
+  .page-list .dirty-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
+  .page-list .dirty-dot.on { opacity: 1; }
+
+  .help-block {
+    font-family: var(--mono); font-size: 10.5px; color: var(--muted);
+    line-height: 1.7; letter-spacing: 0.03em;
+    padding-top: 1.25rem; border-top: 1px solid var(--border);
+  }
+  .help-block strong { color: var(--text); }
+  .help-block kbd {
+    font-family: var(--mono); font-size: 10px;
+    background: var(--bg3); border: 1px solid var(--border);
+    padding: 1px 5px; color: var(--text);
+  }
+
+  .preview-area { display: flex; flex-direction: column; min-height: 0; position: relative; }
+  .frame-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.5rem 1rem; border-bottom: 1px solid var(--border); background: var(--bg2); flex-shrink: 0;
+  }
+  .frame-info { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+  .frame-info .name { color: var(--accent); }
+  .mode-switch { display: flex; gap: 2px; }
+  .mode-switch button {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    font-family: var(--mono); font-size: 10px; padding: 6px 13px;
+    cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .mode-switch button.active { background: var(--accent); color: #000; border-color: var(--accent); }
+  .mode-switch button:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+  iframe { flex: 1; width: 100%; border: none; background: #fff; min-height: 0; }
+
+  .toolbar {
+    padding: 0.75rem 1.5rem; border-top: 1px solid var(--border);
+    background: var(--bg2);
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+  }
+  .status { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+  .status.ok { color: var(--ok); }
+  .status.err { color: var(--err); }
+  .status.warn { color: var(--warn); }
+  .toolbar-actions { display: flex; gap: 0.6rem; align-items: center; }
+  .unsaved-pill {
+    font-family: var(--mono); font-size: 10px; padding: 4px 10px;
+    background: var(--warn); color: #000; letter-spacing: 0.1em;
+  }
+
+  .modal {
+    position: fixed; inset: 0; background: rgba(5,7,10,0.92);
+    backdrop-filter: blur(4px);
+    z-index: 100; display: none; align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal.open { display: flex; }
+  .modal-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    max-width: 620px; width: 100%;
+    display: flex; flex-direction: column; max-height: 80vh;
+  }
+  .modal-head { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+  .modal-head h3 { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+  .modal-body { padding: 1.25rem 1.5rem; overflow-y: auto; }
+  .modal-body p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1rem; }
+  .modal-body input, .modal-body textarea {
+    width: 100%; padding: 10px; background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text); font-family: var(--mono); font-size: 12px;
+  }
+  .modal-body input:focus { outline: none; border-color: var(--accent); }
+  .modal-foot {
+    padding: 1rem 1.5rem; border-top: 1px solid var(--border);
+    display: flex; gap: 0.6rem; justify-content: flex-end;
+  }
+
+  .change-list {
+    list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+    font-family: var(--mono); font-size: 11px; margin-bottom: 1rem;
+  }
+  .change-list li {
+    padding: 8px 12px; background: var(--bg2);
+    border-left: 2px solid var(--accent);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .change-list .selector { color: var(--accent); }
+  .change-list .delta { color: var(--muted); font-size: 10px; }
+  .change-list .delta.add { color: var(--ok); }
+  .change-list .delta.del { color: var(--err); }
+
+  .toast {
+    position: fixed; bottom: 4rem; left: 50%; transform: translateX(-50%);
+    background: var(--bg3); border: 1px solid var(--ok);
+    color: var(--ok); padding: 12px 24px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    z-index: 200; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(-8px); }
+  .toast.err { border-color: var(--err); color: var(--err); }
+
+  @media (max-width: 900px) {
+    #workspace { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--border); max-height: 200px; }
+    .toolbar { flex-direction: column; gap: 0.5rem; align-items: stretch; }
+    .toolbar-actions { justify-content: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">ADMIN.<span>ENG</span></a>
+  <div class="header-right">
+    <a href="index.html" target="_blank">↗ View live site</a>
+    <button class="btn btn-ghost btn-sm" id="logout-btn" style="display:none;">Logout</button>
+  </div>
+</header>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>Portfolio admin</h1>
+    <p class="sub">Edit any text on any page. Saved changes commit to GitHub and auto-deploy via Pages in ~30 seconds.</p>
+
+    <p><strong>First-time setup — generate a token (one-off):</strong></p>
+    <p>1. Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com/settings/personal-access-tokens/new</a></p>
+    <p>2. Under <em>Repository access</em>, choose <em>Only select repositories</em> → pick <code>portofolio</code>.</p>
+    <p>3. Under <em>Repository permissions</em>, set <code>Contents</code> to <strong>Read and write</strong>.</p>
+    <p>4. Click <em>Generate token</em>, copy it, and paste below:</p>
+
+    <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off" spellcheck="false" />
+    <button class="btn" id="login-btn" style="width:100%;">Authenticate</button>
+    <div class="status" id="login-status" style="margin-top:0.85rem;text-align:center;"></div>
+
+    <div class="login-foot">
+      The token is stored only in this browser's localStorage. It is never sent anywhere except <strong>api.github.com</strong>. You can revoke it at any time from <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--accent);">GitHub settings</a>.
+    </div>
+  </div>
+</div>
+
+<!-- WORKSPACE -->
+<div id="workspace" style="display:none;">
+  <aside class="sidebar">
+    <h3>Pages</h3>
+    <ul class="page-list" id="page-list"></ul>
+
+    <h3>How to edit</h3>
+    <div class="help-block">
+      Click any <strong>text</strong> in the preview to edit it inline.<br><br>
+      Press <kbd>Esc</kbd> or click elsewhere to finish editing.<br><br>
+      Switch to <strong>Preview</strong> to see the page as visitors will, without dashed outlines.<br><br>
+      Skill <strong>percentages</strong> auto-update the corresponding bar width.<br><br>
+      <strong>Save & Publish</strong> commits all modified pages and triggers a Pages redeploy.
+    </div>
+  </aside>
+
+  <div class="preview-area">
+    <div class="frame-toolbar">
+      <div class="frame-info">Editing: <span class="name" id="frame-info-name">—</span></div>
+      <div class="mode-switch">
+        <button id="mode-edit" class="active">Edit</button>
+        <button id="mode-preview">Preview</button>
+      </div>
+    </div>
+    <iframe id="preview-frame"></iframe>
+    <div class="toolbar">
+      <div class="status" id="status">Ready</div>
+      <div class="toolbar-actions">
+        <span class="unsaved-pill" id="unsaved-pill" style="display:none;">UNSAVED</span>
+        <button class="btn btn-ghost btn-sm" id="reload-btn">Reload</button>
+        <button class="btn btn-ghost btn-sm" id="discard-btn" disabled>Discard</button>
+        <button class="btn btn-sm" id="save-btn" disabled>Save & Publish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMIT MODAL -->
+<div class="modal" id="commit-modal">
+  <div class="modal-card">
+    <div class="modal-head"><h3>Review & publish</h3></div>
+    <div class="modal-body">
+      <p id="commit-summary">You have changes ready to publish:</p>
+      <ul class="change-list" id="change-list"></ul>
+      <p>Commit message:</p>
+      <input type="text" id="commit-message" placeholder="Update content" />
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost btn-sm" id="cancel-commit">Cancel</button>
+      <button class="btn btn-sm" id="confirm-commit">Publish to live site</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+// =========================================================
+//  CONFIG
+// =========================================================
+
+const REPO_OWNER = 'adriananton1-MechEng';
+const REPO_NAME  = 'portofolio';
+const BRANCH     = 'main';
+
+const PAGES = [
+  { path: 'index.html',              label: 'index.html'               },
+  { path: 'cv.html',                 label: 'cv.html'                  },
+  { path: 'project-robot.html',      label: 'project-robot.html'       },
+  { path: 'project-microscope.html', label: 'project-microscope.html'  },
+  { path: 'project-cad.html',        label: 'project-cad.html'         },
+  { path: 'project-rover.html',      label: 'project-rover.html'       },
+  { path: 'project-mechanical.html', label: 'project-mechanical.html'  },
+];
+
+// =========================================================
+//  STATE
+// =========================================================
+
+const $ = id => document.getElementById(id);
+const state = {
+  token: null,
+  currentPage: null,
+  currentSha: null,
+  currentOriginalHtml: null,
+  currentEditedHtml: null,
+  modifiedPages: new Map(),   // path -> { sha, original, edited }
+  mode: 'edit',
+};
+
+// =========================================================
+//  IFRAME EDITOR (runs inside iframe — stringified and injected)
+// =========================================================
+
+function iframeEditorFn() {
+  'use strict';
+
+  const TEXT_TAGS = ['H1','H2','H3','H4','H5','H6','P','LI','A','TD','SPAN','DIV','BUTTON'];
+  const SKIP_CLASSES = new Set([
+    'skill-bar','portrait-add-label','dot','phase-num','step-num',
+    'axis-letter','ruler-ticks','ruler-labels',
+    'icon-moon','icon-sun','lightbox','lightbox-img','lightbox-close','lightbox-caption',
+    'hero-diagram','card-img-placeholder','hero-portrait','portrait-frame','portrait-placeholder',
+    'projects-grid','skills-layout','contact-layout','process-list','process-phases','process-ruler',
+    'spec-table','comp-grid','axis-grid','result-grid','img-grid-2','img-grid-3','img-wide','img-slot',
+    'diagram-box','tools-grid','tool-pills','skill-stack','tag-row','cv-tag-row',
+    'cv-bullets','cv-skill-list','hobbies-grid','cv-skills-2col','project-nav',
+    'meta-strip','cv-skills-2col','cv-edu-item','cv-cert-item','cv-exp-item','cv-edu-item','cv-award-item'
+  ]);
+  const INLINE_OK = new Set(['SPAN','STRONG','EM','B','I','BR','A','SUP','SUB','CODE','SMALL']);
+
+  function isEditable(el) {
+    if (!TEXT_TAGS.includes(el.tagName)) return false;
+    if (el.closest('script,style,noscript')) return false;
+    if (el.id === 'theme-toggle') return false;
+    if (el.classList && Array.from(el.classList).some(c => SKIP_CLASSES.has(c))) return false;
+
+    const directText = Array.from(el.childNodes).some(n => n.nodeType === 3 && n.textContent.trim().length > 0);
+    if (!directText) return false;
+
+    const onlyInline = Array.from(el.children).every(c => INLINE_OK.has(c.tagName));
+    return onlyInline;
+  }
+
+  function markEditables() {
+    document.querySelectorAll(TEXT_TAGS.join(',')).forEach(el => {
+      if (isEditable(el)) el.setAttribute('data-editable', '1');
+    });
+    document.querySelectorAll('img').forEach(img => img.setAttribute('data-editable-img', '1'));
+  }
+
+  function injectStyles() {
+    const style = document.createElement('style');
+    style.setAttribute('data-admin-injected', '1');
+    style.textContent = [
+      '[data-editable] { transition: outline 0.1s; }',
+      '[data-editable]:hover { outline: 2px dashed rgba(0,212,255,0.7) !important; outline-offset: 2px; cursor: text; }',
+      '[data-editable][contenteditable="true"] {',
+      '  outline: 2px solid rgba(0,212,255,0.95) !important;',
+      '  outline-offset: 2px; background: rgba(0,212,255,0.06);',
+      '  cursor: text;',
+      '}',
+      '[data-editable-img]:hover { outline: 2px dashed rgba(245,158,11,0.7) !important; outline-offset: 2px; cursor: pointer; }',
+      'body.preview-mode [data-editable]:hover { outline: none !important; cursor: auto; }',
+      'body.preview-mode [data-editable-img]:hover { outline: none !important; cursor: auto; }',
+      'body.preview-mode [data-editable][contenteditable="true"] { outline: none !important; background: transparent; }'
+    ].join('\n');
+    document.head.appendChild(style);
+  }
+
+  function serialize() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('data-editable'));
+    clone.querySelectorAll('[data-editable-img]').forEach(el => el.removeAttribute('data-editable-img'));
+    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+    clone.querySelectorAll('[data-admin-injected]').forEach(el => el.remove());
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
+  function postChange() {
+    window.parent.postMessage({ type: 'admin:edit', html: serialize() }, '*');
+  }
+
+  function applySideEffects(el) {
+    if (el.classList && el.classList.contains('skill-pct')) {
+      const row = el.closest('.skill-row');
+      const bar = row && row.querySelector('.skill-bar');
+      if (bar) {
+        const n = parseFloat(el.textContent);
+        if (!isNaN(n)) {
+          const clamped = Math.max(0, Math.min(100, n));
+          bar.setAttribute('data-width', (clamped / 100).toFixed(2));
+        }
+      }
+    }
+  }
+
+  let active = null;
+  function startEdit(el) {
+    if (active && active !== el) finishEdit(active);
+    active = el;
+    el.setAttribute('contenteditable', 'true');
+    el.focus();
+    setTimeout(() => {
+      try {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch(_) {}
+    }, 0);
+  }
+  function finishEdit(el) {
+    el.removeAttribute('contenteditable');
+    applySideEffects(el);
+    postChange();
+    if (active === el) active = null;
+  }
+
+  function bind() {
+    document.body.addEventListener('click', e => {
+      if (document.body.classList.contains('preview-mode')) return;
+
+      const img = e.target.closest('[data-editable-img]');
+      if (img) {
+        e.preventDefault(); e.stopPropagation();
+        window.parent.postMessage({
+          type: 'admin:image-click',
+          src: img.getAttribute('src'),
+          alt: img.getAttribute('alt') || ''
+        }, '*');
+        return;
+      }
+
+      const edit = e.target.closest('[data-editable]');
+      if (edit && edit !== active) {
+        e.preventDefault(); e.stopPropagation();
+        startEdit(edit);
+        return;
+      }
+
+      if (e.target.closest('a') && !edit) e.preventDefault();
+    }, true);
+
+    document.body.addEventListener('blur', e => {
+      const el = e.target;
+      if (el.getAttribute && el.getAttribute('contenteditable') === 'true' && el === active) {
+        finishEdit(el);
+      }
+    }, true);
+
+    document.body.addEventListener('keydown', e => {
+      const el = e.target;
+      if (el.getAttribute && el.getAttribute('contenteditable') === 'true') {
+        if (e.key === 'Escape') { e.preventDefault(); el.blur(); }
+        if (e.key === 'Enter' && !e.shiftKey) {
+          const tag = el.tagName;
+          if (tag !== 'P' && tag !== 'LI' && tag !== 'DIV') {
+            e.preventDefault();
+            el.blur();
+          }
+        }
+      }
+    }, true);
+
+    window.addEventListener('message', e => {
+      if (!e.data) return;
+      if (e.data.type === 'admin:set-mode') {
+        if (e.data.mode === 'preview') document.body.classList.add('preview-mode');
+        else document.body.classList.remove('preview-mode');
+      }
+      if (e.data.type === 'admin:set-image') {
+        document.querySelectorAll('img').forEach(img => {
+          if (img.getAttribute('src') === e.data.oldSrc) {
+            img.setAttribute('src', e.data.newSrc);
+            if (e.data.newAlt != null) img.setAttribute('alt', e.data.newAlt);
+          }
+        });
+        postChange();
+      }
+    });
+  }
+
+  injectStyles();
+  markEditables();
+  bind();
+  window.parent.postMessage({ type: 'admin:ready' }, '*');
+}
+
+const iframeEditorSource = '(' + iframeEditorFn.toString() + ')();';
+
+// =========================================================
+//  GITHUB API
+// =========================================================
+
+async function verifyToken(t) {
+  try {
+    const r = await fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME, {
+      headers: { 'Authorization': 'Bearer ' + t }
+    });
+    return r.ok;
+  } catch (_) { return false; }
+}
+
+async function ghGet(path) {
+  const r = await fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + encodeURIComponent(path) + '?ref=' + BRANCH, {
+    headers: { 'Authorization': 'Bearer ' + state.token }
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({ message: r.statusText }));
+    throw new Error('GET ' + path + ': ' + (err.message || r.status));
+  }
+  const data = await r.json();
+  return { content: b64DecodeUtf8(data.content), sha: data.sha };
+}
+
+async function ghPut(path, content, sha, message) {
+  const r = await fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + encodeURIComponent(path), {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + state.token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: message,
+      content: b64EncodeUtf8(content),
+      sha: sha,
+      branch: BRANCH
+    })
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({ message: r.statusText }));
+    throw new Error('PUT ' + path + ': ' + (err.message || r.status));
+  }
+  return r.json();
+}
+
+function b64DecodeUtf8(b64) {
+  const bin = atob(b64.replace(/\n/g, ''));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+function b64EncodeUtf8(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+// =========================================================
+//  UI
+// =========================================================
+
+function setStatus(msg, type) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status' + (type ? ' ' + type : '');
+}
+
+function toast(msg, type) {
+  const el = $('toast');
+  el.textContent = msg;
+  el.className = 'toast' + (type ? ' ' + type : '') + ' show';
+  setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+function showLogin() {
+  $('login-screen').style.display = '';
+  $('workspace').style.display = 'none';
+  $('logout-btn').style.display = 'none';
+}
+
+function showWorkspace() {
+  $('login-screen').style.display = 'none';
+  $('workspace').style.display = '';
+  $('logout-btn').style.display = '';
+  renderPageList();
+  loadPage(PAGES[0].path);
+}
+
+function renderPageList() {
+  const ul = $('page-list');
+  ul.innerHTML = '';
+  PAGES.forEach(p => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.innerHTML = '<span>' + p.label + '</span><span class="dirty-dot"></span>';
+    if (p.path === state.currentPage) btn.classList.add('active');
+    if (state.modifiedPages.has(p.path) || (p.path === state.currentPage && hasUnsavedChanges())) {
+      btn.querySelector('.dirty-dot').classList.add('on');
+    }
+    btn.onclick = () => attemptLoadPage(p.path);
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+}
+
+function attemptLoadPage(path) {
+  if (state.currentPage === path) return;
+  if (hasUnsavedChanges()) {
+    state.modifiedPages.set(state.currentPage, {
+      sha: state.currentSha,
+      original: state.currentOriginalHtml,
+      edited: state.currentEditedHtml
+    });
+  }
+  loadPage(path);
+}
+
+function hasUnsavedChanges() {
+  return state.currentEditedHtml != null && state.currentEditedHtml !== state.currentOriginalHtml;
+}
+
+function anyDirty() {
+  return hasUnsavedChanges() || state.modifiedPages.size > 0;
+}
+
+function updateToolbar() {
+  const dirty = anyDirty();
+  $('save-btn').disabled = !dirty;
+  $('discard-btn').disabled = !hasUnsavedChanges();
+  $('unsaved-pill').style.display = dirty ? '' : 'none';
+}
+
+// =========================================================
+//  PAGE LOAD / SAVE
+// =========================================================
+
+async function loadPage(path) {
+  state.currentPage = path;
+  $('frame-info-name').textContent = path;
+  setStatus('Loading ' + path + '...');
+  renderPageList();
+
+  const cached = state.modifiedPages.get(path);
+  try {
+    let content, sha;
+    if (cached) {
+      content = cached.edited;
+      sha = cached.sha;
+      state.currentOriginalHtml = cached.original;
+    } else {
+      const file = await ghGet(path);
+      content = file.content;
+      sha = file.sha;
+      state.currentOriginalHtml = content;
+    }
+    state.currentSha = sha;
+    state.currentEditedHtml = content;
+    renderIframe(content);
+    setStatus('Editing ' + path, 'ok');
+    updateToolbar();
+  } catch (e) {
+    setStatus(e.message, 'err');
+  }
+}
+
+function renderIframe(html) {
+  const iframe = $('preview-frame');
+  iframe.onload = () => {
+    iframe.onload = null;
+    try {
+      const doc = iframe.contentDocument;
+      const script = doc.createElement('script');
+      script.setAttribute('data-admin-injected', '1');
+      script.textContent = iframeEditorSource;
+      doc.body.appendChild(script);
+      // sync mode
+      iframe.contentWindow.postMessage({ type: 'admin:set-mode', mode: state.mode }, '*');
+    } catch (e) {
+      setStatus('Inject failed: ' + e.message, 'err');
+    }
+  };
+  iframe.srcdoc = html;
+}
+
+async function publish(message) {
+  if (hasUnsavedChanges()) {
+    state.modifiedPages.set(state.currentPage, {
+      sha: state.currentSha,
+      original: state.currentOriginalHtml,
+      edited: state.currentEditedHtml
+    });
+  }
+  const entries = Array.from(state.modifiedPages.entries());
+  if (!entries.length) return;
+
+  $('save-btn').disabled = true;
+  setStatus('Publishing ' + entries.length + ' page' + (entries.length>1?'s':'') + '...');
+
+  try {
+    for (const [path, info] of entries) {
+      setStatus('Committing ' + path + '...');
+      const res = await ghPut(path, info.edited, info.sha, message);
+      const newSha = res.content.sha;
+      info.sha = newSha;
+      info.original = info.edited;
+      if (path === state.currentPage) {
+        state.currentSha = newSha;
+        state.currentOriginalHtml = info.edited;
+      }
+    }
+    state.modifiedPages.clear();
+    setStatus('Published. Live in ~30s.', 'ok');
+    toast('Published successfully', 'ok');
+    updateToolbar();
+    renderPageList();
+  } catch (e) {
+    setStatus(e.message, 'err');
+    toast(e.message, 'err');
+    $('save-btn').disabled = false;
+  }
+}
+
+// =========================================================
+//  COMMIT MODAL
+// =========================================================
+
+function openCommitModal() {
+  if (hasUnsavedChanges()) {
+    state.modifiedPages.set(state.currentPage, {
+      sha: state.currentSha,
+      original: state.currentOriginalHtml,
+      edited: state.currentEditedHtml
+    });
+  }
+  const entries = Array.from(state.modifiedPages.entries());
+  if (!entries.length) return;
+
+  $('commit-summary').textContent = entries.length + ' page' + (entries.length>1?'s':'') + ' modified:';
+  const list = $('change-list');
+  list.innerHTML = '';
+  entries.forEach(([path, info]) => {
+    const li = document.createElement('li');
+    const delta = info.edited.length - info.original.length;
+    const sign = delta >= 0 ? '+' : '−';
+    const cls = delta >= 0 ? 'add' : 'del';
+    li.innerHTML = '<span class="selector">' + path + '</span><span class="delta ' + cls + '">' + sign + Math.abs(delta) + ' chars</span>';
+    list.appendChild(li);
+  });
+  $('commit-message').value = '';
+  $('commit-message').placeholder = 'Update content via admin';
+  $('commit-modal').classList.add('open');
+  setTimeout(() => $('commit-message').focus(), 100);
+}
+
+function closeCommitModal() {
+  $('commit-modal').classList.remove('open');
+}
+
+// =========================================================
+//  EVENTS
+// =========================================================
+
+$('login-btn').onclick = async () => {
+  const t = $('token-input').value.trim();
+  if (!t) return;
+  $('login-status').textContent = 'Verifying...';
+  $('login-status').className = 'status';
+  const ok = await verifyToken(t);
+  if (ok) {
+    state.token = t;
+    localStorage.setItem('admin_gh_token', t);
+    $('login-status').textContent = '';
+    showWorkspace();
+  } else {
+    $('login-status').textContent = 'Invalid token or no access to ' + REPO_NAME + '.';
+    $('login-status').className = 'status err';
+  }
+};
+$('token-input').addEventListener('keydown', e => { if (e.key === 'Enter') $('login-btn').click(); });
+
+$('logout-btn').onclick = () => {
+  if (anyDirty() && !confirm('Discard unsaved changes and log out?')) return;
+  state.token = null;
+  state.modifiedPages.clear();
+  state.currentEditedHtml = state.currentOriginalHtml;
+  localStorage.removeItem('admin_gh_token');
+  showLogin();
+};
+
+$('mode-edit').onclick = () => {
+  state.mode = 'edit';
+  $('mode-edit').classList.add('active');
+  $('mode-preview').classList.remove('active');
+  $('preview-frame').contentWindow.postMessage({ type: 'admin:set-mode', mode: 'edit' }, '*');
+};
+$('mode-preview').onclick = () => {
+  state.mode = 'preview';
+  $('mode-preview').classList.add('active');
+  $('mode-edit').classList.remove('active');
+  $('preview-frame').contentWindow.postMessage({ type: 'admin:set-mode', mode: 'preview' }, '*');
+};
+
+$('save-btn').onclick = openCommitModal;
+$('cancel-commit').onclick = closeCommitModal;
+$('confirm-commit').onclick = () => {
+  const msg = $('commit-message').value.trim() || 'Update content via admin';
+  closeCommitModal();
+  publish(msg);
+};
+$('commit-message').addEventListener('keydown', e => { if (e.key === 'Enter') $('confirm-commit').click(); });
+
+$('discard-btn').onclick = () => {
+  if (!confirm('Discard unsaved changes on this page?')) return;
+  state.currentEditedHtml = state.currentOriginalHtml;
+  state.modifiedPages.delete(state.currentPage);
+  renderIframe(state.currentOriginalHtml);
+  updateToolbar();
+  renderPageList();
+};
+
+$('reload-btn').onclick = () => {
+  if ((hasUnsavedChanges() || state.modifiedPages.has(state.currentPage)) &&
+      !confirm('Discard local changes and reload from GitHub?')) return;
+  state.modifiedPages.delete(state.currentPage);
+  loadPage(state.currentPage);
+};
+
+window.addEventListener('message', e => {
+  if (!e.data || !e.data.type) return;
+  if (e.data.type === 'admin:edit') {
+    state.currentEditedHtml = e.data.html;
+    updateToolbar();
+    renderPageList();
+  } else if (e.data.type === 'admin:image-click') {
+    const newSrc = prompt('Image src (relative or absolute URL):', e.data.src);
+    if (newSrc != null && newSrc !== e.data.src) {
+      $('preview-frame').contentWindow.postMessage({
+        type: 'admin:set-image',
+        oldSrc: e.data.src,
+        newSrc: newSrc,
+        newAlt: null
+      }, '*');
+    }
+  }
+});
+
+window.addEventListener('beforeunload', e => {
+  if (anyDirty()) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+// =========================================================
+//  BOOT
+// =========================================================
+
+(async () => {
+  const saved = localStorage.getItem('admin_gh_token');
+  if (saved && await verifyToken(saved)) {
+    state.token = saved;
+    showWorkspace();
+  } else {
+    if (saved) localStorage.removeItem('admin_gh_token');
+    showLogin();
+  }
+})();
+</script>
+
+</body>
+</html>
