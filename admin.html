@@ -868,7 +868,10 @@ function iframeEditorFn() {
   }
   function cancelScheduledFinish() {
     if (pendingBlurTimer) { clearTimeout(pendingBlurTimer); pendingBlurTimer = null; }
-    if (active) active.focus();
+    // Do NOT re-focus the iframe element here — it would steal focus from
+    // the admin-panel control the user just clicked (closing dropdowns and
+    // swallowing keystrokes). The active element stays contenteditable; the
+    // user can click back into it to resume typing.
   }
 
   // ---- apply commands from admin ----
@@ -1415,24 +1418,33 @@ function inlineStyleGet(inlineStyle, prop) {
   return m ? m[1].trim() : '';
 }
 
+// Set a control's value WITHOUT clobbering whatever the user is currently typing
+// into it. If the user has focus on the control, leave it alone.
+function setVal(el, value) {
+  if (document.activeElement === el) return;
+  el.value = value;
+}
+
 function setupTypographyControls(target, computed) {
   const inline = target.inlineStyle || '';
   const fontFamilyInline = inlineStyleGet(inline, 'font-family');
   const sel = $('font-family-select');
   const custom = $('font-family-custom');
-  custom.style.display = 'none';
-  if (!fontFamilyInline) sel.value = '';
-  else if (fontFamilyInline === 'var(--display)') sel.value = 'var(--display)';
-  else if (fontFamilyInline === 'var(--mono)') sel.value = 'var(--mono)';
-  else if (['serif','sans-serif','monospace'].includes(fontFamilyInline)) sel.value = fontFamilyInline;
-  else { sel.value = 'custom'; custom.value = fontFamilyInline; custom.style.display = ''; }
+  if (document.activeElement !== custom) custom.style.display = 'none';
+  if (document.activeElement !== sel) {
+    if (!fontFamilyInline) sel.value = '';
+    else if (fontFamilyInline === 'var(--display)') sel.value = 'var(--display)';
+    else if (fontFamilyInline === 'var(--mono)') sel.value = 'var(--mono)';
+    else if (['serif','sans-serif','monospace'].includes(fontFamilyInline)) sel.value = fontFamilyInline;
+    else { sel.value = 'custom'; setVal(custom, fontFamilyInline); custom.style.display = ''; }
+  }
 
-  $('font-size').value = inlineStyleGet(inline, 'font-size');
-  $('font-weight').value = inlineStyleGet(inline, 'font-weight');
-  $('letter-spacing').value = inlineStyleGet(inline, 'letter-spacing');
+  setVal($('font-size'),      inlineStyleGet(inline, 'font-size'));
+  setVal($('font-weight'),    inlineStyleGet(inline, 'font-weight'));
+  setVal($('letter-spacing'), inlineStyleGet(inline, 'letter-spacing'));
 
-  const italic = inlineStyleGet(inline, 'font-style') === 'italic' || computed.fontStyle === 'italic';
-  $('style-italic').classList.toggle('on', !!inlineStyleGet(inline, 'font-style') && inlineStyleGet(inline, 'font-style') === 'italic');
+  const italicInline = inlineStyleGet(inline, 'font-style') === 'italic';
+  $('style-italic').classList.toggle('on', italicInline);
 
   const underline = inlineStyleGet(inline, 'text-decoration').includes('underline');
   $('style-underline').classList.toggle('on', underline);
@@ -1441,12 +1453,12 @@ function setupTypographyControls(target, computed) {
   $('style-uppercase').classList.toggle('on', upper);
 
   const tc = inlineStyleGet(inline, 'color');
-  $('text-color').value = tc && tc.startsWith('#') ? tc : (computed.color || '#000000');
+  setVal($('text-color'), tc && tc.startsWith('#') ? tc : (computed.color || '#000000'));
   const bc = inlineStyleGet(inline, 'background-color') || inlineStyleGet(inline, 'background');
-  $('bg-color').value = bc && bc.startsWith('#') ? bc : (computed.backgroundColor || '#000000');
+  setVal($('bg-color'), bc && bc.startsWith('#') ? bc : (computed.backgroundColor || '#000000'));
 
-  $('padding').value = inlineStyleGet(inline, 'padding');
-  $('margin').value  = inlineStyleGet(inline, 'margin');
+  setVal($('padding'), inlineStyleGet(inline, 'padding'));
+  setVal($('margin'),  inlineStyleGet(inline, 'margin'));
 }
 
 function sendApply(path, payload) {
@@ -1561,9 +1573,12 @@ $('font-family-custom').addEventListener('change', (e) => {
 });
 
 // Font size, weight, letter-spacing
+// Live updates as the user types — 'input' fires on every keystroke (and on
+// select-option changes). 'change' is also bound as a safety net for blur/Enter.
 ['font-size','font-weight','letter-spacing','padding','margin'].forEach(id => {
-  const map = { 'font-size':'font-size','font-weight':'font-weight','letter-spacing':'letter-spacing','padding':'padding','margin':'margin' };
-  $(id).addEventListener('change', e => sendStyle(map[id], e.target.value));
+  const apply = e => sendStyle(id, e.target.value);
+  $(id).addEventListener('input',  apply);
+  $(id).addEventListener('change', apply);
 });
 
 // Italic / underline / uppercase toggles
