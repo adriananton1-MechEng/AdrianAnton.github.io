@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autonomous Cleaning Robot — Adrian Anton</title>
+<title>Sweep — Autonomous Cleaning Robot · Adrian Anton</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
@@ -58,7 +58,7 @@
     margin-bottom: 1.5rem;
   }
   h1 span { color: var(--amber); }
-  .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; max-width: 620px; margin-bottom: 2.5rem; }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; max-width: 720px; margin-bottom: 2.5rem; }
   .meta-strip {
     display: flex; flex-wrap: wrap; gap: 2rem;
     border-top: 1px solid var(--border-o);
@@ -84,7 +84,7 @@
   p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; }
   p strong { color: var(--text); font-weight: 700; }
 
-  /* SYSTEM CARDS (like axis-grid) */
+  /* SYSTEM CARDS */
   .system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-bottom: 2rem; }
   .system-card { background: var(--bg3); border: 1px solid var(--border-o); padding: 1.5rem; transition: border-color 0.25s; }
   .system-card:hover { border-color: rgba(245,158,11,0.5); }
@@ -286,16 +286,16 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">05 — Industry Project</div>
-  <h1>Autonomous<br><span>Cleaning Robot</span></h1>
-  <p class="hero-sub">End-to-end mechanical engineering of a commercial autonomous indoor cleaning robot at Agora Robotics — full system design in Fusion 360, production documentation, and hands-on fabrication using FDM, SLA, CO₂ laser cutting, silicone casting, and a custom-built vacuum-forming table.</p>
+  <div class="hero-tag">05 — Industry · Sweep Platform</div>
+  <h1>Sweep<br><span>Autonomous Cleaning Robot</span></h1>
+  <p class="hero-sub">End-to-end mechanical engineering of <strong style="color:var(--text);">Sweep</strong> — Agora Robotics' commercial autonomous floor-scrubbing robot — from the first CAD-based prototype through <strong style="color:var(--text);">nine hardware generations</strong> to the first serial-production version. Owned the full mechanical architecture: chassis, stainless-steel water tanks, cleaning unit, IPX6 docking station, and in-house fabrication of every component.</p>
   <div class="meta-strip">
-    <div class="meta-item"><span class="meta-label">Type</span><span class="meta-value">Commercial Product</span></div>
+    <div class="meta-item"><span class="meta-label">Product</span><span class="meta-value">Sweep · sweep.agorarobotics.com</span></div>
     <div class="meta-item"><span class="meta-label">Organisation</span><span class="meta-value">Agora Robotics</span></div>
     <div class="meta-item"><span class="meta-label">Period</span><span class="meta-value">08/2023 — Present</span></div>
-    <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Hardware Engineer</span></div>
-    <div class="meta-item"><span class="meta-label">CAD</span><span class="meta-value">Fusion 360 / AutoCAD</span></div>
-    <div class="meta-item"><span class="meta-label">Fab Stack</span><span class="meta-value">FDM / SLA / CO₂ / Casting</span></div>
+    <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Mechanical Engineer · reports to CTO</span></div>
+    <div class="meta-item"><span class="meta-label">Generations</span><span class="meta-value">D1 → D8 + E1 (9 versions)</span></div>
+    <div class="meta-item"><span class="meta-label">CAD</span><span class="meta-value">Fusion 360 · AutoCAD</span></div>
   </div>
 </div>
 
@@ -304,141 +304,267 @@
   <!-- OVERVIEW -->
   <div class="content-block fade-in">
     <div class="section-label">Overview</div>
-    <h2>Problem & Engineering Context</h2>
+    <h2>The Sweep Platform</h2>
     <p>
-      Commercial autonomous cleaning robots operate in demanding, unpredictable indoor environments — corridors, open-plan offices, retail floors — and must sustain continuous autonomous operation while remaining cost-efficient enough for commercial deployment. Every mechanical sub-system is a direct trade-off between durability, repairability, weight, and manufacturing cost.
+      <strong>Sweep</strong> is a commercial autonomous indoor floor-cleaning robot — a mobile platform combining wet scrubbing, vacuum recovery, autonomous navigation and self-managed docking for continuous unattended operation in retail, warehousing, office and residential spaces. Field deployments to date include <strong>Orange HQ, IKEA, Dedeman Central Warehouse, Stejari Residence</strong> and Agora's own test sites.
     </p>
     <p>
-      At <strong>Agora Robotics</strong>, the engineering brief was clear: design, prototype, and validate the complete mechanical architecture of an autonomous indoor cleaning robot, bringing sub-systems from concept through to <strong>production-ready documentation and physical prototypes</strong>. This meant full parametric CAD models, GD&T technical drawings, engineering calculations, and hands-on fabrication of every component.
+      The engineering brief was to design, prototype, and validate the complete <strong>mechanical architecture</strong> of both the robot and its docking station, evolving the platform from concept-stage hardware through to serial-production-ready systems. Ownership covered every load-bearing structure, every water-management element, the entire cleaning subsystem, all custom silicone components, and the full technical documentation pack for each manufactured part.
     </p>
     <p>
-      All fabrication was performed in-house using the company's rapid-prototyping facilities — with additional custom tooling built from scratch to unlock manufacturing processes not previously available.
+      The platform has progressed through <strong>nine hardware generations</strong> — Sweep D1 → D8 plus the first small-series production version E1 — each delivering measurable engineering improvements in capacity, robustness, serviceability, manufacturability and unit cost. In parallel, the docking station moved from plywood test rigs to an <strong>IPX6-certified</strong> metal unit with reliable water loading, detergent dosing and waste evacuation.
     </p>
-    <div class="diagram-box">
-      <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="58" r="48" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
-        <circle cx="100" cy="58" r="35" stroke="#f59e0b" stroke-width="0.8" opacity="0.35"/>
-        <circle cx="100" cy="58" r="10" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
-        <circle cx="100" cy="58" r="3" fill="#f59e0b" opacity="0.7"/>
-        <line x1="100" y1="48" x2="100" y2="18" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
-        <line x1="94" y1="25" x2="100" y2="18" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
-        <line x1="106" y1="25" x2="100" y2="18" stroke="#f59e0b" stroke-width="1" opacity="0.5"/>
-        <rect x="54" y="50" width="6" height="16" rx="2" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
-        <rect x="140" y="50" width="6" height="16" rx="2" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
-        <line x1="65" y1="100" x2="135" y2="100" stroke="#f59e0b" stroke-width="3" opacity="0.5"/>
-        <line x1="72" y1="95" x2="72" y2="105" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/>
-        <line x1="84" y1="95" x2="84" y2="105" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/>
-        <line x1="96" y1="95" x2="96" y2="105" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/>
-        <line x1="108" y1="95" x2="108" y2="105" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/>
-        <line x1="120" y1="95" x2="120" y2="105" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/>
-      </svg>
-    </div>
   </div>
 
   <div class="img-grid-2 fade-in">
-    <div class="img-slot" data-label="ROBOT — OVERVIEW PHOTO">
-      <!-- <img src="images/robot-overview.jpg" alt="Robot overview" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="img-slot" data-label="SWEEP — IN OPERATION">
       <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><circle cx="35" cy="30" r="22" stroke="#f59e0b" stroke-width="1"/><circle cx="35" cy="30" r="10" stroke="#f59e0b" stroke-width="1"/><circle cx="35" cy="30" r="3" fill="#f59e0b" opacity="0.5"/><line x1="35" y1="8" x2="35" y2="2" stroke="#f59e0b" stroke-width="1.5"/><rect x="14" y="26" width="4" height="8" rx="1" stroke="#f59e0b" stroke-width="1"/><rect x="52" y="26" width="4" height="8" rx="1" stroke="#f59e0b" stroke-width="1"/><line x1="20" y1="55" x2="50" y2="55" stroke="#f59e0b" stroke-width="2.5"/></svg>
     </div>
-    <div class="img-slot" data-label="DESIGN SKETCH / EARLY CONCEPT">
-      <!-- <img src="images/robot-sketch.jpg" alt="Design sketch" style="width:100%;height:100%;object-fit:cover;"> -->
-      <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><circle cx="35" cy="30" r="18" stroke="#f59e0b" stroke-width="1" opacity="0.5" stroke-dasharray="4,3"/><rect x="22" y="17" width="26" height="26" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/><circle cx="35" cy="30" r="6" stroke="#f59e0b" stroke-width="1"/><line x1="10" y1="55" x2="60" y2="55" stroke="#f59e0b" stroke-width="0.8"/><line x1="15" y1="50" x2="15" y2="60" stroke="#f59e0b" stroke-width="0.8"/><line x1="55" y1="50" x2="55" y2="60" stroke="#f59e0b" stroke-width="0.8"/></svg>
+    <div class="img-slot" data-label="DOCKING STATION · IPX6">
+      <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><rect x="15" y="10" width="40" height="50" stroke="#f59e0b" stroke-width="1"/><rect x="20" y="18" width="30" height="10" stroke="#f59e0b" stroke-width="0.8" opacity="0.6"/><rect x="20" y="32" width="30" height="14" stroke="#f59e0b" stroke-width="0.8" opacity="0.6"/><line x1="22" y1="22" x2="48" y2="22" stroke="#f59e0b" stroke-width="0.4" opacity="0.4"/><line x1="22" y1="36" x2="48" y2="36" stroke="#f59e0b" stroke-width="0.4" opacity="0.4"/><line x1="22" y1="40" x2="48" y2="40" stroke="#f59e0b" stroke-width="0.4" opacity="0.4"/></svg>
     </div>
   </div>
 
-  <!-- WORK PROCESS TIMELINE -->
+  <!-- PLATFORM EVOLUTION -->
   <div class="content-block fade-in">
-    <div class="section-label">Work Process</div>
-    <h2>From Concept to Production</h2>
-    <p>The mechanical engineering effort moved through five interlinked phases — concept through to validated, production-ready hardware. Each phase grounded in CAD documentation, engineering calculations, and hands-on fabrication.</p>
-    <div class="process-ruler">
-      <div class="ruler-ticks"></div>
-      <div class="ruler-labels">
-        <span>00</span><span>40</span><span>80</span><span>120</span><span>160</span><span>200</span><span>240</span>
+    <div class="section-label">Platform Evolution</div>
+    <h2>From D1 to E1 — Nine Hardware Generations</h2>
+    <p>Each Sweep generation targeted a specific failure mode or limitation observed in the previous, validated through customer deployments and lab testing. Volumes, materials and motor architectures have all been re-engineered iteratively.</p>
+    <div class="process-list">
+
+      <div class="process-step">
+        <div class="step-num">D1</div>
+        <div>
+          <div class="step-title">Sweep D1 — Concept-stage prototype · 10/2023</div>
+          <div class="step-desc">First fully CAD-developed Sweep. Laser-cut steel + CNC-bent (abkant) frame; in-house TIG-welded aluminium water tanks (driven by supplier deviations on the externally bent parts). <strong>2× Dyson V3 vacuum motors</strong>, residual-water valve inspired by wastewater treatment plants — 3D-moulded silicone elements <strong>validated to 50,000+ open/close cycles</strong> with no measurable degradation. First field tests at Băicoi in January 2024.</div>
+        </div>
       </div>
-    </div>
-    <div class="process-phases">
-      <div class="phase" style="flex:1;">
-        <div class="phase-top"><div class="phase-num">Phase 01</div></div>
-        <div class="phase-bottom">Concept &amp; Spec</div>
+
+      <div class="process-step">
+        <div class="step-num">D2</div>
+        <div>
+          <div class="step-title">Sweep D2 — DC brush motors · 02/2024</div>
+          <div class="step-desc">Migrated cleaning brushes to DC motors; full redesign of the lower module to fit the new actuators (+35 mm internal height, +50 mm total robot height). Clean-water capacity extended by ≈4 L. Residual-tank wash circuit reworked with copper piping fitted with 0.8 mm 3D-printer nozzles for high-velocity rinse jets.</div>
+        </div>
       </div>
-      <div class="phase phase--active" style="flex:2.4;">
-        <div class="phase-top"><div class="phase-num">Phase 02</div></div>
-        <div class="phase-bottom">Mechanical Design</div>
+
+      <div class="process-step">
+        <div class="step-num">D3</div>
+        <div>
+          <div class="step-title">Sweep D3 — Brushless vacuum + new Lidar · 04/2024</div>
+          <div class="step-desc">First brushless vacuum-motor implementation. Residual-water valve rebuilt around a <strong>linear actuator + machined metal housing</strong>, replacing the earlier servo + 3D-printed assembly for far higher service life. New Lidar evaluated in parallel. Public showcase at <strong>Automatica Munich 2024</strong>.</div>
+        </div>
       </div>
-      <div class="phase" style="flex:1.6;">
-        <div class="phase-top"><div class="phase-num">Phase 03</div></div>
-        <div class="phase-bottom">Prototyping</div>
+
+      <div class="process-step">
+        <div class="step-num">D4</div>
+        <div>
+          <div class="step-title">Sweep D4 — IR-LED docking · 06/2024</div>
+          <div class="step-desc">First robot integrating an on-board camera + <strong>IR-LED beacons on the docking station</strong> — an in-house Agora detection method enabling precise station alignment even in zero ambient lighting (a key differentiator). Many 3D-printed structural parts replaced with machined metal equivalents for production durability.</div>
+        </div>
       </div>
-      <div class="phase" style="flex:1.4;">
-        <div class="phase-top"><div class="phase-num">Phase 04</div></div>
-        <div class="phase-bottom">Validation</div>
+
+      <div class="process-step">
+        <div class="step-num">D5</div>
+        <div>
+          <div class="step-title">Sweep D5 — Mobile squeegee · 10/2024</div>
+          <div class="step-desc">First version with a <strong>mobile rear squeegee</strong> and a structurally redesigned cleaning head (informed by IKEA field tests on D4). Residual-tank wash upgraded to an aluminium pipe with a <strong>rotating nozzle</strong> for full internal cleaning. After observing soft caster-wheel response at Stejari Residence, the suspension was rebuilt around <strong>high-load stamping springs</strong> — rolled back into every prior unit.</div>
+        </div>
       </div>
-      <div class="phase" style="flex:1;">
-        <div class="phase-top"><div class="phase-num">Phase 05</div></div>
-        <div class="phase-bottom">Production</div>
+
+      <div class="process-step">
+        <div class="step-num">D6</div>
+        <div>
+          <div class="step-title">Sweep D6 — Sonar level sensing · 02/2025</div>
+          <div class="step-desc">Replaced the unreliable float-based residual-water level sensor (fouled by iron filings and floor films) with a <strong>sonar transducer</strong>. Following deployment at <strong>Orange HQ</strong>, added a second Lidar on the top cover and a second front RealSense camera — both later promoted to primary sensors across the entire fleet.</div>
+        </div>
       </div>
+
+      <div class="process-step">
+        <div class="step-num">D7</div>
+        <div>
+          <div class="step-title">Sweep D7 — Major redesign · 03/2025</div>
+          <div class="step-desc">Full mechanical overhaul for serviceability and large-debris resistance: <strong>23 L clean / 18 L residual</strong> capacity, drain slope on the residual tank, 40 mm waste outlet (larger than the intake) for unrestricted flow. Tanks moved to <strong>1 mm stainless steel</strong> (~9700 mm cumulative weld length per robot, TIG-welded in-house). Vacuum motor relocated <strong>inside the residual tank</strong> → <strong>+200% suction performance and reduced noise</strong>. Single-pump architecture with electrovalve manifold + 3D-printed two-point spray distributor. Added lateral squeegees, TOF clean-water sensor, foldable lockable electronics tray, manual 20 cm cleaning-head pull-out, rear depth camera for obstacle-detection redundancy.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">D8</div>
+        <div>
+          <div class="step-title">Sweep D8 — New sensor stack · 05/2025</div>
+          <div class="step-desc">Sensor refresh — newer cameras, sonars and Lidar with better cost/performance ratios, plus a more stable industrial PC. Started migrating mechanical production to the Băicoi factory and outsourcing metal machining. Dedeman warehouse trials identified failure modes in the extensible cable system and water droplets on the TOF lens; redundancy added with sonar + a glued-on bottom-tank ultrasonic sensor running in parallel.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">E1</div>
+        <div>
+          <div class="step-title">Sweep E1 — Small-series production · 09/2025</div>
+          <div class="step-desc">First version intended for serial assembly at the Băicoi factory. Tanks moved to 1.5 mm sheet (supplier requirement); residual-tank usable volume raised to 80% of total height with a deliberate safety headspace. Top cover now opens via <strong>two levers replacing 24 screws</strong>, with a redesigned pivot-and-translate hinge and 150 N gas struts — and zero shear points. Robot height +80 mm for serviceability, drain slope <strong>2° → 9°</strong>, length +15 mm to fit protective brushes around the caster, new front safety bumper, redesigned front brush that ejects large debris instead of jamming. Design optimisation: <strong>149 → 55 line items</strong> received at Agora before factory assembly.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- MECHANICAL ARCHITECTURE -->
+  <!-- SUB-SYSTEM ARCHITECTURE -->
   <div class="content-block fade-in">
     <div class="section-label">Mechanical Design</div>
     <h2>Sub-System Architecture</h2>
     <div class="system-grid">
       <div class="system-card">
         <div class="system-icon">CH</div>
-        <div class="system-name">Chassis & Structure</div>
-        <div class="system-detail">Structural frame optimised for internal access and modularity. Parametric Fusion 360 assembly with full GD&T documentation. Designed for assembly-line repeatability and serviceability in the field.</div>
+        <div class="system-name">Chassis &amp; Stainless-Steel Tanks</div>
+        <div class="system-detail">Sheet-metal chassis from laser-cut, CNC-bent steel. Clean and residual water tanks fabricated from 1 mm (D7) → 1.5 mm (E1) stainless steel, TIG-welded with ~9700 mm cumulative weld length per robot. Designed for alkaline-detergent compatibility, internal access for service, and active drain-slope control.</div>
       </div>
       <div class="system-card">
         <div class="system-icon">DR</div>
-        <div class="system-name">Drive & Locomotion</div>
-        <div class="system-detail">Differential drive kinematics — dynamic stability analysis and wheel torque calculations performed for worst-case terrain transitions. Motor selection validated against load requirements using strength-of-materials methods.</div>
+        <div class="system-name">Drive &amp; Caster Suspension</div>
+        <div class="system-detail">Differential-drive base with rear caster. After Stejari Residence trials, the caster suspension was rebuilt around high-load stamping springs to absorb floor irregularities. Wheel torque and stability analytics validated against worst-case payload (full tanks + battery).</div>
       </div>
       <div class="system-card">
-        <div class="system-icon">CL</div>
-        <div class="system-name">Cleaning Head</div>
-        <div class="system-detail">Brush roller integration with adjustable contact pressure. Side brush geometry designed for edge-of-wall reach. Suction intake duct dimensioned for target airflow velocity; all geometry constrained in Fusion 360 for iterative optimisation.</div>
+        <div class="system-icon">CU</div>
+        <div class="system-name">Cleaning Unit</div>
+        <div class="system-detail">Rotating front brush + rear mobile squeegee + lateral squeegees for full edge-of-wall coverage during 180° turns. E1 front brush redesigned to push large debris outward (anti-jamming). Cleaning head can be pulled out 20 cm by hand for in-field maintenance while remaining electrically connected.</div>
       </div>
       <div class="system-card">
-        <div class="system-icon">SH</div>
-        <div class="system-name">Housings & Shell</div>
-        <div class="system-detail">External shell panels thermoformed in-house on a custom 600×900 mm vacuum-forming table. Internal electronics enclosures and cable management brackets 3D-printed in PLA+ and ABS. All parts with GD&T toleranced for repeatable fit.</div>
+        <div class="system-icon">WM</div>
+        <div class="system-name">Water Management</div>
+        <div class="system-detail">Clean → spray → recovery loop using a single pump and an electrovalve manifold (D7). Custom 3D-printed two-point distributor for uniform floor spray. Residual line: 40 mm evacuation port (oversized vs intake), drain-slope tank floor, in-tank rotating nozzle for self-cleaning, TOF + sonar + ultrasonic for triple-redundant level sensing.</div>
+      </div>
+      <div class="system-card">
+        <div class="system-icon">VS</div>
+        <div class="system-name">Vacuum System</div>
+        <div class="system-detail">Migrated from 2× Dyson V3 brushed motors (D1) → single brushless motor (D3) → motor relocated inside the residual tank (D7) — a <strong>+200% suction-performance step</strong> with lower acoustic noise. Internal ducting dimensioned for target airflow velocity in Fusion 360.</div>
+      </div>
+      <div class="system-card">
+        <div class="system-icon">NV</div>
+        <div class="system-name">Sensors &amp; Navigation</div>
+        <div class="system-detail">Sensor stack converged from a single Lidar + AprilTag docking (D1–D3) to a dual-Lidar + dual-RealSense + IR-LED-beacon docking architecture (D6+). Rear depth camera added on D7 to close gaps in obstacle detection. All sensor mounts CAD-modelled with serviceability and ingress-protected routing.</div>
       </div>
     </div>
-    <p>
-      All sub-systems were modelled as <strong>parametric assemblies in Fusion 360</strong>, with interference checks, mass properties analysis, and full tolerance stack-up performed at the assembly level. AutoCAD was used for 2D technical drawing packages, including GD&T callouts, thread specifications, surface finish requirements, and BOM tables for supplier procurement.
-    </p>
-    <p>
-      Engineering calculations covered <strong>strength of materials</strong> (structural members under dynamic loading), <strong>kinematics</strong> (turning radius, differential drive equations), and <strong>dynamics</strong> (motor torque requirements, acceleration profiles) — ensuring each design decision was analytically validated before committing to prototyping.
+    <p style="margin-top:1.75rem;">
+      Every sub-system was modelled as a <strong>parametric Fusion 360 assembly</strong> with interference checks, mass properties analysis, and full tolerance stack-up. AutoCAD was used for GD&amp;T technical drawing packages, supplier-ready BOM tables, and DXF outputs for laser cutting and bending. Engineering calculations covered <strong>strength of materials</strong>, <strong>kinematics</strong> and <strong>dynamics</strong> — every design decision analytically backed before fabrication.
     </p>
   </div>
 
-  <div class="img-wide fade-in" data-label="FULL CAD ASSEMBLY — FUSION 360">
-    <!-- <img src="images/robot-cad.jpg" alt="Full CAD assembly" style="width:100%;height:100%;object-fit:cover;"> -->
-    <svg width="200" height="100" viewBox="0 0 200 100" fill="none"><circle cx="100" cy="50" r="40" stroke="#f59e0b" stroke-width="1" opacity="0.4"/><circle cx="100" cy="50" r="28" stroke="#f59e0b" stroke-width="1"/><circle cx="100" cy="50" r="10" stroke="#f59e0b" stroke-width="1"/><rect x="38" y="44" width="10" height="12" rx="2" stroke="#f59e0b" stroke-width="1"/><rect x="152" y="44" width="10" height="12" rx="2" stroke="#f59e0b" stroke-width="1"/><line x1="65" y1="80" x2="135" y2="80" stroke="#f59e0b" stroke-width="3" opacity="0.5"/><line x1="72" y1="75" x2="72" y2="85" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/><line x1="86" y1="75" x2="86" y2="85" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/><line x1="100" y1="75" x2="100" y2="85" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/><line x1="114" y1="75" x2="114" y2="85" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/><line x1="128" y1="75" x2="128" y2="85" stroke="#f59e0b" stroke-width="0.8" opacity="0.4"/></svg>
+  <!-- DOCKING STATION -->
+  <div class="content-block fade-in">
+    <div class="section-label">Docking Station</div>
+    <h2>From Plywood Rig to IPX6-Certified Unit</h2>
+    <p>The docking station evolved in parallel with the robot — handling autonomous clean-water refill, detergent dosing, and residual-water evacuation. Four major iterations, with full mechanical, hydraulic and electronics integration.</p>
+    <div class="process-list">
+
+      <div class="process-step">
+        <div class="step-num">T0</div>
+        <div>
+          <div class="step-title">Test rig — Plywood + acrylic · 11/2023</div>
+          <div class="step-desc">First version assembled from laser-cut plywood and acrylic panels to validate component layout. Followed by two larger metal prototypes to ease hydraulic and electrical integration. ~15–18 iterations of 3D-printed waste-water connectors developed in parallel before locking the final geometry.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">V1</div>
+        <div>
+          <div class="step-title">V1 — First metal station · 03/2024</div>
+          <div class="step-desc">Laser-cut + bent + in-house TIG-welded metal structure. Linear actuator driving the clean-water loading interface. Detergent reservoir + dosing system. ~10 connector iterations between station and robot for residual-water evacuation. Station-robot pose detection via <strong>AprilTag</strong>.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">V2</div>
+        <div>
+          <div class="step-title">V2 — IPX6 certification · 07/2024</div>
+          <div class="step-desc">Sealing, gasketing and cable routing redesigned around the <strong>Ingress Protection IPX6</strong> standard — protection against powerful water jets from any direction. First commercially-certified Sweep dock.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">V3</div>
+        <div>
+          <div class="step-title">V3 — Detergent drawer · 09/2024</div>
+          <div class="step-desc">Dedicated <strong>2-slot drawer for detergent canisters</strong>, with automatic recognition of canister presence and type, plus continuous monitoring of dispensed vs. remaining detergent volume.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">VF</div>
+        <div>
+          <div class="step-title">Final version · from 09/2024</div>
+          <div class="step-desc">Consolidated all prior improvements + the D4 IR-LED docking system. Reliable water loading, detergent dosing and waste evacuation in a single IPX6-certified package.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- SYSTEMS OVERVIEW TABLE -->
+  <!-- ENGINEERING ACHIEVEMENTS -->
+  <div class="content-block fade-in">
+    <div class="section-label">Engineering Achievements</div>
+    <h2>Quantified Outcomes</h2>
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="result-num">9</div>
+        <div class="result-label">Sweep hardware generations owned end-to-end (D1 → D8 + E1) — full mechanical architecture per generation</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">+200%</div>
+        <div class="result-label">Suction performance gain on D7 by relocating the vacuum motor inside the residual tank — lower acoustic noise as a bonus</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">&gt;50k</div>
+        <div class="result-label">Open/close cycles validated on the custom-silicone residual-water valve — survived testing with no measurable degradation</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">&gt;5×</div>
+        <div class="result-label">Cost reduction on silicone components by designing and producing moulds in-house vs. external supplier quotes</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">IPX6</div>
+        <div class="result-label">Ingress Protection rating achieved on Docking Station V2 onwards — water jets from any direction</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">2° → 9°</div>
+        <div class="result-label">Drain-slope improvement on E1 by raising the inlet 80 mm — full tank evacuation with no residual pooling</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">149 → 55</div>
+        <div class="result-label">Line items received at Agora for E1 after DFM-driven design optimisation — fewer interfaces, faster factory assembly</div>
+      </div>
+      <div class="result-item">
+        <div class="result-num">~9700</div>
+        <div class="result-label">mm cumulative TIG-weld length per D7 robot — stainless-steel tanks welded in-house for cost and lead-time control</div>
+      </div>
+    </div>
+    <p style="margin-top:1.75rem;">
+      Beyond the headline numbers, the iteration cadence itself was a deliverable. Establishing in-house <strong>CO₂ laser cutting, FDM, SLA, silicone casting, vacuum forming and TIG welding</strong> collapsed hardware iteration cycles from days to hours and removed external dependencies from the critical path. Every design change could be cut, printed, cast, assembled and validated on a real robot inside a single working day.
+    </p>
+  </div>
+
+  <!-- TECH OVERVIEW -->
   <div class="content-block fade-in">
     <div class="section-label">Technical Overview</div>
     <h2>Systems at a Glance</h2>
     <table class="spec-table">
-      <tr><td>CAD Platform</td><td>Autodesk Fusion 360 — full parametric assembly, interference check, mass analysis</td></tr>
-      <tr><td>2D Documentation</td><td>AutoCAD — technical drawings with GD&T, thread callouts, surface finish, BOM</td></tr>
-      <tr><td>Drive Type</td><td>Differential drive — kinematics and motor torque validated analytically</td></tr>
-      <tr><td>FDM Printers</td><td>Prusa MK4, Anycubic Kobra — PLA+, ABS — structural mounts, brackets, jigs</td></tr>
-      <tr><td>SLA Printer</td><td>Anycubic Photon Mono X — resin — high-resolution surface-finish parts and interface components</td></tr>
-      <tr><td>Laser Cutter</td><td>80 W CO₂ — flat panel parts, electronics brackets, sheet-metal DXF outputs</td></tr>
-      <tr><td>Silicone Casting</td><td>Gravity + injection moulding — custom-designed molds for precise, repeatable sealing and soft interface parts</td></tr>
-      <tr><td>Vacuum Forming</td><td>Custom 600×900 mm table — quartz heater array, vacuum pump — thermoforming of ABS shell panels</td></tr>
-      <tr><td>Analysis</td><td>Strength of materials, kinematic modelling, dynamic load cases, GD&T tolerance stacks</td></tr>
-      <tr><td>Supply Chain</td><td>Material ordering, supplier coordination, technical drawing compliance checks, delivery management</td></tr>
+      <tr><td>CAD Platform</td><td>Autodesk Fusion 360 — full parametric assemblies, interference checks, mass analysis</td></tr>
+      <tr><td>2D Documentation</td><td>AutoCAD — GD&amp;T drawings, thread callouts, surface finish, BOMs, DXF/STEP exports</td></tr>
+      <tr><td>Generations Owned</td><td>Sweep D1 → D8 + E1 (9 robots) · Docking station T0 → V1 → V2 (IPX6) → V3 → Final</td></tr>
+      <tr><td>Drive Type</td><td>Differential drive + rear caster on stamping-spring suspension</td></tr>
+      <tr><td>Vacuum Motor</td><td>D7 onwards: brushless, mounted inside the residual tank — +200% suction step</td></tr>
+      <tr><td>Water Capacity</td><td>D7 / E1: 23 L clean · 18 L residual (80% usable height, 9° drain slope)</td></tr>
+      <tr><td>Residual Outlet</td><td>40 mm diameter — oversized vs. inlet for unrestricted flow even with large debris</td></tr>
+      <tr><td>Tank Material</td><td>Stainless steel — 1 mm (D7) / 1.5 mm (E1), TIG-welded, alkaline-detergent compatible</td></tr>
+      <tr><td>Cleaning Unit</td><td>Front brush + rear mobile squeegee + lateral squeegees · manual 20 cm pull-out</td></tr>
+      <tr><td>Sensors</td><td>Dual Lidar · dual RealSense · TOF + sonar + ultrasonic redundancy for water-level · rear depth camera</td></tr>
+      <tr><td>Docking Detection</td><td>D1–D3: AprilTag · D4+: IR-LED beacons (in-house, works in zero ambient light)</td></tr>
+      <tr><td>Docking Functions</td><td>Autonomous clean-water refill · detergent canister auto-detect &amp; dosing · waste evacuation</td></tr>
+      <tr><td>Docking IP Rating</td><td>IPX6 from V2 onwards</td></tr>
+      <tr><td>Fabrication In-House</td><td>FDM (Prusa, Anycubic) · SLA (Anycubic Photon) · 80 W CO₂ laser · silicone casting · vacuum forming · TIG welding</td></tr>
+      <tr><td>Manufacturing Partners</td><td>External CNC milling / turning, sheet-metal cutting + bending, welding (E series onward)</td></tr>
     </table>
   </div>
 
-  <!-- FABRICATION PROCESS -->
+  <!-- FABRICATION STACK -->
   <div class="content-block fade-in">
     <div class="section-label">Fabrication</div>
     <h2>Rapid-Prototyping Stack</h2>
@@ -446,163 +572,143 @@
       <div class="process-step">
         <div class="step-num">01</div>
         <div>
-          <div class="step-title">Parametric CAD — Fusion 360 & AutoCAD</div>
-          <div class="step-desc">Full system modelled as a parametric assembly in Fusion 360 — enabling rapid design iterations by modifying master parameters. Production drawings exported to AutoCAD for GD&T annotation, thread and surface-finish callouts, and complete BOM packages for suppliers.</div>
+          <div class="step-title">Parametric CAD — Fusion 360 + AutoCAD</div>
+          <div class="step-desc">Every sub-assembly maintained as a parametric Fusion 360 model — design intent captured as master parameters so generation-to-generation changes propagate cleanly. AutoCAD for GD&amp;T drawings, supplier BOMs, and DXF/PDF release packages.</div>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">02</div>
         <div>
-          <div class="step-title">FDM Prototyping — Prusa MK4 & Anycubic Kobra</div>
-          <div class="step-desc">Functional structural parts, motor mounts, cable management brackets and assembly jigs printed in PLA+ and ABS. FDM used for rapid iteration of geometry and fit — parts could be revised and re-printed within hours of a design change, dramatically shortening the validation cycle.</div>
+          <div class="step-title">FDM Printing</div>
+          <div class="step-desc">Functional structural parts, motor mounts, cable brackets, fluid distributors and assembly jigs in PLA+ / ABS / PETG. Print-fit-revise loop closed within hours of a design change.</div>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">03</div>
         <div>
-          <div class="step-title">SLA / Resin — Anycubic Photon Mono X</div>
-          <div class="step-desc">High-resolution resin printing for components requiring fine surface detail, precise mating surfaces, or optical clarity. Used for sensor housings, interface rings, and cosmetic prototype parts where FDM layer lines were unacceptable. Resin parts post-cured under UV and mechanically post-processed where required.</div>
+          <div class="step-title">SLA / Resin Printing</div>
+          <div class="step-desc">High-resolution resin for sensor housings, fine interface geometry, and surface-finish-critical components. Master patterns also printed for silicone moulds.</div>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">04</div>
         <div>
           <div class="step-title">CO₂ Laser Cutting — 80 W</div>
-          <div class="step-desc">Flat-pattern sheet parts, electronics chassis panels, and structural brackets cut directly from DXF output of AutoCAD drawings. Acrylic and thin-gauge steel panels cut for enclosures and internal mounting plates. Laser-cut parts cleaned, deburred, and tapped to drawing specification.</div>
+          <div class="step-desc">Personally operated cutter — acrylic, plexiglass, thin-gauge steel and wood panels cut to ±0.1 mm from AutoCAD DXFs. Material selection and machine calibration owned in-house.</div>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">05</div>
         <div>
-          <div class="step-title">Silicone Casting — Gravity & Injection Moulding</div>
-          <div class="step-desc">Custom two-part silicone molds designed in Fusion 360 and fabricated in-house. Gravity casting used for larger soft-touch interface pads and sealing gaskets. Injection casting with a hand-press applied for smaller, high-detail parts requiring consistent shore hardness and repeatable dimensional accuracy across batches.</div>
+          <div class="step-title">Silicone Casting — Gravity &amp; Injection</div>
+          <div class="step-desc">Designed and cast silicone squeegees, gaskets, hoses and seals using in-house two-part moulds. Hand-press injection delivered repeatable Shore-A hardness and dimensional accuracy — replacing supplier quotes at a cost reduction of <strong>more than 5×</strong>.</div>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">06</div>
         <div>
-          <div class="step-title">Vacuum Forming — Custom 600×900 mm Table</div>
-          <div class="step-desc">Designed and built a 600×900 mm vacuum-forming table from scratch specifically to enable in-house thermoforming of the robot's ABS shell panels. Quartz heater array provides uniform heating of the plastic sheet. A vacuum pump draws air through a perforated platen to form the heated sheet over the mold. This custom tooling eliminated outsourcing costs and enabled rapid shell iteration.</div>
+          <div class="step-title">Vacuum Forming + TIG Welding</div>
+          <div class="step-desc">Custom 600×900 mm vacuum-forming table designed and built from scratch for in-house thermoforming of ABS shell panels. Stainless-steel tanks TIG-welded by the Agora team — ~9700 mm of weld per D7 robot, integrated directly with the cut/bent steel chassis.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">07</div>
+        <div>
+          <div class="step-title">External Manufacturing &amp; Supplier Coordination</div>
+          <div class="step-desc">CNC milling / turning and bent-metal sub-assemblies sourced externally with full DFM packages, drawings, and inspection criteria. From the E series onward, mechanical production migrated to the Băicoi factory — driving an explicit redesign for serial assembly.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="img-grid-3 fade-in">
-    <div class="img-slot" data-label="FDM PROTOTYPE PARTS">
-      <!-- <img src="images/robot-fdm.jpg" alt="FDM printed parts" style="width:100%;height:100%;object-fit:cover;"> -->
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="10" y="20" width="40" height="25" stroke="#f59e0b" stroke-width="1"/><line x1="10" y1="27" x2="50" y2="27" stroke="#f59e0b" stroke-width="0.5"/><line x1="10" y1="34" x2="50" y2="34" stroke="#f59e0b" stroke-width="0.5"/><line x1="10" y1="41" x2="50" y2="41" stroke="#f59e0b" stroke-width="0.5"/><line x1="30" y1="10" x2="30" y2="20" stroke="#f59e0b" stroke-width="1.5"/></svg>
-    </div>
-    <div class="img-slot" data-label="SLA / RESIN COMPONENTS">
-      <!-- <img src="images/robot-sla.jpg" alt="SLA resin parts" style="width:100%;height:100%;object-fit:cover;"> -->
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="20" stroke="#f59e0b" stroke-width="1"/><circle cx="30" cy="30" r="12" stroke="#f59e0b" stroke-width="0.8" opacity="0.6"/><circle cx="30" cy="30" r="5" fill="#f59e0b" opacity="0.3"/></svg>
-    </div>
-    <div class="img-slot" data-label="VACUUM FORMING — IN USE">
-      <!-- <img src="images/robot-vacform.jpg" alt="Vacuum forming table" style="width:100%;height:100%;object-fit:cover;"> -->
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="5" y="30" width="50" height="20" stroke="#f59e0b" stroke-width="1"/><line x1="5" y1="30" x2="55" y2="30" stroke="#f59e0b" stroke-width="1.5"/><line x1="15" y1="30" x2="15" y2="20" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/><line x1="25" y1="30" x2="25" y2="15" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/><line x1="35" y1="30" x2="35" y2="12" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/><line x1="45" y1="30" x2="45" y2="18" stroke="#f59e0b" stroke-width="0.8" opacity="0.5"/></svg>
-    </div>
-  </div>
-
-  <!-- KEY FABRICATION COMPONENTS -->
+  <!-- FIELD DEPLOYMENTS -->
   <div class="content-block fade-in">
-    <div class="section-label">Hardware</div>
-    <h2>Key Equipment & Processes</h2>
+    <div class="section-label">Field Deployments</div>
+    <h2>Real-World Test Sites</h2>
+    <p>Every Sweep generation was validated in a real environment before locking the next design. Each site surfaced different mechanical failure modes that fed directly into the next iteration.</p>
     <div class="comp-grid">
       <div class="comp-item">
-        <div class="comp-cat">FDM — Structural</div>
-        <div class="comp-name">Prusa MK4</div>
-        <div class="comp-detail">High-reliability FDM — PLA+, ABS, PETG. Input shaper for dimensional accuracy. Used for all load-bearing brackets and motor mounts</div>
+        <div class="comp-cat">01/2024</div>
+        <div class="comp-name">Băicoi · D1</div>
+        <div class="comp-detail">First Sweep field test — concept-stage prototype on real floors</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">FDM — Rapid Iteration</div>
-        <div class="comp-name">Anycubic Kobra</div>
-        <div class="comp-detail">Fast cycle times for concept validation parts. Used alongside Prusa for parallel print queues during peak prototype phases</div>
+        <div class="comp-cat">04/2024</div>
+        <div class="comp-name">Automatica Munich · D3</div>
+        <div class="comp-detail">International robotics expo — public showcase of the brushless-vacuum generation</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">Resin</div>
-        <div class="comp-name">Anycubic Photon Mono X</div>
-        <div class="comp-detail">MSLA resin — 4K mono LCD — 0.05 mm layer resolution. Used for sensor housings, fine interface geometry, and cosmetic surface components</div>
+        <div class="comp-cat">2024</div>
+        <div class="comp-name">IKEA · D4</div>
+        <div class="comp-detail">Retail-floor test programme — drove the cleaning-unit and squeegee redesign for D5</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">Laser</div>
-        <div class="comp-name">80 W CO₂ Cutter</div>
-        <div class="comp-detail">Acrylic, thin-gauge steel, and wood panel cutting. DXF files fed directly from AutoCAD. Parts cut to ±0.1 mm positional accuracy</div>
+        <div class="comp-cat">2024</div>
+        <div class="comp-name">Stejari Residence · D5</div>
+        <div class="comp-detail">Residential test — surfaced caster-wheel suspension limitations → stamping-spring redesign</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">Casting</div>
-        <div class="comp-name">Silicone Gravity & Injection</div>
-        <div class="comp-detail">Shore A 20–40 silicone for gaskets and pads. Custom two-part molds machined and 3D-printed. Injection applied with hand-press for consistent fill and surface finish</div>
+        <div class="comp-cat">02/2025</div>
+        <div class="comp-name">Orange HQ · D6</div>
+        <div class="comp-detail">Corporate-office deployment — drove dual-Lidar adoption across the fleet</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">Custom Tooling</div>
-        <div class="comp-name">Vacuum Forming Table</div>
-        <div class="comp-detail">600×900 mm in-house built table — quartz heater array, vacuum pump, perforated platen. Enables ABS shell thermoforming without outsourcing. Built from scratch to budget and lead-time constraints</div>
+        <div class="comp-cat">2025</div>
+        <div class="comp-name">Dedeman Central Warehouse · D7</div>
+        <div class="comp-detail">Industrial-scale warehouse test — confirmed extensible-cable failure modes, forced the redesign</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">CAD / PLM</div>
-        <div class="comp-name">Fusion 360 + AutoCAD</div>
-        <div class="comp-detail">Full parametric assemblies in Fusion 360. AutoCAD for GD&T production drawings, thread callouts, BOM, and supplier documentation packages</div>
+        <div class="comp-cat">Ongoing</div>
+        <div class="comp-name">Agora Sema Parc · all generations</div>
+        <div class="comp-detail">In-house test site — daily validation runs across the fleet</div>
       </div>
       <div class="comp-item">
-        <div class="comp-cat">Analysis</div>
-        <div class="comp-name">Engineering Calculations</div>
-        <div class="comp-detail">Strength of materials, kinematic modelling and dynamic load analysis performed analytically to validate chassis, drive, and structural decisions before fabrication</div>
+        <div class="comp-cat">2025</div>
+        <div class="comp-name">Simtel Băicoi · D7+</div>
+        <div class="comp-detail">Pre-deployment validation before shipping to customer sites</div>
       </div>
     </div>
   </div>
 
-  <!-- RESULTS -->
+  <!-- OUTCOMES -->
   <div class="content-block fade-in">
     <div class="section-label">Outcomes</div>
-    <h2>Deliverables & Impact</h2>
-    <div class="result-grid">
-      <div class="result-item">
-        <div class="result-num">600×900</div>
-        <div class="result-label">mm — custom vacuum-forming table built from scratch, enabling in-house ABS shell thermoforming</div>
-      </div>
-      <div class="result-item">
-        <div class="result-num">5 fab</div>
-        <div class="result-label">processes operated in parallel — FDM, SLA, CO₂ laser, silicone casting, vacuum forming</div>
-      </div>
-      <div class="result-item">
-        <div class="result-num">Full</div>
-        <div class="result-label">production-ready documentation — GD&T drawings, BOM, assembly instructions, supplier specs for all sub-systems</div>
-      </div>
-      <div class="result-item">
-        <div class="result-num">2023+</div>
-        <div class="result-label">Active ongoing role — continuous design iteration, supplier coordination, and prototype validation</div>
-      </div>
-    </div>
-    <p style="margin-top:1.5rem;">
-      The project delivered a <strong>production-ready mechanical system</strong> across all major sub-systems of the autonomous cleaning robot — chassis, drive, cleaning head, and external shell. Bringing the vacuum-forming capability in-house was a significant manufacturing achievement: it removed a major outsourcing dependency, cut unit tooling cost, and reduced lead time for shell iterations from weeks to hours.
+    <h2>Impact &amp; Deliverables</h2>
+    <p>
+      Across two years of platform development, the project delivered a <strong>production-ready Sweep robot and IPX6 docking station</strong>, validated through field deployments at Orange HQ, IKEA, Dedeman Central Warehouse, Stejari Residence and Agora's own sites — with the platform now transitioning to small-series assembly at the Băicoi factory.
     </p>
     <p>
-      All design decisions were backed by <strong>first-principles engineering calculations</strong> and validated through physical prototypes before being committed to production documentation — ensuring the final design is both analytically sound and practically manufacturable.
+      Beyond the hardware itself, the work established a <strong>full in-house rapid-prototyping capability</strong> at Agora Robotics — combining FDM, SLA, CO₂ laser cutting, silicone casting, vacuum forming and TIG welding — which collapsed the design-to-validation cycle from days to hours and unlocked unit-cost reductions (>5× on silicone parts) that would otherwise have required outsourcing.
     </p>
-    <div class="img-grid-2" style="margin-top:2rem;">
-      <div class="img-slot" data-label="FINAL ROBOT — REAL PHOTO">
-        <!-- <img src="images/robot-final.jpg" alt="Final robot" style="width:100%;height:100%;object-fit:cover;"> -->
+    <p>
+      Every design decision was backed by <strong>first-principles engineering</strong> — strength of materials, kinematics, dynamics, tolerance stacks — and validated on real robots in real environments before being committed to serial-production documentation.
+    </p>
+
+    <div class="img-grid-2 fade-in" style="margin-top:2rem;">
+      <div class="img-slot" data-label="SWEEP — REAL DEPLOYMENT">
         <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><circle cx="35" cy="32" r="24" stroke="#f59e0b" stroke-width="1"/><path d="M 16 44 A 24 24 0 0 0 54 44" stroke="#f59e0b" stroke-width="1.5" fill="none"/><circle cx="35" cy="32" r="8" stroke="#f59e0b" stroke-width="1"/><rect x="14" y="28" width="4" height="8" rx="1" stroke="#f59e0b" stroke-width="1"/><rect x="52" y="28" width="4" height="8" rx="1" stroke="#f59e0b" stroke-width="1"/></svg>
       </div>
-      <div class="img-slot" data-label="COMPONENT / ASSEMBLY DETAIL">
-        <!-- <img src="images/robot-detail.jpg" alt="Component detail" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="img-slot" data-label="SUB-ASSEMBLY DETAIL">
         <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><rect x="15" y="15" width="40" height="40" stroke="#f59e0b" stroke-width="1"/><circle cx="35" cy="35" r="12" stroke="#f59e0b" stroke-width="1"/><line x1="15" y1="35" x2="23" y2="35" stroke="#f59e0b" stroke-width="0.8"/><line x1="47" y1="35" x2="55" y2="35" stroke="#f59e0b" stroke-width="0.8"/><line x1="35" y1="15" x2="35" y2="23" stroke="#f59e0b" stroke-width="0.8"/><line x1="35" y1="47" x2="35" y2="55" stroke="#f59e0b" stroke-width="0.8"/></svg>
       </div>
     </div>
 
     <div class="tag-row">
-      <span class="tag hi">Agora Robotics</span>
+      <span class="tag hi">Sweep · Agora Robotics</span>
+      <span class="tag hi">Mechanical Engineer</span>
       <span class="tag hi">Fusion 360</span>
       <span class="tag hi">AutoCAD</span>
-      <span class="tag">FDM 3D Printing</span>
-      <span class="tag">SLA / Resin</span>
+      <span class="tag">Stainless-Steel Fabrication</span>
+      <span class="tag">TIG Welding</span>
+      <span class="tag">DFM</span>
+      <span class="tag">GD&amp;T</span>
+      <span class="tag">FDM / SLA</span>
       <span class="tag">CO₂ Laser</span>
       <span class="tag">Silicone Casting</span>
       <span class="tag">Vacuum Forming</span>
-      <span class="tag">GD&T</span>
-      <span class="tag">Strength of Materials</span>
-      <span class="tag">Kinematics</span>
-      <span class="tag">Production Documentation</span>
+      <span class="tag">IPX6</span>
+      <span class="tag">Lidar / RealSense</span>
+      <span class="tag">Serial Production</span>
     </div>
   </div>
 
