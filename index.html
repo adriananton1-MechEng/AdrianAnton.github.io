@@ -255,6 +255,26 @@
   .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .tool-pill { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; padding: 10px 14px; border: 1px solid var(--border); color: var(--muted); background: var(--bg3); transition: border-color 0.2s, color 0.2s; }
   .tool-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .skill-stack { display: flex; flex-direction: column; gap: 1.75rem; }
+  .stack-title {
+    font-family: var(--mono); font-size: 10px; color: var(--accent);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.85rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,212,255,0.08);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .stack-title .stack-count { font-size: 10px; color: var(--muted); opacity: 0.7; letter-spacing: 0.1em; }
+  .tool-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-pills .tool-pill { padding: 8px 12px; font-size: 10.5px; }
+  .tool-pill.hi { border-color: rgba(0,212,255,0.45); color: var(--accent); background: rgba(0,212,255,0.05); }
+  .skill-summary {
+    font-family: var(--mono); font-size: 10.5px; color: var(--muted);
+    letter-spacing: 0.05em; line-height: 1.7;
+    padding: 1rem 1.1rem; margin-top: 2rem;
+    border-left: 2px solid var(--accent);
+    background: rgba(0,212,255,0.03);
+  }
+  .skill-summary strong { color: var(--text); font-weight: 700; }
 
   /* ── HOBBIES ── */
   #hobbies { background: var(--bg2); }
@@ -702,24 +722,67 @@
   <h2>Skills & tools</h2>
   <div class="skills-layout">
     <div>
-      <div class="skill-group-title">Core competencies</div>
-      <div class="skill-row fade-in"><span class="skill-name">SolidWorks / CAD</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.90"></div></div><span class="skill-pct">90%</span></div>
-      <div class="skill-row fade-in"><span class="skill-name">FEA Simulation</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.80"></div></div><span class="skill-pct">80%</span></div>
-      <div class="skill-row fade-in"><span class="skill-name">Prototyping & testing</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.85"></div></div><span class="skill-pct">85%</span></div>
-      <div class="skill-row fade-in"><span class="skill-name">Technical drawings</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.80"></div></div><span class="skill-pct">80%</span></div>
-      <div class="skill-row fade-in"><span class="skill-name">Tolerance analysis</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.75"></div></div><span class="skill-pct">75%</span></div>
+      <div class="skill-group-title">Core proficiencies</div>
+      <div class="skill-row fade-in"><span class="skill-name">Autodesk Fusion 360</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.95"></div></div><span class="skill-pct">95%</span></div>
+      <div class="skill-row fade-in"><span class="skill-name">AutoCAD &mdash; GD&amp;T Drawings</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.90"></div></div><span class="skill-pct">90%</span></div>
+      <div class="skill-row fade-in"><span class="skill-name">Rapid Prototyping (FDM / SLA / Laser)</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.92"></div></div><span class="skill-pct">92%</span></div>
+      <div class="skill-row fade-in"><span class="skill-name">SolidWorks</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.85"></div></div><span class="skill-pct">85%</span></div>
+      <div class="skill-row fade-in"><span class="skill-name">CATIA V5 / V6 + ENOVIA PLM</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.80"></div></div><span class="skill-pct">80%</span></div>
+      <div class="skill-row fade-in"><span class="skill-name">Mechatronics &mdash; Arduino / GRBL / Steppers</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.80"></div></div><span class="skill-pct">80%</span></div>
+      <div class="skill-row fade-in"><span class="skill-name">Engineering Calculations &amp; FEA</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="0.85"></div></div><span class="skill-pct">85%</span></div>
+
+      <div class="skill-summary fade-in">
+        <strong>5+ years</strong> across mechanical, mechatronic and robotic systems &mdash; from BSc through to MSc valedictorian, automotive PLM at Stellantis, and end-to-end commercial robot design at Agora Robotics. Currently pursuing a <strong>PhD on flexible mechanisms in robot&ndash;environment interaction</strong>.
+      </div>
     </div>
     <div>
-      <div class="skill-group-title">Tools & software</div>
-      <div class="tools-grid">
-        <div class="tool-pill">SolidWorks</div>
-        <div class="tool-pill">ANSYS / FEA</div>
-        <div class="tool-pill">AutoCAD</div>
-        <div class="tool-pill">MATLAB</div>
-        <div class="tool-pill">3D Printing</div>
-        <div class="tool-pill">GD&T</div>
-        <div class="tool-pill">Microsoft Office</div>
-        <div class="tool-pill">Add your tool</div>
+      <div class="skill-stack">
+
+        <div>
+          <div class="stack-title"><span>CAD &amp; PLM</span><span class="stack-count">5</span></div>
+          <div class="tool-pills">
+            <div class="tool-pill hi">Fusion 360</div>
+            <div class="tool-pill hi">AutoCAD</div>
+            <div class="tool-pill">SolidWorks</div>
+            <div class="tool-pill">CATIA V5 / V6</div>
+            <div class="tool-pill">ENOVIA V6</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stack-title"><span>Rapid Prototyping</span><span class="stack-count">5</span></div>
+          <div class="tool-pills">
+            <div class="tool-pill hi">FDM &mdash; Prusa / Anycubic</div>
+            <div class="tool-pill">SLA &mdash; Anycubic Photon</div>
+            <div class="tool-pill hi">CO₂ Laser 80 W</div>
+            <div class="tool-pill">Vacuum Forming</div>
+            <div class="tool-pill">Silicone Casting</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stack-title"><span>Manufacturing &amp; Fabrication</span><span class="stack-count">5</span></div>
+          <div class="tool-pills">
+            <div class="tool-pill">TIG Welding</div>
+            <div class="tool-pill">CNC Milling</div>
+            <div class="tool-pill">Wire / Sinker EDM</div>
+            <div class="tool-pill">SLS / SLM Metal AM</div>
+            <div class="tool-pill">Fibre Laser Cutting</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stack-title"><span>Analysis &amp; Control</span><span class="stack-count">6</span></div>
+          <div class="tool-pills">
+            <div class="tool-pill hi">GD&amp;T &amp; Tolerancing</div>
+            <div class="tool-pill">Strength of Materials</div>
+            <div class="tool-pill">Kinematics &amp; Dynamics</div>
+            <div class="tool-pill">FEA Simulation</div>
+            <div class="tool-pill">Arduino + GRBL</div>
+            <div class="tool-pill">G-Code Programming</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
