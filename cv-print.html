@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adrian Florin Anton — Curriculum Vitae</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --paper: #ffffff;
+    --text: #14181d;
+    --soft: #4a5560;
+    --muted: #6b7682;
+    --rule: #d9d0bf;
+    --accent: #8b6e3a;
+    --accent-soft: #d9c79a;
+    --mono: 'DM Mono', ui-monospace, monospace;
+    --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --display: 'DM Serif Display', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { background: #ececec; color: var(--text); font-family: var(--sans); }
+  body { padding: 2rem 1rem; }
+
+  /* Floating print bar — hidden in print */
+  .print-bar {
+    position: fixed; top: 1rem; right: 1rem; z-index: 20;
+    display: flex; gap: 0.5rem;
+  }
+  .print-bar button, .print-bar a {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 9px 16px;
+    background: var(--text); color: #fff; border: none; cursor: pointer;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .print-bar button:hover, .print-bar a:hover { opacity: 0.82; }
+  .print-bar .ghost { background: #fff; color: var(--text); border: 1px solid var(--rule); }
+
+  /* Page card — visible on-screen, becomes the print surface */
+  .page {
+    background: var(--paper);
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18mm 16mm;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    color: var(--text);
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+
+  /* ===== HEADER ===== */
+  header.cv-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid var(--text);
+    margin-bottom: 1.4rem;
+  }
+  .head-tag {
+    font-family: var(--mono); font-size: 9pt; color: var(--accent);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  h1.name {
+    font-family: var(--display); font-weight: 400;
+    font-size: 32pt; line-height: 1; letter-spacing: -0.01em;
+    color: var(--text); margin-bottom: 0.5rem;
+  }
+  h1.name span { color: var(--accent); font-style: italic; }
+  .role {
+    font-family: var(--mono); font-size: 9.5pt; color: var(--soft);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .contact {
+    display: flex; flex-direction: column; gap: 4px;
+    align-items: flex-end; text-align: right;
+    font-family: var(--mono); font-size: 9pt; color: var(--soft);
+    letter-spacing: 0.02em;
+  }
+  .contact a { color: inherit; text-decoration: none; }
+  .contact .ci {
+    display: inline-block; width: 14px; color: var(--accent);
+    text-align: left; margin-right: 4px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section.block {
+    margin-bottom: 1.4rem;
+  }
+  .block-title {
+    font-family: var(--mono); font-size: 9pt; color: var(--accent);
+    letter-spacing: 0.28em; text-transform: uppercase;
+    padding-bottom: 0.35rem; margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .block-title::before {
+    content: ''; width: 14px; height: 1px;
+    background: var(--accent); display: inline-block;
+  }
+
+  /* ===== EXPERIENCE ===== */
+  .exp { margin-bottom: 0.85rem; }
+  .exp:last-child { margin-bottom: 0; }
+  .exp-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 0.15rem;
+  }
+  .exp-title {
+    font-family: var(--display); font-weight: 400;
+    font-size: 13pt; color: var(--text); line-height: 1.2;
+  }
+  .exp-period {
+    font-family: var(--mono); font-size: 8.5pt; color: var(--accent);
+    letter-spacing: 0.06em; white-space: nowrap;
+  }
+  .exp-company {
+    font-family: var(--mono); font-size: 9pt; color: var(--soft);
+    margin-bottom: 0.5rem; letter-spacing: 0.02em;
+  }
+  .exp-company em {
+    color: var(--accent); font-style: normal;
+  }
+  .bullets {
+    list-style: none; padding-left: 0;
+    display: flex; flex-direction: column; gap: 0.18rem;
+  }
+  .bullets li {
+    position: relative; padding-left: 1rem;
+    font-size: 10pt; color: var(--text); line-height: 1.55;
+  }
+  .bullets li::before {
+    content: '—'; position: absolute; left: 0; top: 0;
+    color: var(--accent);
+  }
+  .tag-row {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 0.55rem;
+  }
+  .tag {
+    font-family: var(--mono); font-size: 7.5pt;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 2px 7px; border: 0.5px solid var(--rule);
+    color: var(--soft);
+  }
+  .tag.hi {
+    border-color: var(--accent); color: var(--accent);
+  }
+
+  /* ===== EDUCATION ===== */
+  .edu {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 1.2rem; margin-bottom: 0.7rem;
+    align-items: baseline;
+  }
+  .edu:last-child { margin-bottom: 0; }
+  .edu-year {
+    font-family: var(--mono); font-size: 8.5pt; color: var(--accent);
+    letter-spacing: 0.05em; line-height: 1.4;
+  }
+  .edu-degree {
+    font-family: var(--display); font-weight: 400;
+    font-size: 12pt; line-height: 1.25; color: var(--text);
+    margin-bottom: 0.1rem;
+  }
+  .edu-inst {
+    font-family: var(--mono); font-size: 9pt; color: var(--soft);
+    margin-bottom: 0.1rem;
+  }
+  .edu-note {
+    font-size: 9.5pt; color: var(--text); font-style: italic;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 1.5rem;
+  }
+  .skill-group .skill-group-title {
+    font-family: var(--mono); font-size: 8.5pt; color: var(--accent);
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .skill-list {
+    list-style: none; padding-left: 0;
+    display: flex; flex-direction: column; gap: 0.15rem;
+  }
+  .skill-list li {
+    font-size: 9.5pt; color: var(--text); line-height: 1.45;
+    position: relative; padding-left: 0.9rem;
+  }
+  .skill-list li::before {
+    content: '·'; position: absolute; left: 0; top: -0.05em;
+    color: var(--accent); font-weight: 700; font-size: 14pt;
+  }
+
+  /* ===== AWARDS ===== */
+  .award {
+    display: grid; grid-template-columns: 70px 90px 1fr;
+    gap: 0.9rem; margin-bottom: 0.5rem;
+    align-items: baseline;
+  }
+  .award:last-child { margin-bottom: 0; }
+  .award-year {
+    font-family: var(--mono); font-size: 8.5pt; color: var(--soft);
+    letter-spacing: 0.05em;
+  }
+  .award-prize {
+    font-family: var(--mono); font-size: 8pt; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: 0.5px solid var(--accent);
+    padding: 2px 6px; text-align: center;
+    width: fit-content;
+  }
+  .award-title {
+    font-family: var(--display); font-weight: 400;
+    font-size: 11pt; color: var(--text); margin-bottom: 0.05rem;
+  }
+  .award-desc {
+    font-size: 9.5pt; color: var(--soft); line-height: 1.4;
+  }
+
+  /* ===== CERT / LANG ===== */
+  .cert, .lang {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 1.2rem; margin-bottom: 0.65rem;
+    align-items: baseline;
+  }
+  .cert:last-child, .lang:last-child { margin-bottom: 0; }
+  .cert-date, .lang-name {
+    font-family: var(--mono); font-size: 8.5pt; color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .cert-title {
+    font-family: var(--display); font-weight: 400;
+    font-size: 11.5pt; color: var(--text); margin-bottom: 0.1rem;
+  }
+  .cert-inst {
+    font-family: var(--mono); font-size: 9pt; color: var(--soft);
+    margin-bottom: 0.1rem;
+  }
+  .cert-note {
+    font-size: 9.5pt; color: var(--text); font-style: italic;
+  }
+  .lang-level {
+    font-size: 10pt; color: var(--text);
+  }
+
+  /* ===== FOOTER ===== */
+  .doc-foot {
+    margin-top: 1.6rem; padding-top: 0.8rem;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 8pt; color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== PRINT ===== */
+  @page {
+    size: A4;
+    margin: 14mm 14mm;
+  }
+  @media print {
+    html, body { background: #fff !important; padding: 0 !important; }
+    body { font-size: 10pt; }
+    .print-bar { display: none !important; }
+    .page {
+      box-shadow: none !important;
+      max-width: none; margin: 0; padding: 0;
+    }
+    a { color: inherit !important; text-decoration: none !important; }
+    /* Allow content to break across pages — no avoid rules anywhere */
+    section.block, .exp, .edu, .award, .cert, .lang,
+    .bullets li, .skill-group {
+      break-inside: auto;
+      page-break-inside: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button onclick="window.print()" type="button">Print / Save PDF</button>
+  <a class="ghost" href="index.html">← Site</a>
+</div>
+
+<article class="page">
+
+  <!-- HEADER -->
+  <header class="cv-head">
+    <div>
+      <div class="head-tag">Curriculum Vitae</div>
+      <h1 class="name">Adrian Florin <span>Anton</span></h1>
+      <div class="role">Mechanical &amp; Robotics Engineer · PhD Candidate</div>
+    </div>
+    <div class="contact">
+      <a href="mailto:adrianflorinanton1@gmail.com"><span class="ci">@</span>adrianflorinanton1@gmail.com</a>
+      <a href="tel:+40737034363"><span class="ci">☎</span>(+40) 737 034 363</a>
+      <a href="https://www.linkedin.com/in/adrian-anton-61a741213"><span class="ci">in</span>linkedin / adrian-anton</a>
+      <div><span class="ci">⌖</span>Bucharest, Romania</div>
+    </div>
+  </header>
+
+  <!-- WORK EXPERIENCE -->
+  <section class="block">
+    <div class="block-title">Work Experience</div>
+
+    <div class="exp">
+      <div class="exp-head">
+        <div class="exp-title">Hardware Engineer</div>
+        <div class="exp-period">08/2023 — Present</div>
+      </div>
+      <div class="exp-company">Agora Robotics · <em>Bucharest, Romania</em></div>
+      <ul class="bullets">
+        <li>Designed, developed and optimized mechanical systems for autonomous cleaning robots — focused on functionality, reliability and cost efficiency.</li>
+        <li>Created production-ready 3D models and technical drawings in Fusion 360 and AutoCAD, including complex assemblies, GD&amp;T and full manufacturing documentation.</li>
+        <li>Operated 80W CO₂ laser cutter, FDM (Prusa, Anycubic) and SLA/resin (Anycubic Photon) 3D printers for rapid prototyping of functional components.</li>
+        <li>Developed silicone casting processes; designed and manufactured custom molds using gravity and injection casting for precise, repeatable parts.</li>
+        <li>Designed and built a 600×900 mm vacuum-forming table with quartz heaters for internal thermoforming of plastic components.</li>
+        <li>Performed engineering calculations (strength of materials, kinematics, dynamics) to validate concepts and optimize designs.</li>
+        <li>Coordinated material and mechanical service suppliers — issuing orders, tracking execution and ensuring compliance with technical drawings and delivery deadlines.</li>
+        <li>Produced complete technical documentation and presented design solutions to management and customers.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag hi">Fusion 360</span>
+        <span class="tag hi">AutoCAD</span>
+        <span class="tag">FDM / SLA</span>
+        <span class="tag">CO₂ Laser</span>
+        <span class="tag">Silicone Casting</span>
+        <span class="tag">Vacuum Forming</span>
+        <span class="tag">GD&amp;T</span>
+      </div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-head">
+        <div class="exp-title">Mechanical Engineer</div>
+        <div class="exp-period">09/2022 — 07/2023</div>
+      </div>
+      <div class="exp-company">Segula Technologies Romania · <em>Automotive / Stellantis</em></div>
+      <ul class="bullets">
+        <li>Adapted carry-over electrical installations and designed new wiring harnesses for Stellantis vehicle programs.</li>
+        <li>Used CATIA V6 for harness design and project management in a full PLM environment (ENOVIA V6).</li>
+        <li>Specified 3D and 2D technical documentation; developed design dispositions for nonconformities found during physical 3D tryouts.</li>
+        <li>Created officialization processes enabling suppliers to initiate series production.</li>
+        <li>Presented wiring solutions in multi-disciplinary technical reviews alongside interfacing component engineers.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag hi">CATIA V5 / V6</span>
+        <span class="tag hi">ENOVIA V6</span>
+        <span class="tag">PLM</span>
+        <span class="tag">Wiring Harness</span>
+        <span class="tag">3D Tryout</span>
+      </div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-head">
+        <div class="exp-title">Engineering Intern</div>
+        <div class="exp-period">06/2021 — 08/2021</div>
+      </div>
+      <div class="exp-company">INCDMTM · <em>National Institute for Mechatronics &amp; Measurement</em></div>
+      <ul class="bullets">
+        <li>Programmed and operated CNC milling, Wire EDM and sinker EDM machines; wrote G-code for high-precision operations.</li>
+        <li>Contributed to additive manufacturing activities using SLS, SLM and FDM for technical component prototyping.</li>
+        <li>Gained hands-on experience with hybrid manufacturing (subtractive + additive) and process parameter optimisation.</li>
+      </ul>
+      <div class="tag-row">
+        <span class="tag">CNC Milling</span>
+        <span class="tag">Wire EDM</span>
+        <span class="tag">SLS / SLM</span>
+        <span class="tag">G-Code</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block">
+    <div class="block-title">Education</div>
+
+    <div class="edu">
+      <div class="edu-year">2025<br>— Now</div>
+      <div>
+        <div class="edu-degree">PhD — Mechanical Engineering</div>
+        <div class="edu-inst">Politehnica University of Bucharest</div>
+        <div class="edu-note">Thesis: Flexible Mechanisms in Robot–Environment Interaction for Industrial Applications</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-year">2025<br>— Now</div>
+      <div>
+        <div class="edu-degree">Psychopedagogical Teaching Certification — Level 1 &amp; 2</div>
+        <div class="edu-inst">Politehnica University of Bucharest</div>
+        <div class="edu-note">Teacher training for engineering disciplines</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-year">2022<br>— 2024</div>
+      <div>
+        <div class="edu-degree">MSc — Advanced Mechatronics</div>
+        <div class="edu-inst">Politehnica University of Bucharest · Faculty of Mechanical Engineering &amp; Mechatronics</div>
+        <div class="edu-note">Valedictorian · GPA 10.00 / 10 · Thesis grade 9.80 — Materials for Medical Prosthetics &amp; Implantology</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-year">2018<br>— 2022</div>
+      <div>
+        <div class="edu-degree">BSc — Precision Mechanics &amp; Nanotechnologies</div>
+        <div class="edu-inst">Politehnica University of Bucharest · Faculty of Mechanical Engineering &amp; Mechatronics</div>
+        <div class="edu-note">GPA 9.66 / 10 · Final Exam 9.90 · Thesis: Design of a Space Vehicle Prototype</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-year">07–08<br>2023</div>
+      <div>
+        <div class="edu-degree">Entrepreneurial, Financial &amp; Legal Skills</div>
+        <div class="edu-inst">Politehnica University of Bucharest — "Fii antreprenor 7.1"</div>
+        <div class="edu-note">Final Grade: 10 / 10</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS -->
+  <section class="block">
+    <div class="block-title">Technical Skills</div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title">CAD / PLM</div>
+        <ul class="skill-list">
+          <li>Autodesk Fusion 360</li>
+          <li>AutoCAD</li>
+          <li>CATIA V5 / V6</li>
+          <li>ENOVIA V6</li>
+          <li>SolidWorks · PLM Systems</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Rapid Prototyping</div>
+        <ul class="skill-list">
+          <li>FDM 3D Printing (Prusa, Anycubic)</li>
+          <li>SLA / Resin Printing</li>
+          <li>CO₂ Laser Cutting (80 W)</li>
+          <li>Vacuum Forming</li>
+          <li>Silicone Casting &amp; Mold Design</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Manufacturing</div>
+        <ul class="skill-list">
+          <li>CNC Milling &amp; Turning</li>
+          <li>Wire EDM / Sinker EDM</li>
+          <li>SLS / SLM (Metal AM)</li>
+          <li>G-Code Programming</li>
+          <li>TIG Welding</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Analysis &amp; Control</div>
+        <ul class="skill-list">
+          <li>Strength of Materials</li>
+          <li>Kinematics &amp; Dynamics</li>
+          <li>ANSYS · FEA Simulation</li>
+          <li>MATLAB</li>
+          <li>GD&amp;T &amp; Tolerancing</li>
+          <li>Arduino / GRBL / Stepper Control</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HONOURS & AWARDS -->
+  <section class="block">
+    <div class="block-title">Honours &amp; Awards</div>
+
+    <div class="award">
+      <div class="award-year">05/2022</div>
+      <div class="award-prize">2nd Prize</div>
+      <div>
+        <div class="award-title">Student Scientific Communications Session</div>
+        <div class="award-desc">Politehnica University of Bucharest — Exploratory Space Vehicle Prototype</div>
+      </div>
+    </div>
+
+    <div class="award">
+      <div class="award-year">05/2019</div>
+      <div class="award-prize">2nd Prize</div>
+      <div>
+        <div class="award-title">Student Scientific Communications Session</div>
+        <div class="award-desc">Politehnica University of Bucharest — RC Car with Obstacle Detection Sensor</div>
+      </div>
+    </div>
+
+    <div class="award">
+      <div class="award-year">10/2022</div>
+      <div class="award-prize">Qualifier</div>
+      <div>
+        <div class="award-title">TIE_M Competition — 1st Edition</div>
+        <div class="award-desc">IEEE-sponsored international CAD Mechanical Design Competition — Politehnica University of Bucharest</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="block">
+    <div class="block-title">Certifications</div>
+
+    <div class="cert">
+      <div class="cert-date">10/2022</div>
+      <div>
+        <div class="cert-title">PLM Training — Product Designer</div>
+        <div class="cert-inst">Segula Academy · Trappes, France</div>
+        <div class="cert-note">5-day intensive programme · Issued by Mrs Gwenaelle Duval, Training Manager</div>
+      </div>
+    </div>
+
+    <div class="cert">
+      <div class="cert-date">11/2021</div>
+      <div>
+        <div class="cert-title">ESW 2021 — UN Sustainable Development Goals</div>
+        <div class="cert-inst">Universidad Politécnica de Madrid (UPM) · EELISA European University</div>
+        <div class="cert-note">SDG 12 — Sustainable production &amp; consumption practices</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="block">
+    <div class="block-title">Languages</div>
+
+    <div class="lang">
+      <div class="lang-name">Romanian</div>
+      <div class="lang-level">Native / Mother tongue</div>
+    </div>
+
+    <div class="lang">
+      <div class="lang-name">English</div>
+      <div class="lang-level">B2 — Independent user (CEFR)</div>
+    </div>
+  </section>
+
+  <div class="doc-foot">
+    <span>Adrian Florin Anton — Curriculum Vitae</span>
+    <span>Bucharest, Romania</span>
+  </div>
+
+</article>
+
+</body>
+</html>
