@@ -88,11 +88,30 @@
     display: inline-block; width: 14px; color: var(--accent);
     text-align: left; margin-right: 4px;
   }
+  .status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--mono); font-size: 8.5pt;
+    color: #0c8a3e; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .status .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #15c25a;
+    box-shadow: 0 0 0 2px rgba(21,194,90,0.18);
+    display: inline-block; flex-shrink: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .status {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
   /* ===== SECTIONS ===== */
   section.block {
-    margin-bottom: 1.4rem;
+    margin-bottom: 2.2rem;
   }
+  section.block:last-of-type { margin-bottom: 1.4rem; }
   .block-title {
     font-family: var(--mono); font-size: 9pt; color: var(--accent);
     letter-spacing: 0.28em; text-transform: uppercase;
@@ -304,8 +323,10 @@
     <div class="contact">
       <a href="mailto:adrianflorinanton1@gmail.com"><span class="ci">@</span>adrianflorinanton1@gmail.com</a>
       <a href="tel:+40737034363"><span class="ci">☎</span>(+40) 737 034 363</a>
-      <a href="https://www.linkedin.com/in/adrian-anton-61a741213"><span class="ci">in</span>linkedin / adrian-anton</a>
+      <a href="https://www.linkedin.com/in/adriananton1"><span class="ci">in</span>linkedin.com/in/adriananton1</a>
+      <a href="https://adriananton1-mecheng.github.io/portofolio/index.html"><span class="ci">↗</span>adriananton1-mecheng.github.io/portofolio</a>
       <div><span class="ci">⌖</span>Bucharest, Romania</div>
+      <div class="status"><span class="dot"></span>Available for opportunities</div>
     </div>
   </header>
 
