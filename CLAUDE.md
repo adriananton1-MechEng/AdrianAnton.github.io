@@ -2,6 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Site owner
+
+- **Adrian Florin Anton** — Mechanical Engineer at **Agora Robotics** (Bucharest, since 08/2023), reporting to the Head of Engineering / CTO.
+- **PhD candidate** at Politehnica University of Bucharest on *Flexible Mechanisms in Robot–Environment Interaction*. MSc Advanced Mechatronics (valedictorian, GPA 10.00/10). BSc Precision Mechanics & Nanotechnologies.
+- Previous work: Segula Technologies (Stellantis automotive, CATIA/ENOVIA, 2022–2023) and INCDMTM (CNC/EDM/SLS/SLM intern, 2021).
+- Core stack: Fusion 360, AutoCAD, FDM/SLA, CO₂ laser (80 W), silicone casting, vacuum forming, TIG welding, ANSYS, MATLAB, GD&T.
+- Communicates often in Romanian — reply in the same language unless he switches.
+- **Auto-commit and push to `main` after every change is pre-authorised** — no need to ask. GitHub Pages auto-deploys in ~30s.
+
+## Featured project — Sweep (Agora Robotics)
+
+Sweep is the commercial autonomous indoor floor-scrubbing robot Adrian owns the mechanical architecture of. Nine hardware generations to date (D1 → D8 + E1 small-series), plus an IPX6-certified docking station. Real deployments at Orange HQ, IKEA, Dedeman Central Warehouse, Stejari Residence. Source PDFs live in `images/projects/robot/` — **content marked in red in those documents is internal and must not be published** (workspace size, lack of formal welding certifications, internal cost numbers).
+
 ## Overview
 
 Static HTML5 portfolio website for an engineering professional (mechanical/mechatronics). No build tools, no framework, no dependencies — pure HTML, CSS, and vanilla JS deployed to GitHub Pages.
@@ -21,13 +34,21 @@ npx http-server
 ## File Structure
 
 ```
-index.html              # Main portfolio (hero, projects grid, skills, contact)
-cv.html                 # Curriculum vitae page
-project-rover.html      # Rocker-Bogie Rover (capstone project)
-project-cad.html        # CAD Assembly project
-project-mechanical.html # Mechanical design project
+index.html              # Main portfolio (hero, projects grid, skills, hobbies, contact)
+cv.html                 # Interactive CV (dark theme + theme toggle)
+cv-print.html           # Standalone print/PDF-ready CV (light theme, no toggles, A4)
+admin.html              # Single-page admin — edit any page via GitHub Contents API (PAT auth)
+project-robot.html      # Sweep — Agora Robotics (D1→E1, 9 hardware generations)
 project-microscope.html # Microscope Inspection Table (MSc thesis)
+project-cad.html        # CAD Assembly project
+project-rover.html      # Rocker-Bogie Rover (BSc thesis)
+project-mechanical.html # Mechanical design project
+images/                 # hero, cv, projects/{rover,cad,microscope,robot,mechanical}
 ```
+
+## Admin tooling
+
+`admin.html` provides an in-browser editor for all pages — content edits commit back via the GitHub Contents API using a fine-grained Personal Access Token (Contents: Read and Write on this repo). The token is stored only in the user's browser localStorage. The editor injects into a sandboxed iframe of each page, exposes a right-side control panel for highlight toggles, project-card color variants, duplicate/delete/reorder of pills/tags/cards, and typography controls (font, size, weight, italic/underline/uppercase, colour, padding/margin). Implementation notes: never call `active.focus()` from the iframe on `admin:panel-interact` — it steals focus from panel controls. The user is the only person with the token; treat the admin as a single-user tool.
 
 ## Architecture
 
