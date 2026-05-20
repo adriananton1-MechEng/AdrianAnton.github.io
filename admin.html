@@ -767,6 +767,10 @@ function iframeEditorFn() {
     clone.querySelectorAll('[data-admin-selected]').forEach(el => el.removeAttribute('data-admin-selected'));
     clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
     clone.querySelectorAll('[data-admin-injected]').forEach(el => el.remove());
+    // data-theme on <html> is set at runtime from localStorage — don't bake it
+    // into the saved HTML, otherwise every visitor would be locked to whatever
+    // theme the editor happened to be in.
+    clone.removeAttribute('data-theme');
     return '<!DOCTYPE html>\n' + clone.outerHTML;
   }
 
