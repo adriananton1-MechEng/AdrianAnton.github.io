@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SolidWorks Assembly — Adrian Anton</title>
+<title>Vacuum Forming Machine — Adrian Anton</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
@@ -53,8 +53,8 @@
   .project-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 4rem; }
 
   .img-hero { width: 100%; height: 480px; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 5rem; position: relative; overflow: hidden; }
-  .img-hero::after { content: 'ADD YOUR MAIN PROJECT IMAGE HERE'; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.15em; position: absolute; bottom: 20px; right: 24px; }
   .img-hero svg { opacity: 0.15; }
+  .img-hero iframe { width: 100%; height: 100%; border: 0; display: block; }
 
   .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 5rem; }
   .img-slot { background: var(--bg3); border: 1px solid var(--border); height: 220px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -214,53 +214,47 @@
 </nav>
 
 <div class="project-hero">
-  <div class="breadcrumb">Projects / <span>02 — CAD Design</span></div>
-  <h1 class="project-title">SolidWorks<br><span>Assembly</span></h1>
+  <div class="breadcrumb">Projects / <span>03 — Custom Build</span></div>
+  <h1 class="project-title">Vacuum Forming<br><span>Machine</span></h1>
   <div class="project-meta-row">
     <div class="meta-item"><div class="meta-label">Year</div><div class="meta-value">2023</div></div>
-    <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">CAD & drawing package</div></div>
-    <div class="meta-item"><div class="meta-label">Role</div><div class="meta-value">Designer</div></div>
-    <div class="meta-item"><div class="meta-label">Software</div><div class="meta-value">SolidWorks 2023</div></div>
+    <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">Custom machine — design & build</div></div>
+    <div class="meta-item"><div class="meta-label">Role</div><div class="meta-value">Designer &amp; builder</div></div>
+    <div class="meta-item"><div class="meta-label">Reference</div><div class="meta-value">Formech 1372 (concept)</div></div>
   </div>
   <div class="hero-tags">
-    <span class="tag accent">SolidWorks</span>
-    <span class="tag">GD&T</span>
-    <span class="tag">Tolerance analysis</span>
-    <span class="tag">Technical drawings</span>
-    <span class="tag">BOM</span>
+    <span class="tag accent">Fusion 360</span>
+    <span class="tag">Thermoforming</span>
+    <span class="tag">Sheet metal</span>
+    <span class="tag">Heating elements</span>
+    <span class="tag">Vacuum system</span>
+    <span class="tag">Custom build</span>
   </div>
 </div>
 
 <div class="project-body">
 
   <div class="img-hero fade-in">
-    <!-- <img src="images/cad-main.jpg" alt="SolidWorks assembly render" style="width:100%;height:100%;object-fit:cover;"> -->
-    <svg width="220" height="130" viewBox="0 0 220 130" fill="none">
-      <rect x="10" y="10" width="200" height="110" stroke="#ff6b35" stroke-width="1.5"/>
-      <rect x="30" y="30" width="160" height="70" stroke="#ff6b35" stroke-width="1"/>
-      <line x1="10" y1="10" x2="30" y2="30" stroke="#ff6b35" stroke-width="0.8"/>
-      <line x1="210" y1="10" x2="190" y2="30" stroke="#ff6b35" stroke-width="0.8"/>
-      <line x1="10" y1="120" x2="30" y2="100" stroke="#ff6b35" stroke-width="0.8"/>
-      <line x1="210" y1="120" x2="190" y2="100" stroke="#ff6b35" stroke-width="0.8"/>
-      <circle cx="110" cy="65" r="25" stroke="#ff6b35" stroke-width="1"/>
-      <circle cx="110" cy="65" r="10" stroke="#ff6b35" stroke-width="1"/>
-    </svg>
+    <iframe
+      src="https://www.youtube.com/embed/vWkY0JACOPc?start=75"
+      title="Custom vacuum forming machine — build & demo"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
   </div>
 
   <div class="content-section fade-in">
     <div class="section-label">Overview</div>
-    <div class="section-title">Project description</div>
-    <p class="prose">Replace this with a description of your SolidWorks assembly project. What was it? What was the design challenge? Who was it for (university course, personal project, team project)?</p>
-    <p class="prose">Describe the key engineering decisions you made — <strong>material selection</strong>, joint types, fastener choices, or any design trade-offs. This is where you show your depth of thinking, not just the final result.</p>
+    <div class="section-title">A desktop thermoformer, built from scratch</div>
+    <p class="prose">A fully custom <strong>vacuum forming machine</strong>, designed in CAD end-to-end and assembled from raw stock. The architecture follows the same proven layout as the <strong>Formech 1372</strong>: a heated platen above a hinged clamp frame, a perforated vacuum bed below, and a vacuum pump that pulls the softened plastic sheet down onto the mould.</p>
+    <p class="prose">The machine was built to support hobby prototyping — packaging blisters, decorative shells, small enclosures and props — using ABS, PETG, HIPS and acrylic sheets up to a few millimetres thick. Every mechanical part (frame, clamp jaws, platen housing, bed) was modelled in <strong>Fusion 360</strong> before any metal was cut, with the heater layout and vacuum cavity sized for an even draw across the forming area.</p>
   </div>
 
   <div class="img-grid-2 fade-in" style="margin-bottom:4rem;">
-    <div class="img-slot" data-label="3D RENDER">
-      <!-- <img src="images/cad-render.jpg" alt="3D CAD render" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="img-slot" data-label="MACHINE FRAME">
       <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><rect x="18" y="8" width="34" height="34" stroke="#ff6b35" stroke-width="1"/><line x1="18" y1="8" x2="8" y2="18" stroke="#ff6b35" stroke-width="0.8"/><line x1="52" y1="8" x2="62" y2="18" stroke="#ff6b35" stroke-width="0.8"/><line x1="18" y1="42" x2="8" y2="52" stroke="#ff6b35" stroke-width="0.8"/><line x1="52" y1="42" x2="62" y2="52" stroke="#ff6b35" stroke-width="0.8"/><rect x="8" y="18" width="34" height="34" stroke="#ff6b35" stroke-width="1" opacity="0.4"/></svg>
     </div>
-    <div class="img-slot" data-label="EXPLODED VIEW">
-      <!-- <img src="images/cad-exploded.jpg" alt="Exploded assembly view" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="img-slot" data-label="CLAMP &amp; PLATEN">
       <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><rect x="20" y="28" width="30" height="14" stroke="#ff6b35" stroke-width="1"/><rect x="24" y="14" width="22" height="10" stroke="#ff6b35" stroke-width="1" opacity="0.6"/><rect x="24" y="46" width="22" height="10" stroke="#ff6b35" stroke-width="1" opacity="0.6"/><line x1="35" y1="24" x2="35" y2="28" stroke="#ff6b35" stroke-width="0.8" stroke-dasharray="2,2"/><line x1="35" y1="42" x2="35" y2="46" stroke="#ff6b35" stroke-width="0.8" stroke-dasharray="2,2"/></svg>
     </div>
   </div>
@@ -268,8 +262,8 @@
   <!-- WORK PROCESS TIMELINE -->
   <div class="content-section fade-in">
     <div class="section-label">Work Process</div>
-    <div class="section-title">CAD workflow, sketch to render</div>
-    <p class="prose">A SolidWorks assembly takes shape through five disciplined stages — each one feeding the next. From part-level sketching to GD&amp;T-annotated drawings ready for fabrication.</p>
+    <div class="section-title">From CAD model to a working thermoformer</div>
+    <p class="prose">Five stages, each feeding the next — from the first reference study of the Formech 1372 to the finished machine pulling its first sheet on the bench.</p>
     <div class="process-ruler">
       <div class="ruler-ticks"></div>
       <div class="ruler-labels">
@@ -279,87 +273,85 @@
     <div class="process-phases">
       <div class="phase" style="flex:1;">
         <div class="phase-top"><div class="phase-num">Phase 01</div></div>
-        <div class="phase-bottom">Sketch</div>
+        <div class="phase-bottom">Concept &amp; reference</div>
       </div>
       <div class="phase" style="flex:2;">
         <div class="phase-top"><div class="phase-num">Phase 02</div></div>
-        <div class="phase-bottom">Part Modeling</div>
+        <div class="phase-bottom">CAD design (Fusion 360)</div>
       </div>
       <div class="phase" style="flex:1.4;">
         <div class="phase-top"><div class="phase-num">Phase 03</div></div>
-        <div class="phase-bottom">Assembly</div>
+        <div class="phase-bottom">Frame &amp; sheet metal</div>
       </div>
       <div class="phase phase--active" style="flex:1.8;">
         <div class="phase-top"><div class="phase-num">Phase 04</div></div>
-        <div class="phase-bottom">Drawings &amp; GD&amp;T</div>
+        <div class="phase-bottom">Heating &amp; vacuum systems</div>
       </div>
       <div class="phase" style="flex:1;">
         <div class="phase-top"><div class="phase-num">Phase 05</div></div>
-        <div class="phase-bottom">Render</div>
+        <div class="phase-bottom">Assembly &amp; first pull</div>
       </div>
     </div>
   </div>
 
   <div class="content-section fade-in">
     <div class="section-label">Specifications</div>
-    <div class="section-title">Assembly overview</div>
+    <div class="section-title">Machine overview</div>
     <div class="specs-grid">
-      <div class="spec-card"><div class="spec-label">Total parts</div><div class="spec-value">— pcs</div></div>
-      <div class="spec-card"><div class="spec-label">Unique components</div><div class="spec-value">— pcs</div></div>
-      <div class="spec-card"><div class="spec-label">Drawing sheets</div><div class="spec-value">— sheets</div></div>
-      <div class="spec-card"><div class="spec-label">Material</div><div class="spec-value" style="font-size:1rem;">Add yours</div></div>
+      <div class="spec-card"><div class="spec-label">Concept reference</div><div class="spec-value" style="font-size:1rem;">Formech 1372</div></div>
+      <div class="spec-card"><div class="spec-label">Forming envelope</div><div class="spec-value" style="font-size:1rem;">Desktop scale</div></div>
+      <div class="spec-card"><div class="spec-label">Sheet materials</div><div class="spec-value" style="font-size:1rem;">ABS · PETG · HIPS · acrylic</div></div>
+      <div class="spec-card"><div class="spec-label">Heating</div><div class="spec-value" style="font-size:1rem;">Resistive radiant</div></div>
+      <div class="spec-card"><div class="spec-label">Vacuum source</div><div class="spec-value" style="font-size:1rem;">Rotary vane pump</div></div>
+      <div class="spec-card"><div class="spec-label">CAD</div><div class="spec-value" style="font-size:1rem;">Fusion 360</div></div>
     </div>
   </div>
 
   <div class="img-grid-3 fade-in">
-    <div class="img-slot" data-label="PART DRAWING">
+    <div class="img-slot" data-label="CAD MODEL">
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="5" y="5" width="50" height="50" stroke="#ff6b35" stroke-width="1"/><line x1="5" y1="15" x2="55" y2="15" stroke="#ff6b35" stroke-width="0.5"/><line x1="15" y1="5" x2="15" y2="55" stroke="#ff6b35" stroke-width="0.5"/></svg>
     </div>
-    <div class="img-slot" data-label="ASSEMBLY VIEW">
+    <div class="img-slot" data-label="VACUUM BED">
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="10" y="15" width="40" height="30" stroke="#ff6b35" stroke-width="1"/><circle cx="30" cy="30" r="10" stroke="#ff6b35" stroke-width="1"/></svg>
     </div>
-    <div class="img-slot" data-label="SECTION VIEW">
+    <div class="img-slot" data-label="HEATER SECTION">
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="5" y="5" width="50" height="50" stroke="#ff6b35" stroke-width="1"/><line x1="30" y1="5" x2="30" y2="55" stroke="#ff6b35" stroke-width="1" stroke-dasharray="4,3"/></svg>
     </div>
   </div>
 
-  <div class="img-slot fade-in" style="height:320px; margin-bottom:4rem;" data-label="FULL ASSEMBLY RENDER">
-    <!-- <img src="images/cad-full.jpg" alt="Full assembly render" style="width:100%;height:100%;object-fit:cover;"> -->
+  <div class="img-slot fade-in" style="height:320px; margin-bottom:4rem;" data-label="ASSEMBLED MACHINE">
     <svg width="160" height="90" viewBox="0 0 160 90" fill="none"><rect x="10" y="10" width="140" height="70" stroke="#ff6b35" stroke-width="1" opacity="0.4"/><rect x="25" y="22" width="110" height="46" stroke="#ff6b35" stroke-width="1"/><circle cx="80" cy="45" r="18" stroke="#ff6b35" stroke-width="1"/><circle cx="80" cy="45" r="8" stroke="#ff6b35" stroke-width="1"/><line x1="25" y1="22" x2="10" y2="10" stroke="#ff6b35" stroke-width="0.6"/><line x1="135" y1="22" x2="150" y2="10" stroke="#ff6b35" stroke-width="0.6"/></svg>
   </div>
 
   <div class="content-section fade-in">
     <div class="section-label">Deliverables</div>
-    <div class="section-title">What was produced</div>
+    <div class="section-title">What was built</div>
     <div class="two-col">
       <ul class="checklist">
-        <li>Fully parametric SolidWorks part models with design intent</li>
-        <li>Top-level assembly with all mates and motion constraints</li>
-        <li>Tolerance stack-up analysis on critical dimensions</li>
-        <li>Interference detection check across full range of motion</li>
-        <li>Add your own deliverable here</li>
+        <li>Full parametric CAD model of the machine in Fusion 360</li>
+        <li>Welded steel frame and sheet-metal housing</li>
+        <li>Hinged clamp frame with sheet retention</li>
+        <li>Heated platen with resistive radiant elements</li>
+        <li>Perforated vacuum bed with sealed plenum</li>
       </ul>
       <ul class="checklist">
-        <li>Complete drawing package with GD&T annotations</li>
-        <li>Bill of materials (BOM) with part numbers and quantities</li>
-        <li>Exploded view drawing for assembly instructions</li>
-        <li>Section views to show internal geometry</li>
-        <li>Add your own deliverable here</li>
+        <li>Vacuum manifold, hose routing and rotary vane pump</li>
+        <li>Electrical panel — thermostat, contactor and timer</li>
+        <li>Fabrication drawings for every metal part</li>
+        <li>Bill of materials &amp; sourcing list</li>
+        <li>First-pull validation with several sheet materials</li>
       </ul>
     </div>
   </div>
 
   <div class="img-grid-3 fade-in" style="margin-bottom:4rem;">
-    <div class="img-slot" data-label="DETAIL DRAWING">
-      <!-- <img src="images/cad-drawing1.jpg" alt="Detail drawing" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="img-slot" data-label="FRAME DRAWING">
       <svg width="55" height="55" viewBox="0 0 55 55" fill="none"><rect x="5" y="5" width="45" height="45" stroke="#ff6b35" stroke-width="1"/><line x1="5" y1="15" x2="50" y2="15" stroke="#ff6b35" stroke-width="0.5"/><line x1="15" y1="5" x2="15" y2="50" stroke="#ff6b35" stroke-width="0.5"/><line x1="5" y1="40" x2="50" y2="40" stroke="#ff6b35" stroke-width="0.5"/></svg>
     </div>
-    <div class="img-slot" data-label="GD&T ANNOTATION">
-      <!-- <img src="images/cad-gdt.jpg" alt="GD&T annotations" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="img-slot" data-label="ELECTRICAL PANEL">
       <svg width="55" height="55" viewBox="0 0 55 55" fill="none"><rect x="8" y="20" width="38" height="15" stroke="#ff6b35" stroke-width="1"/><line x1="27" y1="8" x2="27" y2="20" stroke="#ff6b35" stroke-width="0.8"/><circle cx="27" cy="6" r="3" stroke="#ff6b35" stroke-width="1"/><line x1="8" y1="35" x2="8" y2="44" stroke="#ff6b35" stroke-width="0.8"/><line x1="46" y1="35" x2="46" y2="44" stroke="#ff6b35" stroke-width="0.8"/><line x1="8" y1="44" x2="46" y2="44" stroke="#ff6b35" stroke-width="0.8"/></svg>
     </div>
     <div class="img-slot" data-label="BOM / PART LIST">
-      <!-- <img src="images/cad-bom.jpg" alt="Bill of materials" style="width:100%;height:100%;object-fit:cover;"> -->
       <svg width="55" height="55" viewBox="0 0 55 55" fill="none"><rect x="8" y="8" width="38" height="38" stroke="#ff6b35" stroke-width="1"/><line x1="8" y1="18" x2="46" y2="18" stroke="#ff6b35" stroke-width="0.5"/><line x1="8" y1="28" x2="46" y2="28" stroke="#ff6b35" stroke-width="0.5"/><line x1="8" y1="38" x2="46" y2="38" stroke="#ff6b35" stroke-width="0.5"/><line x1="22" y1="8" x2="22" y2="46" stroke="#ff6b35" stroke-width="0.5"/></svg>
     </div>
   </div>
@@ -367,9 +359,10 @@
   <div class="content-section fade-in">
     <div class="section-label">Reflections</div>
     <div class="section-title">Key learnings</div>
-    <p class="prose">Write a short paragraph about what this project taught you. Maybe it was the first time you had to deal with a complex tolerance chain, or you learned how to use a specific SolidWorks feature like configurations or design tables. Recruiters value self-awareness in engineers.</p>
+    <p class="prose">The hardest part wasn't the CAD — it was getting an <strong>even temperature distribution</strong> across the platen and an <strong>airtight seal</strong> between the clamp frame and the vacuum bed. Drawing speed and platen temperature had to be tuned together; too cold and the sheet tears, too hot and it sags before the clamp closes.</p>
+    <p class="prose">Designing the whole machine in Fusion 360 first paid off — interference checks on the hinge geometry and the vacuum-bed plenum caught mistakes that would have been painful to fix in metal.</p>
     <br>
-    <a href="#" class="btn-ghost">View drawing package →</a>
+    <a href="https://www.youtube.com/watch?v=vWkY0JACOPc&amp;t=75s" target="_blank" rel="noopener" class="btn-ghost">Watch the build on YouTube →</a>
   </div>
 
   <div class="project-nav fade-in">

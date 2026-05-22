@@ -47,10 +47,10 @@ cv-print.html           # Standalone print/PDF-ready CV (light theme, no toggles
 admin.html              # Single-page admin — edit any page via GitHub Contents API (PAT auth)
 project-robot.html      # Sweep — Agora Robotics (D1→E1, 9 hardware generations)
 project-microscope.html # Microscope Inspection Table (MSc thesis)
-project-cad.html        # CAD Assembly project
+project-vacuumforming.html # Custom vacuum forming machine (Formech-1372-style, CAD-designed + built)
 project-rover.html      # Rocker-Bogie Rover (BSc thesis)
-project-mechanical.html # Mechanical design project
-images/                 # hero, cv, projects/{rover,cad,microscope,robot,mechanical}
+project-hobbies.html    # Hobby gallery (3D-print art, demo stands, custom prints)
+images/                 # hero, cv, projects/{rover,vacuumforming,microscope,robot,hobby}
 ```
 
 ## Admin tooling
@@ -142,7 +142,7 @@ git push origin main
 
 ### 2. Image-path & filename conventions (hobby galleries)
 
-The hobby gallery (`project-mechanical.html`) uses photo number as ordering:
+The hobby gallery (`project-hobbies.html`) uses photo number as ordering:
 
 - **`1.jpg` is always the card cover.** Number remaining photos `2.jpg`, `3.jpg`, … in the desired carousel order.
 - **URL-encode spaces** in `src` attributes (`%20`). Commas and parentheses in folder names can stay literal — modern browsers handle them.
@@ -151,7 +151,7 @@ The hobby gallery (`project-mechanical.html`) uses photo number as ordering:
 
 ### 3. Adding a sub-project to the hobby picker
 
-`project-mechanical.html` supports two card modes:
+`project-hobbies.html` supports two card modes:
 
 - **Flat carousel** — `data-images='["url1","url2",…]'` on the `.gallery-card`.
 - **Picker → carousel** — `data-projects='[ {…}, {…} ]'` on the `.gallery-card` plus `data-tag`, `data-title`, `data-desc` for the picker header.
@@ -234,4 +234,4 @@ When something inconsistent shows up across more than one page (footer copyright
 
 ### 6. Hobby card image cover convention
 
-Every `.gallery-card` cover on `project-mechanical.html` follows the same rule: the cover thumbnail = the image numbered **1** in that card's folder. When adding a new card, name the chosen cover photo `1.jpg` (or `vaza 1.JPG`, `cam 1.jpg`, whatever pattern matches the folder's other files) and reference it both in the card's `<img src>` and as the cover of the first sub-project.
+Every `.gallery-card` cover on `project-hobbies.html` follows the same rule: the cover thumbnail = the image numbered **1** in that card's folder. When adding a new card, name the chosen cover photo `1.jpg` (or `vaza 1.JPG`, `cam 1.jpg`, whatever pattern matches the folder's other files) and reference it both in the card's `<img src>` and as the cover of the first sub-project.

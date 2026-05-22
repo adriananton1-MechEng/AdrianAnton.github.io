@@ -187,11 +187,13 @@
     position: relative; overflow: hidden;
   }
   .card-img-placeholder svg { opacity: 0.25; }
+  .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .card-img-placeholder::after {
     content: 'ADD IMAGE';
     position: absolute; bottom: 12px; right: 14px;
     font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.15em;
   }
+  .card-img-placeholder--filled::after { display: none; }
 
   .card-body { padding: 1.75rem; }
   .card-num { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 0.6rem; letter-spacing: 0.1em; }
@@ -641,7 +643,7 @@
     </a>
 
     <!-- 03 — 2023 -->
-    <a href="project-cad.html" class="project-card project-card--orange fade-in visible">
+    <a href="project-vacuumforming.html" class="project-card project-card--orange fade-in visible">
       <div class="card-img-placeholder card-img-placeholder--orange">
         <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="10" width="80" height="40" stroke="#ff6b35" stroke-width="1.5"></rect>
@@ -653,13 +655,13 @@
         </svg>
       </div>
       <div class="card-body">
-        <div class="card-num card-num--orange">03 — CAD Design · 2023</div>
-        <div class="card-title">SolidWorks Assembly</div>
-        <p class="card-desc">Full parametric 3D assembly with tolerance stack-up analysis, interference checking, and complete technical drawing package with GD&amp;T.</p>
+        <div class="card-num card-num--orange">03 — Custom Build · 2023</div>
+        <div class="card-title">Vacuum Forming Machine</div>
+        <p class="card-desc">Custom desktop vacuum forming machine — fully designed in CAD and assembled from scratch. Layout and footprint inspired by the Formech 1372: heated platen, clamp frame, vacuum bed and pump for thermoforming plastic sheets.</p>
         <div class="card-tags">
-          <span class="tag tag--orange">SolidWorks</span>
-          <span class="tag">GD&amp;T</span>
-          <span class="tag">Tolerancing</span>
+          <span class="tag tag--orange">Fusion 360</span>
+          <span class="tag">Thermoforming</span>
+          <span class="tag">Custom build</span>
         </div>
         <div class="card-cta card-cta--orange">View full project</div>
       </div>
@@ -693,19 +695,13 @@
     </a>
 
     <!-- 05 — Hobby (last) -->
-    <a href="project-mechanical.html" class="project-card project-card--lime fade-in visible">
-      <div class="card-img-placeholder card-img-placeholder--lime">
-        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="30" cy="30" r="18" stroke="#a8ff78" stroke-width="1.5"></circle>
-          <circle cx="70" cy="30" r="18" stroke="#a8ff78" stroke-width="1.5"></circle>
-          <circle cx="30" cy="30" r="6" stroke="#a8ff78" stroke-width="1"></circle>
-          <circle cx="70" cy="30" r="6" stroke="#a8ff78" stroke-width="1"></circle>
-          <line x1="48" y1="30" x2="52" y2="30" stroke="#a8ff78" stroke-width="2"></line>
-        </svg>
+    <a href="project-hobbies.html" class="project-card project-card--lime fade-in visible">
+      <div class="card-img-placeholder card-img-placeholder--lime card-img-placeholder--filled">
+        <img src="images/projects/hobby/3D%20Print%20Art(vases,%20lamps,etc.)/vaza%201.JPG" alt="3D printed vase — hobby gallery cover">
       </div>
       <div class="card-body">
         <div class="card-num card-num--lime">05 — Personal Works</div>
-        <div class="card-title">Beyond the Workshop</div>
+        <div class="card-title">Hobby stuff</div>
         <p class="card-desc">3D-print art, custom prints and university demonstration stands — the side projects I build outside of work. A growing gallery of vases, lamps, personalised prints and teaching rigs.</p>
         <div class="card-tags">
           <span class="tag tag--lime">Hobby</span>
