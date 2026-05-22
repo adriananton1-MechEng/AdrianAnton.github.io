@@ -148,7 +148,7 @@
   .prose { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 760px; }
   .prose strong { color: var(--text); }
 
-  /* ===== CAROUSEL ===== */
+  /* ===== CAROUSEL / PICKER MODAL ===== */
   .carousel {
     position: fixed; inset: 0;
     background: rgba(5,7,10,0.96);
@@ -157,9 +157,103 @@
     display: none;
     align-items: center; justify-content: center;
     padding: 4rem 5rem;
+    overflow-y: auto;
   }
   .carousel.open { display: flex; }
 
+  /* Mode toggling */
+  .carousel[data-mode="picker"]   .car-view   { display: none; }
+  .carousel[data-mode="carousel"] .car-picker { display: none; }
+
+  /* ----- PICKER ----- */
+  .car-picker {
+    width: 100%; max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+  .picker-head {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #e8edf2;
+  }
+  .picker-tag {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--accent); letter-spacing: 0.25em;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .picker-title {
+    font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 0.65rem; color: #fff;
+  }
+  .picker-desc {
+    font-family: var(--display); font-size: 0.95rem;
+    color: rgba(255,255,255,0.65); max-width: 620px;
+    margin: 0 auto; line-height: 1.7;
+  }
+  .picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .picker-card {
+    background: rgba(22,28,37,0.85);
+    border: 1px solid rgba(168,255,120,0.18);
+    cursor: pointer; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
+    color: #e8edf2;
+  }
+  .picker-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 36px rgba(168,255,120,0.12);
+  }
+  .picker-card.empty { cursor: default; opacity: 0.6; }
+  .picker-card.empty:hover { transform: none; box-shadow: none; }
+  .picker-card-cover {
+    position: relative;
+    width: 100%; height: 200px;
+    overflow: hidden; background: #0a0c0f;
+  }
+  .picker-card-cover img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .picker-card:hover .picker-card-cover img { transform: scale(1.05); }
+  .picker-card-empty-cover {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    background: linear-gradient(135deg, #0d1115 0%, #161c25 100%);
+  }
+  .picker-card-count {
+    position: absolute; top: 10px; right: 10px;
+    padding: 3px 9px;
+    background: rgba(10,12,15,0.85);
+    border: 1px solid rgba(168,255,120,0.25);
+    color: var(--accent);
+    font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .picker-card-body { padding: 1rem 1.15rem 1.25rem; }
+  .picker-card-title {
+    font-size: 1.05rem; font-weight: 800;
+    line-height: 1.25; margin-bottom: 0.45rem;
+    letter-spacing: -0.01em;
+  }
+  .picker-card-desc {
+    font-family: var(--display); font-size: 0.82rem;
+    color: rgba(255,255,255,0.6); line-height: 1.6;
+  }
+
+  /* ----- CAROUSEL VIEW ----- */
+  .car-view {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
   .car-stage {
     max-width: 100%; max-height: 100%;
     display: flex; align-items: center; justify-content: center;
@@ -172,17 +266,18 @@
     box-shadow: 0 24px 80px rgba(0,0,0,0.65);
     background: #000;
   }
-  .car-prev, .car-next, .car-close {
+  .car-prev, .car-next, .car-close, .car-back {
     position: fixed;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.18);
     color: #fff; cursor: pointer;
     transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    font-family: var(--display); padding: 0;
+    font-family: var(--mono); padding: 0;
     display: flex; align-items: center; justify-content: center;
     user-select: none;
+    z-index: 10;
   }
-  .car-prev:hover, .car-next:hover, .car-close:hover {
+  .car-prev:hover, .car-next:hover, .car-close:hover, .car-back:hover {
     background: rgba(168,255,120,0.18);
     border-color: var(--accent);
   }
@@ -200,11 +295,20 @@
     width: 44px; height: 44px;
     font-size: 22px; line-height: 1;
   }
+  .car-back {
+    top: 1.5rem; left: 1.5rem;
+    height: 44px; padding: 0 16px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    gap: 6px;
+  }
+  .car-back::before { content: '←'; font-size: 16px; }
+  .carousel[data-mode="picker"] .car-back { display: none; }
   .car-meta {
     position: fixed; bottom: 1.5rem; left: 50%;
     transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 4px;
     pointer-events: none;
+    z-index: 5;
   }
   .car-counter {
     font-family: var(--mono); font-size: 11px;
@@ -214,6 +318,7 @@
   .car-title {
     font-family: var(--display); font-size: 0.95rem;
     color: var(--accent); letter-spacing: 0.04em;
+    max-width: 80vw; text-align: center;
   }
 
   /* Thumbnail strip */
@@ -224,6 +329,7 @@
     max-width: 90vw; overflow-x: auto;
     padding: 4px 8px;
     pointer-events: auto;
+    z-index: 5;
   }
   .car-thumbs::-webkit-scrollbar { height: 4px; }
   .car-thumbs::-webkit-scrollbar-thumb { background: rgba(168,255,120,0.3); }
@@ -360,21 +466,39 @@
       </div>
     </article>
 
-    <!-- CARD 2 — Personalized Prints -->
-    <article class="gallery-card fade-in" data-card="personalized" data-images='[
-      "images/projects/hobby/3D%20Personalized%20prints/IMG_2828.jpg",
-      "images/projects/hobby/3D%20Personalized%20prints/IMG_7182.jpg",
-      "images/projects/hobby/3D%20Personalized%20prints/IMG_7183.jpg"
+    <!-- CARD 2 — Personalized Prints (with sub-projects) -->
+    <article class="gallery-card fade-in"
+             data-card="personalized"
+             data-tag="Personalized Prints"
+             data-title="Custom 3D prints & commissions"
+             data-desc="Each piece is its own little build. Click a project to see the full process — from CAD design through print to finished, installed part."
+             data-projects='[
+      {
+        "title": "Dacia — Custom BCM Ventilation Grille",
+        "desc": "Replacement / personalised ventilation grille for a Dacia. Modelled in Fusion 360 against the BCM mounting reference and FDM-printed. Process: CAD → print → fit-up → install.",
+        "cover": "",
+        "images": []
+      },
+      {
+        "title": "Earlier custom prints",
+        "desc": "A handful of older one-off commissions — keychains, miniatures and small gifts printed for friends and family.",
+        "cover": "images/projects/hobby/3D%20Personalized%20prints/IMG_2828.jpg",
+        "images": [
+          "images/projects/hobby/3D%20Personalized%20prints/IMG_2828.jpg",
+          "images/projects/hobby/3D%20Personalized%20prints/IMG_7182.jpg",
+          "images/projects/hobby/3D%20Personalized%20prints/IMG_7183.jpg"
+        ]
+      }
     ]'>
       <div class="card-cover">
-        <img src="images/projects/hobby/3D%20Personalized%20prints/IMG_2828.jpg" alt="Custom 3D-printed keychain">
-        <span class="card-count">3 photos</span>
+        <img src="images/projects/hobby/3D%20Personalized%20prints/IMG_2828.jpg" alt="Custom 3D-printed pieces">
+        <span class="card-count">2 projects</span>
       </div>
       <div class="card-body">
         <div class="card-tag">Personalized Prints</div>
-        <h3 class="card-title">Custom keychains, gifts &amp; commissions</h3>
-        <p class="card-desc">Bespoke 3D prints made for friends, family and small commissions — initials, miniatures, replacement parts and odd one-offs. Quick CAD turnaround in Fusion 360, FDM in PLA+, finished and assembled by hand.</p>
-        <div class="card-cta">Open gallery</div>
+        <h3 class="card-title">Custom 3D prints &amp; commissions</h3>
+        <p class="card-desc">Bespoke 3D prints made for friends, family and small commissions — replacement automotive parts, keychains, miniatures, gifts and odd one-offs. Each project gets its own process gallery: CAD design, FDM print, finish, install.</p>
+        <div class="card-cta">Browse projects</div>
       </div>
     </article>
 
@@ -425,17 +549,36 @@
 
 </main>
 
-<!-- ===== CAROUSEL OVERLAY ===== -->
-<div class="carousel" id="carousel" aria-hidden="true">
+<!-- ===== CAROUSEL / PICKER OVERLAY ===== -->
+<div class="carousel" id="carousel" data-mode="carousel" aria-hidden="true">
+
+  <!-- Top-right close, always present -->
   <button class="car-close" id="car-close" aria-label="Close">×</button>
-  <button class="car-prev"  id="car-prev"  aria-label="Previous">‹</button>
-  <button class="car-next"  id="car-next"  aria-label="Next">›</button>
-  <div class="car-stage" id="car-stage"></div>
-  <div class="car-thumbs" id="car-thumbs"></div>
-  <div class="car-meta">
-    <div class="car-title" id="car-title"></div>
-    <div class="car-counter" id="car-counter">0 / 0</div>
+  <!-- Top-left back, only shown in carousel mode when arrived from picker -->
+  <button class="car-back"  id="car-back"  aria-label="Back to projects">Back</button>
+
+  <!-- PICKER (sub-projects grid) -->
+  <div class="car-picker" id="car-picker">
+    <div class="picker-head">
+      <div class="picker-tag" id="picker-tag">CATEGORY</div>
+      <h2 class="picker-title" id="picker-title">Title</h2>
+      <p class="picker-desc" id="picker-desc">Description</p>
+    </div>
+    <div class="picker-grid" id="picker-grid"></div>
   </div>
+
+  <!-- CAROUSEL (image / video viewer) -->
+  <div class="car-view" id="car-view">
+    <button class="car-prev" id="car-prev" aria-label="Previous">‹</button>
+    <button class="car-next" id="car-next" aria-label="Next">›</button>
+    <div class="car-stage" id="car-stage"></div>
+    <div class="car-thumbs" id="car-thumbs"></div>
+    <div class="car-meta">
+      <div class="car-title" id="car-title"></div>
+      <div class="car-counter" id="car-counter">0 / 0</div>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -462,48 +605,50 @@
     });
   })();
 
-  // ===== CAROUSEL =====
+  // ===== MODAL (PICKER + CAROUSEL) =====
   (function(){
-    const car      = document.getElementById('carousel');
-    const stage    = document.getElementById('car-stage');
-    const counter  = document.getElementById('car-counter');
-    const titleEl  = document.getElementById('car-title');
-    const thumbs   = document.getElementById('car-thumbs');
-    const btnPrev  = document.getElementById('car-prev');
-    const btnNext  = document.getElementById('car-next');
-    const btnClose = document.getElementById('car-close');
-
-    let images = [];
-    let index = 0;
+    const car        = document.getElementById('carousel');
+    const stage      = document.getElementById('car-stage');
+    const counter    = document.getElementById('car-counter');
+    const titleEl    = document.getElementById('car-title');
+    const thumbs     = document.getElementById('car-thumbs');
+    const btnPrev    = document.getElementById('car-prev');
+    const btnNext    = document.getElementById('car-next');
+    const btnClose   = document.getElementById('car-close');
+    const btnBack    = document.getElementById('car-back');
+    const pickerTag  = document.getElementById('picker-tag');
+    const pickerTit  = document.getElementById('picker-title');
+    const pickerDesc = document.getElementById('picker-desc');
+    const pickerGrid = document.getElementById('picker-grid');
 
     const VIDEO_EXT = /\.(mp4|webm|mov|m4v)$/i;
 
-    function render() {
+    let images       = [];   // currently-shown carousel images
+    let index        = 0;
+    let activeProjects = []; // when in picker mode, the list of sub-projects
+    let arrivedFromPicker = false;
+
+    // ---------- CAROUSEL ----------
+    function renderSlide() {
       if (!images.length) return;
       const src = images[index];
       const isVideo = VIDEO_EXT.test(src);
       stage.innerHTML = '';
       if (isVideo) {
         const v = document.createElement('video');
-        v.src = src;
-        v.controls = true;
-        v.autoplay = true;
-        v.playsInline = true;
+        v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
         stage.appendChild(v);
       } else {
         const img = document.createElement('img');
-        img.src = src;
-        img.alt = '';
+        img.src = src; img.alt = '';
         stage.appendChild(img);
       }
       counter.textContent = (index + 1) + ' / ' + images.length;
-      // active thumb
       thumbs.querySelectorAll('.car-thumb').forEach((t, i) => {
         t.classList.toggle('active', i === index);
         if (i === index) t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       });
     }
-
     function buildThumbs() {
       thumbs.innerHTML = '';
       images.forEach((src, i) => {
@@ -513,70 +658,143 @@
           t.innerHTML = '<div class="video-mark">▶</div>';
         } else {
           const img = document.createElement('img');
-          img.src = src;
-          img.alt = '';
+          img.src = src; img.alt = '';
           t.appendChild(img);
         }
-        t.addEventListener('click', () => { index = i; render(); });
+        t.addEventListener('click', () => { index = i; renderSlide(); });
         thumbs.appendChild(t);
       });
     }
-
-    function open(imgList, title) {
+    function openCarousel(imgList, title) {
       if (!imgList || !imgList.length) return;
       images = imgList;
       index = 0;
       titleEl.textContent = title || '';
       buildThumbs();
-      render();
+      renderSlide();
+      car.setAttribute('data-mode', 'carousel');
+    }
+
+    function nextSlide() { if (!images.length) return; index = (index + 1) % images.length; renderSlide(); }
+    function prevSlide() { if (!images.length) return; index = (index - 1 + images.length) % images.length; renderSlide(); }
+
+    // ---------- PICKER ----------
+    function renderPicker(card) {
+      pickerTag.textContent  = (card.getAttribute('data-tag')   || '').toUpperCase();
+      pickerTit.textContent  = card.getAttribute('data-title') || card.querySelector('.card-title')?.textContent || '';
+      pickerDesc.textContent = card.getAttribute('data-desc')  || '';
+      pickerGrid.innerHTML = '';
+      activeProjects.forEach((p, i) => {
+        const tile = document.createElement('div');
+        const isEmpty = !p.images || !p.images.length;
+        tile.className = 'picker-card' + (isEmpty ? ' empty' : '');
+        const cover = p.cover || (p.images && p.images[0]) || '';
+        const coverHtml = cover
+          ? '<img src="' + cover + '" alt="">'
+          : '<div class="picker-card-empty-cover">Photos coming soon</div>';
+        const countLabel = isEmpty
+          ? 'Soon'
+          : (p.images.length + (p.images.length === 1 ? ' photo' : ' items'));
+        tile.innerHTML =
+          '<div class="picker-card-cover">' + coverHtml +
+            '<span class="picker-card-count">' + countLabel + '</span>' +
+          '</div>' +
+          '<div class="picker-card-body">' +
+            '<div class="picker-card-title">' + (p.title || 'Untitled') + '</div>' +
+            (p.desc ? '<div class="picker-card-desc">' + p.desc + '</div>' : '') +
+          '</div>';
+        if (!isEmpty) {
+          tile.addEventListener('click', () => {
+            arrivedFromPicker = true;
+            openCarousel(p.images, p.title || '');
+          });
+        }
+        pickerGrid.appendChild(tile);
+      });
+      car.setAttribute('data-mode', 'picker');
+    }
+
+    // ---------- MODAL OPEN / CLOSE ----------
+    function openModal() {
       car.classList.add('open');
       car.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
-
-    function close() {
+    function closeModal() {
       car.classList.remove('open');
       car.setAttribute('aria-hidden', 'true');
       stage.innerHTML = '';
       images = [];
+      activeProjects = [];
+      arrivedFromPicker = false;
       document.body.style.overflow = '';
     }
 
-    function next() { if (!images.length) return; index = (index + 1) % images.length; render(); }
-    function prev() { if (!images.length) return; index = (index - 1 + images.length) % images.length; render(); }
-
-    // Wire card click
+    // ---------- WIRE CARDS ----------
     document.querySelectorAll('.gallery-card').forEach(card => {
       card.addEventListener('click', () => {
         if (card.classList.contains('empty')) return;
-        let imgs = [];
-        try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch(_) {}
-        const title = card.querySelector('.card-title')?.textContent || '';
-        open(imgs, title);
+        const projectsAttr = card.getAttribute('data-projects');
+        if (projectsAttr) {
+          // Two-level: open picker first
+          try { activeProjects = JSON.parse(projectsAttr); } catch (_) { activeProjects = []; }
+          arrivedFromPicker = false;
+          renderPicker(card);
+          openModal();
+        } else {
+          // Flat carousel
+          let imgs = [];
+          try { imgs = JSON.parse(card.getAttribute('data-images') || '[]'); } catch (_) {}
+          const title = card.querySelector('.card-title')?.textContent || '';
+          activeProjects = [];
+          arrivedFromPicker = false;
+          openCarousel(imgs, title);
+          openModal();
+        }
       });
     });
 
-    // Buttons
-    btnPrev.addEventListener('click', prev);
-    btnNext.addEventListener('click', next);
-    btnClose.addEventListener('click', close);
-    car.addEventListener('click', (e) => { if (e.target === car) close(); });
+    // ---------- BUTTONS ----------
+    btnPrev.addEventListener('click', prevSlide);
+    btnNext.addEventListener('click', nextSlide);
+    btnClose.addEventListener('click', closeModal);
+    btnBack.addEventListener('click', () => {
+      if (!arrivedFromPicker) { closeModal(); return; }
+      stage.innerHTML = '';
+      images = [];
+      car.setAttribute('data-mode', 'picker');
+    });
+    car.addEventListener('click', (e) => { if (e.target === car) closeModal(); });
 
-    // Keyboard
+    // ---------- KEYBOARD ----------
     document.addEventListener('keydown', (e) => {
       if (!car.classList.contains('open')) return;
-      if (e.key === 'Escape') close();
-      else if (e.key === 'ArrowRight') next();
-      else if (e.key === 'ArrowLeft')  prev();
+      if (e.key === 'Escape') {
+        if (car.getAttribute('data-mode') === 'carousel' && arrivedFromPicker) {
+          // Back to picker first
+          stage.innerHTML = '';
+          images = [];
+          car.setAttribute('data-mode', 'picker');
+        } else {
+          closeModal();
+        }
+      } else if (car.getAttribute('data-mode') === 'carousel') {
+        if (e.key === 'ArrowRight') nextSlide();
+        else if (e.key === 'ArrowLeft')  prevSlide();
+      }
     });
 
-    // Touch swipe
+    // ---------- TOUCH SWIPE (carousel only) ----------
     let touchStartX = null;
-    car.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    car.addEventListener('touchstart', (e) => {
+      if (car.getAttribute('data-mode') !== 'carousel') return;
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
     car.addEventListener('touchend',   (e) => {
+      if (car.getAttribute('data-mode') !== 'carousel') return;
       if (touchStartX == null) return;
       const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
+      if (Math.abs(dx) > 50) { if (dx < 0) nextSlide(); else prevSlide(); }
       touchStartX = null;
     }, { passive: true });
   })();
