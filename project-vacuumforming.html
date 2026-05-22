@@ -220,14 +220,15 @@
     <div class="meta-item"><div class="meta-label">Year</div><div class="meta-value">2023</div></div>
     <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">Custom machine — design & build</div></div>
     <div class="meta-item"><div class="meta-label">Role</div><div class="meta-value">Designer &amp; builder</div></div>
-    <div class="meta-item"><div class="meta-label">Reference</div><div class="meta-value">Formech 1372 (concept)</div></div>
+    <div class="meta-item"><div class="meta-label">CAD</div><div class="meta-value">Fusion 360</div></div>
   </div>
   <div class="hero-tags">
     <span class="tag accent">Fusion 360</span>
     <span class="tag">Thermoforming</span>
-    <span class="tag">Sheet metal</span>
-    <span class="tag">Heating elements</span>
-    <span class="tag">Vacuum system</span>
+    <span class="tag">6 heat zones</span>
+    <span class="tag">Quartz heaters</span>
+    <span class="tag">Pneumatic clamp</span>
+    <span class="tag">Laser-cut frame</span>
     <span class="tag">Custom build</span>
   </div>
 </div>
@@ -245,9 +246,9 @@
 
   <div class="content-section fade-in">
     <div class="section-label">Overview</div>
-    <div class="section-title">A desktop thermoformer, built from scratch</div>
-    <p class="prose">A fully custom <strong>vacuum forming machine</strong>, designed in CAD end-to-end and assembled from raw stock. The architecture follows the same proven layout as the <strong>Formech 1372</strong>: a heated platen above a hinged clamp frame, a perforated vacuum bed below, and a vacuum pump that pulls the softened plastic sheet down onto the mould.</p>
-    <p class="prose">The machine was built to support hobby prototyping — packaging blisters, decorative shells, small enclosures and props — using ABS, PETG, HIPS and acrylic sheets up to a few millimetres thick. Every mechanical part (frame, clamp jaws, platen housing, bed) was modelled in <strong>Fusion 360</strong> before any metal was cut, with the heater layout and vacuum cavity sized for an even draw across the forming area.</p>
+    <div class="section-title">A large-format thermoformer, built from scratch</div>
+    <p class="prose">A fully custom <strong>vacuum forming machine</strong>, designed in CAD end-to-end and assembled from raw stock — <strong>900 × 1200 mm sheet area</strong>, large enough for prototyping enclosures, props, packaging trays and tooling shells. The architecture is the classic large-format layout: a quartz-heater platen above, a clamp frame on a linear carriage in the middle, and a perforated vacuum bed below, with a rotary vacuum pump pulling the softened sheet down onto the mould.</p>
+    <p class="prose">The machine was built for ABS, PETG, HIPS and acrylic sheets and was modelled in <strong>Fusion 360</strong> before any metal was cut. The heater array is split into <strong>six independently controlled zones</strong> so the platen can be tuned around the sheet (edges get more power than the middle, which sags faster). Every mechanical part — welded frame, laser-cut sheet-metal housing, scissor lift, clamp frame, vacuum bed — was drawn parametrically so fabrication drawings could be exported straight from the model.</p>
   </div>
 
   <div class="img-grid-2 fade-in" style="margin-bottom:4rem;">
@@ -263,7 +264,7 @@
   <div class="content-section fade-in">
     <div class="section-label">Work Process</div>
     <div class="section-title">From CAD model to a working thermoformer</div>
-    <p class="prose">Five stages, each feeding the next — from the first reference study of the Formech 1372 to the finished machine pulling its first sheet on the bench.</p>
+    <p class="prose">Five stages, each feeding the next — from the first concept study and architecture sketch to the finished machine pulling its first sheet on the bench.</p>
     <div class="process-ruler">
       <div class="ruler-ticks"></div>
       <div class="ruler-labels">
@@ -298,10 +299,16 @@
     <div class="section-label">Specifications</div>
     <div class="section-title">Machine overview</div>
     <div class="specs-grid">
-      <div class="spec-card"><div class="spec-label">Concept reference</div><div class="spec-value" style="font-size:1rem;">Formech 1372</div></div>
-      <div class="spec-card"><div class="spec-label">Forming envelope</div><div class="spec-value" style="font-size:1rem;">Desktop scale</div></div>
+      <div class="spec-card"><div class="spec-label">Forming area</div><div class="spec-value">900 × 1200<span style="font-size:0.7rem; color: var(--muted); letter-spacing:0.1em; margin-left:6px;">mm</span></div></div>
+      <div class="spec-card"><div class="spec-label">Heating zones</div><div class="spec-value">6<span style="font-size:0.7rem; color: var(--muted); letter-spacing:0.1em; margin-left:6px;">independent</span></div></div>
+      <div class="spec-card"><div class="spec-label">Heater type</div><div class="spec-value" style="font-size:1rem;">Quartz tubes · 31&nbsp;cm + 50&nbsp;cm</div></div>
       <div class="spec-card"><div class="spec-label">Sheet materials</div><div class="spec-value" style="font-size:1rem;">ABS · PETG · HIPS · acrylic</div></div>
-      <div class="spec-card"><div class="spec-label">Heating</div><div class="spec-value" style="font-size:1rem;">Resistive radiant</div></div>
+      <div class="spec-card"><div class="spec-label">Linear carriage</div><div class="spec-value" style="font-size:1rem;">HGH25 · ball guides</div></div>
+      <div class="spec-card"><div class="spec-label">Pneumatic actuator</div><div class="spec-value" style="font-size:1rem;">SU125-300-S cylinder</div></div>
+      <div class="spec-card"><div class="spec-label">Bearings</div><div class="spec-value" style="font-size:1rem;">KP001 + KFL000 flange</div></div>
+      <div class="spec-card"><div class="spec-label">Main frame</div><div class="spec-value" style="font-size:1rem;">50×50 steel tube + laser-cut sheet</div></div>
+      <div class="spec-card"><div class="spec-label">Scissor mechanism</div><div class="spec-value" style="font-size:1rem;">40×20 aluminium tube</div></div>
+      <div class="spec-card"><div class="spec-label">Heater carrier</div><div class="spec-value" style="font-size:1rem;">High-temp insulating board</div></div>
       <div class="spec-card"><div class="spec-label">Vacuum source</div><div class="spec-value" style="font-size:1rem;">Rotary vane pump</div></div>
       <div class="spec-card"><div class="spec-label">CAD</div><div class="spec-value" style="font-size:1rem;">Fusion 360</div></div>
     </div>
@@ -329,17 +336,19 @@
     <div class="two-col">
       <ul class="checklist">
         <li>Full parametric CAD model of the machine in Fusion 360</li>
-        <li>Welded steel frame and sheet-metal housing</li>
-        <li>Hinged clamp frame with sheet retention</li>
-        <li>Heated platen with resistive radiant elements</li>
-        <li>Perforated vacuum bed with sealed plenum</li>
+        <li>Welded main frame from 50×50 steel tubing</li>
+        <li>Laser-cut sheet-metal housing and panels</li>
+        <li>Scissor lift mechanism from 40×20 aluminium tube</li>
+        <li>Clamp frame guided on an HGH25 ball-bearing linear carriage</li>
+        <li>Pneumatic clamp drive — SU125-300-S double-acting cylinder</li>
       </ul>
       <ul class="checklist">
+        <li>Six-zone quartz heater array (31&nbsp;cm and 50&nbsp;cm tubes)</li>
+        <li>Heater carrier in high-temperature insulating board</li>
+        <li>Perforated 900&nbsp;×&nbsp;1200&nbsp;mm vacuum bed with sealed plenum</li>
         <li>Vacuum manifold, hose routing and rotary vane pump</li>
-        <li>Electrical panel — thermostat, contactor and timer</li>
-        <li>Fabrication drawings for every metal part</li>
-        <li>Bill of materials &amp; sourcing list</li>
-        <li>First-pull validation with several sheet materials</li>
+        <li>KP001 pillow blocks &amp; KFL000 flange bearings for shaft support</li>
+        <li>Electrical panel — independent control for each of the 6 heat zones</li>
       </ul>
     </div>
   </div>
@@ -359,8 +368,8 @@
   <div class="content-section fade-in">
     <div class="section-label">Reflections</div>
     <div class="section-title">Key learnings</div>
-    <p class="prose">The hardest part wasn't the CAD — it was getting an <strong>even temperature distribution</strong> across the platen and an <strong>airtight seal</strong> between the clamp frame and the vacuum bed. Drawing speed and platen temperature had to be tuned together; too cold and the sheet tears, too hot and it sags before the clamp closes.</p>
-    <p class="prose">Designing the whole machine in Fusion 360 first paid off — interference checks on the hinge geometry and the vacuum-bed plenum caught mistakes that would have been painful to fix in metal.</p>
+    <p class="prose">The hardest part wasn't the CAD — it was getting an <strong>even temperature distribution</strong> across a 900&nbsp;×&nbsp;1200&nbsp;mm platen, and an <strong>airtight seal</strong> between the clamp frame and the vacuum bed. Splitting the heaters into <strong>six independently controlled zones</strong> made it possible to tune the profile around each sheet — more power at the edges, less in the middle, where the material sags faster.</p>
+    <p class="prose">Drawing the whole machine in Fusion 360 first paid off. The scissor lift, the HGH25 carriage path and the routing of the SU125-300-S cylinder were all interference-checked in the assembly long before anything was laser-cut or welded — mistakes you really don't want to find with a grinder in your hand.</p>
     <br>
     <a href="https://www.youtube.com/watch?v=vWkY0JACOPc&amp;t=75s" target="_blank" rel="noopener" class="btn-ghost">Watch the build on YouTube →</a>
   </div>

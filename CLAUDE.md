@@ -47,7 +47,7 @@ cv-print.html           # Standalone print/PDF-ready CV (light theme, no toggles
 admin.html              # Single-page admin — edit any page via GitHub Contents API (PAT auth)
 project-robot.html      # Sweep — Agora Robotics (D1→E1, 9 hardware generations)
 project-microscope.html # Microscope Inspection Table (MSc thesis)
-project-vacuumforming.html # Custom vacuum forming machine (Formech-1372-style, CAD-designed + built)
+project-vacuumforming.html # Custom large-format vacuum forming machine (900×1200 mm, 6 heat zones — CAD-designed + built)
 project-rover.html      # Rocker-Bogie Rover (BSc thesis)
 project-hobbies.html    # Hobby gallery (3D-print art, demo stands, custom prints)
 images/                 # hero, cv, projects/{rover,vacuumforming,microscope,robot,hobby}
