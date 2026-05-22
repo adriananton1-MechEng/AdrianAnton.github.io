@@ -235,3 +235,12 @@ When something inconsistent shows up across more than one page (footer copyright
 ### 6. Hobby card image cover convention
 
 Every `.gallery-card` cover on `project-hobbies.html` follows the same rule: the cover thumbnail = the image numbered **1** in that card's folder. When adding a new card, name the chosen cover photo `1.jpg` (or `vaza 1.JPG`, `cam 1.jpg`, whatever pattern matches the folder's other files) and reference it both in the card's `<img src>` and as the cover of the first sub-project.
+
+### 7. Keep admin.html in sync when project pages change
+
+`admin.html` hard-codes the list of editable pages in a `PAGES` array (~line 519). **Every commit that renames, adds, or removes a `project-*.html` file (or any other top-level HTML page) must also touch `admin.html` in the same commit** so the admin sidebar stays usable. Other admin touchpoints to check when relevant:
+
+- `ELEMENT_PATTERNS` (~line 531) — pattern → control bindings. Update if a new card variant or structural class is introduced (e.g. a new `.project-card--<colour>` modifier needs adding to the colour swatches around line 569, alongside the matching helper classes in `index.html` CSS).
+- `SKIP_CLASSES` (~line 686) — classes whose direct text content is non-editable (wrappers, grids, layout shells). Add new structural classes here if they shouldn't be treated as editable text.
+
+Audit step after any structural HTML change: `grep -n "project-" admin.html` to confirm every project page is listed and no stale name remains.
