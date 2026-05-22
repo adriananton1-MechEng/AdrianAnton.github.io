@@ -53,8 +53,9 @@
   .project-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 4rem; }
 
   .img-hero { width: 100%; height: 480px; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 5rem; position: relative; overflow: hidden; }
+  .img-hero::after { content: 'PHOTOS COMING SOON'; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.15em; position: absolute; bottom: 20px; right: 24px; }
   .img-hero svg { opacity: 0.15; }
-  .img-hero iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .img-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 5rem; }
   .img-slot { background: var(--bg3); border: 1px solid var(--border); height: 220px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -236,12 +237,16 @@
 <div class="project-body">
 
   <div class="img-hero fade-in">
-    <iframe
-      src="https://www.youtube.com/embed/vWkY0JACOPc?start=75"
-      title="Custom vacuum forming machine — build & demo"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen></iframe>
+    <svg width="220" height="130" viewBox="0 0 220 130" fill="none">
+      <rect x="10" y="10" width="200" height="110" stroke="#ff6b35" stroke-width="1.5"/>
+      <rect x="30" y="30" width="160" height="70" stroke="#ff6b35" stroke-width="1"/>
+      <line x1="10" y1="10" x2="30" y2="30" stroke="#ff6b35" stroke-width="0.8"/>
+      <line x1="210" y1="10" x2="190" y2="30" stroke="#ff6b35" stroke-width="0.8"/>
+      <line x1="10" y1="120" x2="30" y2="100" stroke="#ff6b35" stroke-width="0.8"/>
+      <line x1="210" y1="120" x2="190" y2="100" stroke="#ff6b35" stroke-width="0.8"/>
+      <circle cx="110" cy="65" r="25" stroke="#ff6b35" stroke-width="1"/>
+      <circle cx="110" cy="65" r="10" stroke="#ff6b35" stroke-width="1"/>
+    </svg>
   </div>
 
   <div class="content-section fade-in">
@@ -370,8 +375,6 @@
     <div class="section-title">Key learnings</div>
     <p class="prose">The hardest part wasn't the CAD — it was getting an <strong>even temperature distribution</strong> across a 900&nbsp;×&nbsp;1200&nbsp;mm platen, and an <strong>airtight seal</strong> between the clamp frame and the vacuum bed. Splitting the heaters into <strong>six independently controlled zones</strong> made it possible to tune the profile around each sheet — more power at the edges, less in the middle, where the material sags faster.</p>
     <p class="prose">Drawing the whole machine in Fusion 360 first paid off. The scissor lift, the HGH25 carriage path and the routing of the SU125-300-S cylinder were all interference-checked in the assembly long before anything was laser-cut or welded — mistakes you really don't want to find with a grinder in your hand.</p>
-    <br>
-    <a href="https://www.youtube.com/watch?v=vWkY0JACOPc&amp;t=75s" target="_blank" rel="noopener" class="btn-ghost">Watch the build on YouTube →</a>
   </div>
 
   <div class="project-nav fade-in">
