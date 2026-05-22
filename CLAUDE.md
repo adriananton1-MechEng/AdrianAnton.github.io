@@ -101,3 +101,72 @@ The grid texture is a fixed pseudo-element (`body::before`) using a double `line
 - Contact links use `mailto:` and `tel:` hrefs; no form backend.
 - SVG icons in project cards are inline and decorative (opacity 0.15–0.25).
 - The blinking green status dot uses a CSS `@keyframes` box-shadow pulse.
+
+## Converting DNG / RAW photos to web-ready JPG
+
+Browsers can't render `.DNG` (Adobe RAW) directly. Most DNG files include
+one or more embedded JPEG previews (a small thumbnail plus a near-full-
+resolution preview). Extracting the largest embedded JPEG is the fastest,
+no-dependency way to get a web-ready image without touching the original
+RAW file. Run this from the repo root (works in Git Bash on Windows with
+the system Python — no extra packages needed):
+
+```bash
+python -c "
+import sys
+dng_path = r'<ABSOLUTE\\PATH\\TO\\file.DNG>'
+out_path = r'<ABSOLUTE\\PATH\\TO\\file.jpg>'
+with open(dng_path, 'rb') as f:
+    data = f.read()
+print('DNG size:', len(data), 'bytes')
+
+# Scan for JPEG segments (SOI = FFD8, EOI = FFD9)
+jpegs = []
+i = 0
+while i < len(data) - 1:
+    if data[i] == 0xFF and data[i+1] == 0xD8:
+        start = i
+        j = i + 2
+        while j < len(data) - 1:
+            if data[j] == 0xFF and data[j+1] == 0xD9:
+                jpegs.append((start, j + 2, j + 2 - start))
+                i = j + 2
+                break
+            j += 1
+        else:
+            break
+    else:
+        i += 1
+
+if not jpegs:
+    print('No JPEG preview found in DNG.')
+    sys.exit(1)
+
+print('Found', len(jpegs), 'JPEG segment(s). Sizes:', [s for _,_,s in jpegs])
+largest = max(jpegs, key=lambda x: x[2])
+start, end, size = largest
+with open(out_path, 'wb') as f:
+    f.write(data[start:end])
+print('Extracted largest JPEG (', size, 'bytes ) to:', out_path)
+"
+```
+
+Conventions for using this:
+
+- **Keep the original DNG** on disk next to the extracted JPG — the DNG
+  remains the source of truth for any future re-export (with proper
+  RAW processing in Lightroom / darktable / Photoshop), and only the
+  extracted `.jpg` is referenced by the HTML pages.
+- **Name the output the same as the DNG** but with a `.jpg` extension
+  (e.g. `3.DNG` → `3.jpg`). This keeps the numbered-ordering convention
+  ("`1.jpg` is the card cover", see hobby gallery) intact.
+- The script picks the **largest embedded JPEG** because most DNGs
+  contain both a small thumbnail and a near-full-res preview; the
+  large one is what you want for the carousel.
+- The extracted JPG is the camera's bundled preview — fine for the web,
+  but **not RAW-processed**. If the cover frame needs better exposure
+  or colour, the user should re-export from Lightroom and overwrite
+  the `.jpg`.
+- After extracting, **add the new `.jpg` filename to the appropriate
+  `data-images` / `data-projects` list** in the relevant HTML page,
+  commit and push as usual.
