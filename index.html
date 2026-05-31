@@ -246,6 +246,16 @@
   .tag--amber { border-color: rgba(245,158,11,0.4); color: #f59e0b; background: rgba(245,158,11,0.05); }
   .card-cta--amber { color: #f59e0b; }
 
+  /* red card variant — Moulin Rouge accent (Excavator automation) */
+  .project-card--red { border-color: rgba(255,31,76,0.2); }
+  .project-card--red::before { background: #ff1f4c; }
+  .project-card--red:hover { border-color: rgba(255,31,76,0.55); }
+  .card-img-placeholder--red { background: linear-gradient(135deg, #14060a 0%, #1f0610 100%); border-bottom-color: rgba(255,31,76,0.2); }
+  .card-img-placeholder--red::after { color: rgba(255,31,76,0.4); }
+  .card-num--red { color: #ff1f4c; }
+  .tag--red { border-color: rgba(255,31,76,0.4); color: #ff1f4c; background: rgba(255,31,76,0.05); }
+  .card-cta--red { color: #ff1f4c; }
+
   /* ── SKILLS ── */
   #skills { background: var(--bg); }
   .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
@@ -489,6 +499,14 @@
   html[data-theme="light"] .card-num--amber { color: #b45309; }
   html[data-theme="light"] .tag--amber { border-color: rgba(180,83,9,0.5); color: #b45309; background: rgba(180,83,9,0.07); }
   html[data-theme="light"] .card-cta--amber { color: #b45309; }
+  html[data-theme="light"] .card-img-placeholder--red { background: linear-gradient(135deg, #f5dde3 0%, #efc9d3 100%); border-bottom-color: rgba(185,28,28,0.3); }
+  html[data-theme="light"] .card-img-placeholder--red::after { color: rgba(185,28,28,0.6); }
+  html[data-theme="light"] .project-card--red { border-color: rgba(185,28,28,0.3); }
+  html[data-theme="light"] .project-card--red::before { background: #b91c1c; }
+  html[data-theme="light"] .project-card--red:hover { border-color: rgba(185,28,28,0.65); }
+  html[data-theme="light"] .card-num--red { color: #b91c1c; }
+  html[data-theme="light"] .tag--red { border-color: rgba(185,28,28,0.5); color: #b91c1c; background: rgba(185,28,28,0.07); }
+  html[data-theme="light"] .card-cta--red { color: #b91c1c; }
   html[data-theme="light"] .hobby-card:hover { background: #c8d4e0; }
 
   @media (max-width: 900px) {
@@ -623,11 +641,43 @@
       </div>
     </a>
 
-    <!-- 02 — 2022–2024 -->
+    <!-- 02 — 2026 -->
+    <a href="project-excavator.html" class="project-card project-card--red fade-in visible">
+      <div class="card-img-placeholder card-img-placeholder--red">
+        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="32" width="42" height="14" stroke="#ff1f4c" stroke-width="1.5"></rect>
+          <rect x="26" y="22" width="22" height="10" stroke="#ff1f4c" stroke-width="1.2"></rect>
+          <circle cx="28" cy="50" r="5" stroke="#ff1f4c" stroke-width="1"></circle>
+          <circle cx="40" cy="50" r="5" stroke="#ff1f4c" stroke-width="1"></circle>
+          <circle cx="52" cy="50" r="5" stroke="#ff1f4c" stroke-width="1"></circle>
+          <line x1="62" y1="36" x2="78" y2="22" stroke="#ff1f4c" stroke-width="2"></line>
+          <line x1="78" y1="22" x2="86" y2="36" stroke="#ff1f4c" stroke-width="2"></line>
+          <path d="M 84 34 L 90 42 L 84 44 Z" stroke="#ff1f4c" stroke-width="1.2" fill="none"></path>
+          <circle cx="62" cy="36" r="2" fill="#ff1f4c" opacity="0.7"></circle>
+          <circle cx="78" cy="22" r="2" fill="#ff1f4c" opacity="0.7"></circle>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-num card-num--red">02 — Automation · 2026</div>
+        <div class="card-title">Mini Excavator Hydraulic Automation</div>
+        <p class="card-desc">Servo-actuated retrofit of an 8-valve hydraulic distributor on a mini excavator — replacing manual lever control with 8 independently driven servos. Full kinematic simulation of the boom, arm and bucket motion in CAD before fabrication.</p>
+        <div class="card-tags">
+          <span class="tag tag--red">2026 · R&amp;D</span>
+          <span class="tag">Fusion 360</span>
+          <span class="tag">Hydraulics</span>
+          <span class="tag">8 Servos</span>
+          <span class="tag">Kinematic Sim</span>
+          <span class="tag">Automation</span>
+        </div>
+        <div class="card-cta card-cta--red">View full project</div>
+      </div>
+    </a>
+
+    <!-- 03 — 2022–2024 -->
     <a href="project-microscope.html" class="project-card project-card--purple fade-in visible">
       <img class="card-img" src="images/projects/microscope/Render%20view%20final.png" alt="Microscope inspection stand — CAD render">
       <div class="card-body">
-        <div class="card-num card-num--purple">02 — MSc Thesis · 2022–2024</div>
+        <div class="card-num card-num--purple">03 — MSc Thesis · 2022–2024</div>
         <div class="card-title">Microscope Inspection Table</div>
         <p class="card-desc">3-axis CNC motorised stand for digital microscopy of 3D-printed surfaces. Designed, fabricated and assembled from scratch — steel chassis, stepper-driven XYZ motion, Arduino/GRBL control, 1600× digital microscope.</p>
         <div class="card-tags">
@@ -642,7 +692,7 @@
       </div>
     </a>
 
-    <!-- 03 — 2023 -->
+    <!-- 04 — 2023 -->
     <a href="project-vacuumforming.html" class="project-card project-card--orange fade-in visible">
       <div class="card-img-placeholder card-img-placeholder--orange">
         <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -655,7 +705,7 @@
         </svg>
       </div>
       <div class="card-body">
-        <div class="card-num card-num--orange">03 — Custom Build · 2023</div>
+        <div class="card-num card-num--orange">04 — Custom Build · 2023</div>
         <div class="card-title">Vacuum Forming Machine</div>
         <p class="card-desc">Large-format vacuum forming machine designed in CAD end-to-end and built from scratch — 900 × 1200 mm forming area, 6 independently controlled quartz heating zones, pneumatic clamp drive on an HGH25 linear carriage. Welded steel frame and laser-cut sheet metal.</p>
         <div class="card-tags">
@@ -669,7 +719,7 @@
       </div>
     </a>
 
-    <!-- 04 — BSc Thesis · 2021–2022 -->
+    <!-- 05 — BSc Thesis · 2021–2022 -->
     <a href="project-rover.html" class="project-card fade-in visible">
       <div class="card-img-placeholder">
         <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -683,7 +733,7 @@
         </svg>
       </div>
       <div class="card-body">
-        <div class="card-num">04 — BSc Thesis · 2021–2022</div>
+        <div class="card-num">05 — BSc Thesis · 2021–2022</div>
         <div class="card-title">Rocker-Bogie Rover</div>
         <p class="card-desc">Six-wheeled passive suspension system designed for planetary terrain traversal. All six wheels maintain ground contact on obstacles up to 45°.</p>
         <div class="card-tags">
@@ -696,13 +746,13 @@
       </div>
     </a>
 
-    <!-- 05 — Hobby (last) -->
+    <!-- 06 — Hobby (last) -->
     <a href="project-hobbies.html" class="project-card project-card--lime fade-in visible">
       <div class="card-img-placeholder card-img-placeholder--lime card-img-placeholder--filled">
         <img src="images/projects/hobby/3D%20Print%20Art(vases,%20lamps,etc.)/vaza%201.JPG" alt="3D printed vase — hobby gallery cover">
       </div>
       <div class="card-body">
-        <div class="card-num card-num--lime">05 — Personal Works</div>
+        <div class="card-num card-num--lime">06 — Personal Works</div>
         <div class="card-title">Hobby stuff</div>
         <p class="card-desc">3D-print art, custom prints and university demonstration stands — the side projects I build outside of work. A growing gallery of vases, lamps, personalised prints and teaching rigs.</p>
         <div class="card-tags">

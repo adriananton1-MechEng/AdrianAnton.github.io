@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Excavator Hydraulic Automation — Adrian Anton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0c0f; --bg2: #10141a; --bg3: #161c25;
+    --accent: #ff1f4c; --text: #e8edf2; --muted: #5a6a7a;
+    --border: rgba(255,31,76,0.15);
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--display); overflow-x: hidden; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(255,31,76,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,31,76,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,12,15,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,31,76,0.15);
+  }
+  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.1em; text-decoration: none; }
+  .nav-back { font-family: var(--mono); font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+  .nav-back::before { content: '←'; }
+  .nav-back:hover { color: var(--accent); }
+
+  .project-hero { position: relative; z-index: 1; padding: 10rem 4rem 4rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
+  .breadcrumb { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .breadcrumb span { color: var(--accent); }
+  .project-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 1.5rem; }
+  .project-title span { color: var(--accent); }
+  .project-meta-row { display: flex; gap: 3rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .meta-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
+  .meta-value { font-size: 0.95rem; color: var(--text); }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--border); color: var(--muted); background: rgba(255,31,76,0.04); }
+  .tag.accent { border-color: var(--accent); color: var(--accent); }
+
+  .project-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 4rem; }
+
+  .img-hero { width: 100%; height: 480px; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 5rem; position: relative; overflow: hidden; }
+  .img-hero::after { content: 'CAD RENDER · PHOTOS COMING SOON'; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.15em; position: absolute; bottom: 20px; right: 24px; }
+  .img-hero svg { opacity: 0.18; }
+  .img-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 5rem; }
+  .img-slot { background: var(--bg3); border: 1px solid var(--border); height: 240px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .img-slot::after { content: attr(data-label); font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; position: absolute; bottom: 12px; right: 14px; }
+  .img-slot svg { opacity: 0.15; }
+
+  .content-section { margin-bottom: 4rem; }
+  .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--accent); }
+  .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+  .prose { font-size: 1rem; color: #9aabb8; line-height: 1.85; }
+  .prose + .prose { margin-top: 1rem; }
+  .prose strong { color: var(--text); font-weight: 700; }
+
+  .specs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; margin-top: 2rem; margin-bottom: 4rem; }
+  .spec-card { background: var(--bg3); border: 1px solid var(--border); padding: 1.5rem; }
+  .spec-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+  .spec-value { font-size: 1.3rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+  .checklist { list-style: none; }
+  .checklist li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: #9aabb8; line-height: 1.6; }
+  .checklist li::before { content: '✓'; color: var(--accent); font-family: var(--mono); flex-shrink: 0; }
+
+  .project-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 3rem; }
+  .proj-nav-card { background: var(--bg3); border: 1px solid var(--border); padding: 1.75rem; text-decoration: none; color: var(--text); transition: border-color 0.3s; display: block; }
+  .proj-nav-card:hover { border-color: var(--accent); }
+  .proj-nav-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .proj-nav-title { font-size: 1rem; font-weight: 700; }
+  .proj-nav-card.next { text-align: right; }
+
+  footer { position: relative; z-index: 1; padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .footer-text { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    background: none; border: 1px solid var(--border);
+    color: var(--muted); cursor: pointer;
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, color 0.2s; padding: 0; flex-shrink: 0;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .theme-toggle .icon-moon { display: block; }
+  .theme-toggle .icon-sun  { display: none; }
+  html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+  html[data-theme="light"] .theme-toggle .icon-sun  { display: block; }
+
+  /* ── LIGHT THEME ── */
+  html[data-theme="light"] {
+    --bg: #edf1f7; --bg2: #e2e8f2; --bg3: #d5dde9;
+    --accent: #b91c1c; --text: #0b1826; --muted: #475d6e;
+    --border: rgba(185,28,28,0.3);
+  }
+  html[data-theme="light"] body::before {
+    background-image: linear-gradient(rgba(185,28,28,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(185,28,28,0.06) 1px, transparent 1px);
+  }
+  html[data-theme="light"] nav { background: rgba(237,241,247,0.92); }
+  html[data-theme="light"] .prose,
+  html[data-theme="light"] .checklist li { color: #3a4e5e; }
+
+  /* Valve / servo grid */
+  .valve-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 2rem; margin-bottom: 4rem; }
+  .valve-cell {
+    background: var(--bg3); border: 1px solid var(--border);
+    padding: 1.4rem 1rem; text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .valve-cell:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .valve-num {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.18em; margin-bottom: 8px;
+  }
+  .valve-label {
+    font-family: var(--display); font-size: 0.95rem; font-weight: 700;
+    color: var(--text); line-height: 1.2;
+  }
+  .valve-sub {
+    font-family: var(--mono); font-size: 9px;
+    color: var(--muted); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-top: 6px;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .project-hero { padding: 8rem 1.5rem 3rem; }
+    .project-body { padding: 3rem 1.5rem; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .project-nav { grid-template-columns: 1fr; }
+    .img-slot { height: 200px; }
+    .img-hero { height: 300px; }
+    .valve-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">ADRIAN.ENG</a>
+  <a href="index.html" class="nav-back">All projects</a>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</nav>
+
+<div class="project-hero">
+  <div class="breadcrumb">Projects / <span>02 — Automation · 2026</span></div>
+  <h1 class="project-title">Mini Excavator<br><span>Hydraulic Automation</span></h1>
+  <div class="project-meta-row">
+    <div class="meta-item"><div class="meta-label">Year</div><div class="meta-value">2026</div></div>
+    <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">Servo retrofit · kinematic simulation</div></div>
+    <div class="meta-item"><div class="meta-label">Role</div><div class="meta-value">Mechanical &amp; mechatronic design</div></div>
+    <div class="meta-item"><div class="meta-label">CAD</div><div class="meta-value">Fusion 360 — kinematic joints</div></div>
+  </div>
+  <div class="hero-tags">
+    <span class="tag accent">Fusion 360</span>
+    <span class="tag">Hydraulics</span>
+    <span class="tag">8 valves · 8 servos</span>
+    <span class="tag">Kinematic Sim</span>
+    <span class="tag">Servo Actuation</span>
+    <span class="tag">Automation</span>
+    <span class="tag">2026</span>
+  </div>
+</div>
+
+<div class="project-body">
+
+  <div class="img-hero fade-in">
+    <svg width="380" height="220" viewBox="0 0 380 220" fill="none">
+      <!-- Tracks / undercarriage -->
+      <rect x="60" y="160" width="160" height="22" stroke="#ff1f4c" stroke-width="1.5"/>
+      <circle cx="80"  cy="171" r="11" stroke="#ff1f4c" stroke-width="1"/>
+      <circle cx="110" cy="171" r="11" stroke="#ff1f4c" stroke-width="1"/>
+      <circle cx="140" cy="171" r="11" stroke="#ff1f4c" stroke-width="1"/>
+      <circle cx="170" cy="171" r="11" stroke="#ff1f4c" stroke-width="1"/>
+      <circle cx="200" cy="171" r="11" stroke="#ff1f4c" stroke-width="1"/>
+      <!-- Cabin / body -->
+      <rect x="76" y="118" width="120" height="42" stroke="#ff1f4c" stroke-width="1.5"/>
+      <rect x="90" y="90"  width="64"  height="28" stroke="#ff1f4c" stroke-width="1.2"/>
+      <line x1="90" y1="118" x2="100" y2="90" stroke="#ff1f4c" stroke-width="1"/>
+      <line x1="154" y1="90" x2="164" y2="118" stroke="#ff1f4c" stroke-width="1"/>
+      <!-- Boom -->
+      <line x1="196" y1="135" x2="260" y2="80" stroke="#ff1f4c" stroke-width="2.5"/>
+      <line x1="260" y1="80" x2="310" y2="125" stroke="#ff1f4c" stroke-width="2.5"/>
+      <!-- Bucket -->
+      <path d="M 305 122 L 326 145 L 318 158 L 300 138 Z" stroke="#ff1f4c" stroke-width="1.5" fill="none"/>
+      <!-- Joints -->
+      <circle cx="196" cy="135" r="4" fill="#ff1f4c" opacity="0.85"/>
+      <circle cx="260" cy="80"  r="4" fill="#ff1f4c" opacity="0.85"/>
+      <circle cx="310" cy="125" r="4" fill="#ff1f4c" opacity="0.85"/>
+      <!-- Hydraulic cylinder hints -->
+      <line x1="190" y1="120" x2="240" y2="100" stroke="#ff1f4c" stroke-width="1" opacity="0.55"/>
+      <line x1="250" y1="92"  x2="300" y2="115" stroke="#ff1f4c" stroke-width="1" opacity="0.55"/>
+      <!-- Servo distributor diagram -->
+      <g transform="translate(40 40)">
+        <rect x="0" y="0" width="80" height="34" stroke="#ff1f4c" stroke-width="1.3"/>
+        <line x1="10" y1="0" x2="10" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <line x1="20" y1="0" x2="20" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <line x1="30" y1="0" x2="30" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <line x1="40" y1="0" x2="40" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <line x1="50" y1="0" x2="50" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <line x1="60" y1="0" x2="60" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <line x1="70" y1="0" x2="70" y2="34" stroke="#ff1f4c" stroke-width="0.7" opacity="0.5"/>
+        <circle cx="5"  cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="15" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="25" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="35" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="45" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="55" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="65" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+        <circle cx="75" cy="-6" r="3" stroke="#ff1f4c" stroke-width="1" fill="none"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="content-section fade-in">
+    <div class="section-label">Overview</div>
+    <div class="section-title">Eight servos, eight valves — manual lever bank, automated</div>
+    <p class="prose">A retrofit project on a <strong>mini excavator</strong> that replaces the manual hydraulic lever bank with <strong>eight servo motors driving the eight spools of the original hydraulic distributor</strong>. Each valve gets its own servo, so every function the operator could perform manually — track left, track right, swing, boom, arm, bucket, blade, auxiliary — becomes an electronic command instead of a hand on a lever.</p>
+    <p class="prose">Before any hardware was touched, the entire machine was modelled in <strong>Fusion 360 with kinematic joints</strong> so the boom-arm-bucket linkage, swing and undercarriage motion could be driven directly from valve-position inputs in CAD. That made it possible to validate reach envelopes, joint travel limits and servo torque requirements <em>before</em> mounting anything to the real distributor — no surprises on commissioning day.</p>
+  </div>
+
+  <!-- KEY SPECS -->
+  <div class="specs-grid fade-in">
+    <div class="spec-card"><div class="spec-label">Valves</div><div class="spec-value">8</div></div>
+    <div class="spec-card"><div class="spec-label">Servos</div><div class="spec-value">8</div></div>
+    <div class="spec-card"><div class="spec-label">Mapping</div><div class="spec-value">1 : 1</div></div>
+    <div class="spec-card"><div class="spec-label">Sim Env.</div><div class="spec-value">Fusion 360</div></div>
+    <div class="spec-card"><div class="spec-label">DoF Driven</div><div class="spec-value">8</div></div>
+    <div class="spec-card"><div class="spec-label">Year</div><div class="spec-value">2026</div></div>
+  </div>
+
+  <!-- VALVE / FUNCTION MAP -->
+  <div class="content-section fade-in">
+    <div class="section-label">Valve Map</div>
+    <div class="section-title">One servo per distributor spool</div>
+    <p class="prose">The original distributor has eight spool valves controlling the full set of excavator functions. Each is now driven by an independent servo, so every function can be commanded electronically — and any subset can be coordinated in software for repeated motions or automated cycles.</p>
+    <div class="valve-grid">
+      <div class="valve-cell"><div class="valve-num">V1</div><div class="valve-label">Left Track</div><div class="valve-sub">Servo 1</div></div>
+      <div class="valve-cell"><div class="valve-num">V2</div><div class="valve-label">Right Track</div><div class="valve-sub">Servo 2</div></div>
+      <div class="valve-cell"><div class="valve-num">V3</div><div class="valve-label">Swing</div><div class="valve-sub">Servo 3</div></div>
+      <div class="valve-cell"><div class="valve-num">V4</div><div class="valve-label">Boom</div><div class="valve-sub">Servo 4</div></div>
+      <div class="valve-cell"><div class="valve-num">V5</div><div class="valve-label">Arm</div><div class="valve-sub">Servo 5</div></div>
+      <div class="valve-cell"><div class="valve-num">V6</div><div class="valve-label">Bucket</div><div class="valve-sub">Servo 6</div></div>
+      <div class="valve-cell"><div class="valve-num">V7</div><div class="valve-label">Blade</div><div class="valve-sub">Servo 7</div></div>
+      <div class="valve-cell"><div class="valve-num">V8</div><div class="valve-label">Auxiliary</div><div class="valve-sub">Servo 8</div></div>
+    </div>
+    <p class="prose" style="font-size:0.85rem;opacity:0.7;">Function labels are indicative — final V1 — V8 mapping follows the actual spool layout of the installed distributor.</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="content-section fade-in">
+    <div class="section-label">How it works</div>
+    <div class="section-title">From CAD kinematics to physical actuation</div>
+    <div class="two-col">
+      <ul class="checklist">
+        <li><strong style="color:var(--text)">Fusion 360 kinematic model</strong> — full assembly with joints on boom, arm, bucket, swing and tracks. Servo angles drive valve spool position, which drives joint motion.</li>
+        <li><strong style="color:var(--text)">Servo-to-spool linkage</strong> — each servo is mechanically coupled to a single distributor spool via a printed/machined adaptor; original lever bank can be reinstalled if needed.</li>
+        <li><strong style="color:var(--text)">Reach envelope verified in CAD</strong> — boom, arm and bucket travel limits validated against the real machine geometry before any hardware was modified.</li>
+        <li><strong style="color:var(--text)">Servo torque budget</strong> — required spool force estimated from CAD-derived valve travel and verified against servo stall-torque specs.</li>
+      </ul>
+      <ul class="checklist">
+        <li><strong style="color:var(--text)">Electronic command layer</strong> — eight servo signals replace the eight manual levers. The control input can be a joystick, a script, or a higher-level autonomy stack.</li>
+        <li><strong style="color:var(--text)">Coordinated motions</strong> — software can now combine valves (e.g. boom + arm + bucket) for repeated cycles that would be tedious or imprecise by hand.</li>
+        <li><strong style="color:var(--text)">Safe-by-design fallback</strong> — losing power returns all servos to centred (closed-spool) state, so the machine fails to a neutral hydraulic position.</li>
+        <li><strong style="color:var(--text)">Reversible retrofit</strong> — no irreversible modification to the distributor itself, so the original manual lever bank can be put back if required.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="content-section fade-in">
+    <div class="section-label">Why automate it</div>
+    <div class="section-title">A path toward repeatable, programmable earth-moving</div>
+    <p class="prose">Manual hydraulic excavators rely entirely on operator skill for every motion — precision suffers on repeated tasks and small machines are hard to operate remotely. Driving the distributor with servos turns the whole machine into a <strong>programmable mechatronic platform</strong>: the same valves still control the same hydraulic functions, but the inputs come from electronics instead of a hand on a lever.</p>
+    <p class="prose">From there, anything downstream becomes possible — joystick teleoperation, recorded motion playback for repeated trenching cycles, sensor-driven safety limits, or higher-level autonomy. The CAD-first approach with a full kinematic simulation means each new control idea can be validated in software before it ever moves a real cylinder.</p>
+  </div>
+
+  <!-- PROJECT NAVIGATION -->
+  <div class="project-nav fade-in">
+    <a href="project-robot.html" class="proj-nav-card">
+      <div class="proj-nav-label">← Previous</div>
+      <div class="proj-nav-title">Autonomous Cleaning Robot</div>
+    </a>
+    <a href="project-microscope.html" class="proj-nav-card next">
+      <div class="proj-nav-label">Next project →</div>
+      <div class="proj-nav-title">Microscope Inspection Table</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-text">© 2026 Adrian Florin Anton</span>
+  <span class="footer-text">Bucharest, Romania</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  (function(){
+    var h=document.documentElement,t=document.getElementById('theme-toggle');
+    h.setAttribute('data-theme',localStorage.getItem('theme')||'dark');
+    t.addEventListener('click',function(){
+      var n=h.getAttribute('data-theme')==='light'?'dark':'light';
+      h.setAttribute('data-theme',n);localStorage.setItem('theme',n);
+    });
+  })();
+</script>
+</body>
+</html>

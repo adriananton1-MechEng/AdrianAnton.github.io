@@ -46,11 +46,12 @@ cv.html                 # Interactive CV (dark theme + theme toggle)
 cv-print.html           # Standalone print/PDF-ready CV (light theme, no toggles, A4)
 admin.html              # Single-page admin — edit any page via GitHub Contents API (PAT auth)
 project-robot.html      # Sweep — Agora Robotics (D1→E1, 9 hardware generations)
+project-excavator.html  # Mini Excavator Hydraulic Automation — 8-valve distributor driven by 8 servos, kinematic sim in Fusion 360 (2026)
 project-microscope.html # Microscope Inspection Table (MSc thesis)
 project-vacuumforming.html # Custom large-format vacuum forming machine (900×1200 mm, 6 heat zones — CAD-designed + built)
 project-rover.html      # Rocker-Bogie Rover (BSc thesis)
 project-hobbies.html    # Hobby gallery (3D-print art, demo stands, custom prints)
-images/                 # hero, cv, projects/{rover,vacuumforming,microscope,robot,hobby}
+images/                 # hero, cv, projects/{rover,vacuumforming,microscope,robot,excavator,hobby}
 ```
 
 ## Admin tooling
@@ -100,6 +101,7 @@ Cards on `index.html` use class `.project-card` plus an optional colour-variant 
 | `.project-card--orange`      | `#ff6b35`  | SolidWorks Assembly                 |
 | `.project-card--lime`        | `#a8ff78`  | Personal Works (hobby gallery)      |
 | `.project-card--amber`       | `#f59e0b`  | Sweep — Agora Robotics              |
+| `.project-card--red`         | `#ff1f4c`  | Mini Excavator Hydraulic Automation |
 
 The `.featured` modifier draws a full-height accent bar down the left edge (used on the Agora card to draw the eye first). Each variant also has a matching `.tag--<colour>`, `.card-num--<colour>`, `.card-cta--<colour>` and `.card-img-placeholder--<colour>` helper class — keep these in sync if a new variant is ever added.
 
